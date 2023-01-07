@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: ConnexionPage
-  }
+  },
+  {
+    path: 'accueil',
+    loadChildren: () => import('../accueil/accueil.module').then( m => m.AccueilPageModule)
+  },
 ];
 
 @NgModule({

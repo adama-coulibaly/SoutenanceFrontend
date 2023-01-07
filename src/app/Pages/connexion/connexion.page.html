@@ -9,19 +9,19 @@
   <div class="containeurLogo">
       <img src="../../../assets/img/logo1.png" alt="logo" srcset="" width="45%">
   </div>
-
+<span *ngIf="Message" style="color: red; margin: 2%;">{{Message}}</span>
   <div class="formLogin">
-      <form action="">
+      <form  #form="ngForm" (ngSubmit)="connexion(form)">
           <div class="emailForm">
-              <ion-input type="email" placeholder="Adresse email" autofocus></ion-input>
+              <ion-input type="email" placeholder="Adresse email" ngModel name="email"  autofocus></ion-input>
           </div>
           <br>
           <div class="passwordForm">
-              <ion-input type="password" placeholder="Mot de passe" maxlength="8" minlength="6"></ion-input>
+              <ion-input type="password" placeholder="Mot de passe" maxlength="8" minlength="6" ngModel name="password"></ion-input>
           </div>
 
           <div class="Connexion">
-              <button>Connexion</button>
+              <button type="submit">Connexion</button>
           </div>
       </form>
       <div><p><strong>OU</strong></p></div>

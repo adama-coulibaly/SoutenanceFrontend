@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-img src="../../../assets/img/logo2.png" ></ion-img>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <div class="principale">
+
+  <ion-slides [options]="options">
+
+    <ion-slide>
+        <ion-card>
+          <img src="../../../assets/img/fermier.jpg" alt="" srcset="">
+
+        </ion-card>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-card>
+        <img src="../../../assets/img/fermier (2).jpg" alt="" srcset="">
+      </ion-card>
+  </ion-slide>
+
+  <ion-slide>
+    <ion-card>
+      <img src="../../../assets/img/tenier lespoules.jpg" alt="" srcset="">
+         </ion-card>
+</ion-slide>
+
+  </ion-slides>
+ </div>
+
+ <!-- ++++++++++++++++++++++++++++++++++++++++++++++++ MES FERMES  -->
+
+<div class="mesFermes">
+    <ion-card>
+        <ion-img src="../../../assets/img/mesfermes.jpeg"></ion-img>
+        <ion-card-content>
+            <p>Le suivi de la production des poules pondeuses ainssi que des 
+              poulets de chairs necessite un grand sacrifice de temps et veilles aux entretiens.
+            </p>
+
+           <div class="buttonMesfermes"> <ion-button>Mes fermes</ion-button></div>
+        </ion-card-content>
+    </ion-card>
+</div>
+
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++ LES PRODUITS ACCUEILS -->
+<div class="lesTitres"><p>Les produits</p></div>
+
+<div class="CarousselProduits">
+    <ion-slides [options]="options2">
+
+        <ion-slide class="containerSlides">
+          <ion-card >
+              <ion-img src="../../../assets/produits/poussins (2).jpg"></ion-img>
+              <ion-card-content> <h3>3000 Fcfa / Unité</h3>
+                <p><Strong>Chai wairai</Strong></p>
+             </ion-card-content>
+             <ion-button>
+              <i class="fa-solid fa-cart-shopping"></i>
+              Ajouter au panier
+            </ion-button>
+            </ion-card>
+        </ion-slide>
+
+        <ion-slide class="containerSlides">
+          <ion-card>
+              <ion-img src="../../../assets/produits/chairPur.jpg"></ion-img>
+              <ion-card-content> <h3>3000 Fcfa / Unité</h3>
+                <p><Strong>Chai wairai</Strong></p>
+             </ion-card-content>
+             <ion-button>Ajouter au panier</ion-button>
+            </ion-card>
+        </ion-slide>
+      </ion-slides>
+</div>
+</ion-content>

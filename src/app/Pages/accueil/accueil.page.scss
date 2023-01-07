@@ -1,0 +1,60 @@
+
+ion-content{
+    // ICI ON BLOCK LE SCROLLING
+    --offset-bottom: auto!important;
+    background: #F8F6FB;
+  --overflow: hidden;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+
+
+ion-header{
+    background-color: #04CF72;
+}
+ion-toolbar ion-img{
+    margin: 1%;
+    width: 20%;
+}
+
+
+//  LES IONS CARDS
+ion-card img{
+    object-fit: cover;
+    width: 100%;
+    // height: 100px;
+    transform: scale(1.1, 1.1) rotate(1deg);
+    transition: 600ms all ease-in-out;
+}
+.swiper-slide-active{
+transform: scale(1.05, 1.05);
+}
+.swiper-slide{
+transition: 400ms all ease-in-out;
+}
+
+
+// BOUTON MES FERMES
+
+.buttonMesfermes{
+    text-align: center;
+}
+.buttonMesfermes ion-button{
+    text-align: center;
+    margin: 1%;
+}
+
+//  LES PRODUITS DES FERMES CAROUSSELS
+.containerSlides ion-card-content h3{
+    font-size: 10px;
+}
+.containerSlides ion-card-content p{
+    font-size: 10px;
+}
+.containerSlides ion-card ion-button{
+    font-size: 6px;
+    width: 100%;
+}

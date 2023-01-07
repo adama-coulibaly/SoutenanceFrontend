@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'connexion',
     loadChildren: () => import('./Pages/connexion/connexion.module').then( m => m.ConnexionPageModule)
   },
+  {
+    path: 'accueil',
+    loadChildren: () => import('./Pages/accueil/accueil.module').then( m => m.AccueilPageModule)
+  },
 ];
 
 @NgModule({
