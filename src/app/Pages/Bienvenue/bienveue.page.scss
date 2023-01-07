@@ -1,0 +1,43 @@
+ion-content{
+    --background-color: #F8F6FB;
+}
+.imagesLogo{
+    text-align: center;
+    padding: 2%;
+}
+
+.titre ion-title{
+    margin-top: 70px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 45px;
+    line-height: 79px;    
+    color: #04CF72;
+    text-align: center;
+}
+
+.boutonCommencer{
+    text-align: center;
+}
+.boutonCommencer button{
+    background-color: #04CF72;
+   text-align: center;
+   padding: 10px ;
+   font-size: 20px;
+   font-weight: 700;
+   text-transform: capitalize;
+   color: white;
+   border-radius: 10px;
+}
+.description{
+    text-align: center;
+}
+.description p{
+font-family: 'Inter';
+font-style: normal;
+text-align: center;
+margin: 10px;
+color: #000000;
+margin-bottom: 35px;
+}
