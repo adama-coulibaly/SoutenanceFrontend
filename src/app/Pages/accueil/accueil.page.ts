@@ -25,7 +25,7 @@ export class AccueilPage implements OnInit {
     slidesPerView:2,   // NOMBRE DE SLIDE PAR PAGE = 1
     centeredSlider:true,
     loop:true,
-    spaceBetween:10,
+    // spaceBetween:1,
     autoplay:true
   }
 

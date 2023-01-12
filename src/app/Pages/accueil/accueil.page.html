@@ -49,30 +49,42 @@
 <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++ LES PRODUITS ACCUEILS -->
 <div class="lesTitres"><p>Les produits</p></div>
 
-<div class="CarousselProduits">
+<div class="containerFormation">
     <ion-slides [options]="options2">
 
-        <ion-slide class="containerSlides">
-          <ion-card >
-              <ion-img src="../../../assets/produits/poussins (2).jpg"></ion-img>
-              <ion-card-content> <h3>700 Fcfa / Unité</h3>
-                <p><Strong>Chai wairai</Strong></p>
-             </ion-card-content>
-             <ion-button>
-              <i class="fa-solid fa-cart-shopping"></i>
-              Ajouter au panier
-            </ion-button>
+        <ion-slide class="produits1">
+               <ion-card>
+              <img src="../../../assets/produits/poulet-de-chair (1).jpg">
+              <ion-card-title>Chairs frais à <strong>2.500 Fcfa</strong></ion-card-title>
+              <ion-button>+ Panier</ion-button>
+          </ion-card>
+
+        </ion-slide>
+
+        <ion-slide class="produits1">
+          <ion-card>
+            <img src="../../../assets/produits/Slider_Product-1.png">
+            <ion-card-title>Aliment bétail à <strong>5.000 Fcfa</strong></ion-card-title>
+            <ion-button>+ Panier</ion-button>
+
             </ion-card>
         </ion-slide>
 
-        <ion-slide class="containerSlides">
+        <ion-slide class="produits1">
           <ion-card>
-              <ion-img src="../../../assets/produits/chairPur.jpg"></ion-img>
-              <ion-card-content> <h3>3000 Fcfa / Unité</h3>
-                <p><Strong>Chai wairai</Strong></p>
-             </ion-card-content>
-             <ion-button>Ajouter au panier
-</ion-button>
+            <div class="images"><img src="../../../assets/produits/7-1.jpg"></div>
+            <ion-card-title>Aliment bétail à <strong>5.000 Fcfa</strong></ion-card-title>
+            <ion-button>+ Panier</ion-button>
+
+            </ion-card>
+        </ion-slide>
+
+        <ion-slide class="produits1">
+          <ion-card>
+            <img src="../../../assets/produits/poussins (2).jpg">
+            <ion-card-title>Aliment bétail à <strong>5.000 Fcfa</strong></ion-card-title>
+            <ion-button>+ Panier</ion-button>
+
             </ion-card>
         </ion-slide>
       </ion-slides>
