@@ -7,7 +7,7 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./Pages/bottom-bar/bottom-bar.module').then(m => m.BottomBarPageModule)
 
-  }
+  },
 
   //  {
   //   path: '',
@@ -19,15 +19,26 @@ const routes: Routes = [
   //   path: 'bottom-bar',
   //   loadChildren: () => import('./bottom-bar/bottom-bar.module').then( m => m.BottomBarPageModule)
   // },
+
+
+  {
+    path: 'splash-screen',
+    loadChildren: () => import('./splash-screen/splash-screen.module').then( m => m.SplashScreenPageModule)
+  },
  
-  // {
-  //   path: 'bienveue',
-  //   loadChildren: () => import('./Pages/Bienvenue/bienveue.module').then( m => m.BienveuePageModule)
-  // },
-  // {
-  //   path: 'connexion',
-  //   loadChildren: () => import('./Pages/connexion/connexion.module').then( m => m.ConnexionPageModule)
-  // },
+  {
+     path: 'bienveue',
+     loadChildren: () => import('./Pages/Bienvenue/bienveue.module').then( m => m.BienveuePageModule)
+  },
+  {
+    path: 'connexion',
+    loadChildren: () => import('./Pages/connexion/connexion.module').then( m => m.ConnexionPageModule)
+  }
+
+
+
+
+
   // {
   //   path: 'connexion',
   //   loadChildren: () => import('./Pages/connexion/connexion.module').then( m => m.ConnexionPageModule)

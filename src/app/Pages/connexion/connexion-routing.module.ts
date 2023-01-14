@@ -7,7 +7,12 @@ const routes: Routes = [
   {
     path: '',
     component: ConnexionPage
-  }
+  },
+  // {
+  //   path: 'bottom-bar',
+  //   loadChildren: () => import('../../Pages/bottom-bar/bottom-bar.module').then(m => m.BottomBarPageModule)
+
+  // },
 ];
 
 @NgModule({

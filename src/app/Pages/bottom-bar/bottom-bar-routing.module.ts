@@ -7,38 +7,36 @@ const routes: Routes = [
 
 
 {
-  path: '',
+  path: 'bottom-bar',
   component: BottomBarPage,
-  children: [
-    {
-      path: 'accueil',
       children: [
         {
-          path: '',
+          path: 'accueil',
           loadChildren: () => import('../accueil/accueil.module').then(m => m.AccueilPageModule)
-        }
+        },
+        {
+          path: 'forum',
+          loadChildren: () => import('../forum/forum.module').then(m => m.ForumPageModule)
+        },
       ]
     },
 
-    {
-      path: '',
-      loadChildren: () => import('../accueil/accueil.module').then(m => m.AccueilPageModule)
-    },
-    {
-      path: 'forum',
-      loadChildren: () => import('../forum/forum.module').then(m => m.ForumPageModule)
-    },
+    // {
+    //   path: '',
+    //   loadChildren: () => import('../accueil/accueil.module').then(m => m.AccueilPageModule)
+    // },
+   
    
     {
       path: '',
-      redirectTo: '../Pages/Bienvenue',
+      redirectTo: '/bottom-bar/accueil',
       pathMatch: 'full'
-    }
-  ]
-},
+    },
+
+
 {
   path: '',
-  redirectTo: 'BottomBarPage',
+  redirectTo: '/bottom-bar/accueil',
   pathMatch: 'full'
 }
 

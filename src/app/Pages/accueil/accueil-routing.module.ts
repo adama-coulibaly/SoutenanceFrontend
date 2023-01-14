@@ -12,7 +12,7 @@ const routes: Routes = [
     path: '',
     component: AccueilPage
   },
-  // {
+  //  {
   //   path: 'forum',
   //   loadChildren: () => import('../forum/forum.module').then( m => m.ForumPageModule)
   // },
