@@ -1,0 +1,45 @@
+ion-content{
+    // ICI ON BLOCK LE SCROLLING
+    --offset-bottom: auto!important;
+    background: #F8F6FB;
+  --overflow: hidden;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+ion-toolbar{
+    --background:#04CF72;
+      padding: 3%;
+}
+ion-title{
+    color: white;
+}
+
+// ========================================================= HEADER ICONES
+.lefts ion-icon{
+    color: white;
+    font-size: 30px;
+    cursor: pointer !important;
+    padding:0;
+}
+.lefts .cart{
+    position: absolute;
+    right: 37px;
+    top: 2px;
+    background-color: red; color: white; 
+    height: 15px; 
+    border-radius: 100%;
+    // text-align: center;
+}
+.lefts .notif{
+    position: absolute;
+    right: 1px;
+    background-color: red; color: white; 
+    height: 15px; 
+    border-radius: 100%;
+}
+.lefts ion-badge{
+     font-size: 10px;
+    }

@@ -33,7 +33,12 @@ const routes: Routes = [
   {
     path: 'connexion',
     loadChildren: () => import('./Pages/connexion/connexion.module').then( m => m.ConnexionPageModule)
-  }
+  },
+  // {
+  //   path: 'produits',
+  //   loadChildren: () => import('./Pages/produits/produits.module').then( m => m.ProduitsPageModule)
+  // }
+
 
 
 
