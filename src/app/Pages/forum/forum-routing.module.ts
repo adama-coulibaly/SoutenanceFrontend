@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: ForumPage
-  }
+  },
+  {
+    path: 'detail-forum',
+    loadChildren: () => import('../detail-forum/detail-forum.module').then(m => m.DetailForumPageModule)
+  },
 ];
 
 @NgModule({

@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button slot="start" defaultHref="forum"></ion-back-button>
+
+    <div slot="start">
+        <ion-title>
+          forum
+        </ion-title>
+    </div>
+
+    <div slot="end" class="lefts">
+      <ion-icon name="cart-outline"></ion-icon>
+      <ion-badge class="cart">5</ion-badge>
+      <ion-icon name="notifications"></ion-icon>
+      <ion-badge class="notif"> 50 </ion-badge>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- / ================================== SECTION POUR QUESTION TITRE FIXE-->
+  <div class="section1">
+    <ion-fab vertical="top" horizontal="end" slot="fixed" id="open-custom-dialog" expand="block">
+      <ion-fab-button>
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+ <div class="title-text">
+  <p>Comment produire une pondeuses avec peut d'argent ?</p>
+ </div> 
+</div>
+
+  <!-- ================================================ SECTION FORUM QUESTIONS OR THEMES -->
+  <div class="sectionTheme">
+    <div class="contenu" *ngFor="let adama of Adama">
+        <div class="imgEtTheme">
+            <div class="images">
+              <img src="../../../assets/img/noss.png" alt="" srcset="">
+              <p>COULIBALY Adama</p>
+            </div>
+            <div class="titre">
+               <span>le 20/01/22 à 10 h 02</span>
+                <p>Pour démarrer votre élevage, il est généralement conseillé de commencer avec deux poules. En effet, elles se tiendront compagnie et ne vous demanderont pas trop d'entretien.</p>
+               
+            </div>
+        </div>
+  
+        <div class="commentaireEtVoirplus">
+          <div class="commentaires">
+            <ion-icon name="thumbs-up"></ion-icon>
+          </div>
+          <div class="voirplus">
+            <ion-icon name="create-outline"></ion-icon>
+
+          </div>
+      </div>
+        
+    </div>
+    </div>
+
+
+    <!-- ======================================================== -->
+
+<ion-modal id="example-modal" #modal trigger="open-custom-dialog">
+  <ng-template>
+    <div class="forms">
+      <h2>Ajouter votre commentaire </h2>
+      <form>
+        <ion-item counter="true">
+          <ion-label position="floating">Réponse</ion-label>
+          <ion-input maxlength="350" minlength="10"></ion-input>
+        </ion-item>
+        <div align="center"><button>Commenter</button></div>
+      </form>
+    </div>
+      
+  </ng-template>
+</ion-modal>
+</ion-content>

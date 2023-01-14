@@ -1,0 +1,170 @@
+ion-content{
+    // ICI ON BLOCK LE SCROLLING
+    --offset-bottom: auto!important;
+    background: #F8F6FB;
+  --overflow: hidden;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+ion-toolbar{
+    --background:#04CF72;
+      padding: 3%;
+}
+ion-title{
+    color: white;
+}
+// ===========================================================
+
+.section1{
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    position: fixed;
+    background-color: #F8F6FB;
+    
+  }
+  ion-fab{
+      ion-fab-button{
+              padding: 7px;
+      }
+  }
+
+// ========================================================= HEADER ICONES
+.lefts ion-icon{
+    color: white;
+    font-size: 30px;
+    cursor: pointer !important;
+    padding:0;
+}
+.lefts .cart{
+    position: absolute;
+    right: 37px;
+    top: 2px;
+    background-color: red; color: white; 
+    height: 15px; 
+    border-radius: 100%;
+    // text-align: center;
+}
+.lefts .notif{
+    position: absolute;
+    right: 1px;
+    background-color: red; color: white; 
+    height: 15px; 
+    border-radius: 100%;
+}
+.lefts ion-badge{
+     font-size: 10px;
+    }
+
+    // ======================================================= SECTION THEMES
+.sectionTheme{
+    margin-top: 80px !important; 
+ }
+ .title-text p{
+    width: 85%;
+ }
+ .contenu{
+     
+    width: 95%;
+    margin: 2% auto;
+ background:#F8F6FB;
+ border: 1px solid #04CF72;
+ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+ border-radius: 5px;
+ padding: 2%;
+ 
+ }
+ .imgEtTheme{
+     display: grid;
+    grid-template-columns:1fr 5fr;
+    gap: 10px;
+ 
+ }
+ .imgEtTheme p{
+    font-size: 10px;
+    text-align: center;
+    font-weight: 900;
+ }
+ .imgEtTheme img{
+     margin: 5px auto;
+     width: 100%;
+     border-radius: 100%;
+ }
+ .imgEtTheme  .titre p{
+
+     font-weight:normal ;
+    font-size: 15px;
+    text-align:start ;
+ }
+ .imgEtTheme  .titre span{
+     font-size: 9px;
+     margin-left: 70px;
+     font-weight: 900;
+  }
+ .commentaireEtVoirplus{
+     display: flex;
+     flex-direction: row;
+     justify-content: space-between;
+     font-size: 10px;
+ }
+ .commentaires{
+     z-index: 1;
+ }
+ .commentaireEtVoirplus .commentaires ion-icon{
+   color: #04CF72;
+   cursor: pointer;
+   font-size: 25px;
+  
+} 
+ .commentaireEtVoirplus .voirplus{
+    color: #04CF72;
+    cursor: pointer;
+    font-size: 25px;
+ }
+ .commentaireEtVoirplus .voirplus a{
+     text-decoration: none;
+ }
+ 
+ // =============================================================== MODAL
+ ion-modal#example-modal {
+     --width: fit-content;
+     --min-width: 250px;
+     --height: fit-content;
+     --border-radius: 6px;
+     --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
+   }
+   
+   ion-modal#example-modal h1 {
+     margin: 20px 20px 10px 20px;
+   }
+   
+   ion-modal#example-modal ion-icon {
+     margin-right: 6px;
+   
+     width: 48px;
+     height: 48px;
+   
+     padding: 4px 0;
+   
+     color: #aaaaaa;
+   }
+   
+   ion-modal#example-modal .wrapper {
+     margin-bottom: 10px;
+   }
+ 
+   .forms h2{
+     font-size: 15px;
+     margin: 10px;
+     color: #04CF72;
+     font-weight: bold;
+   }
+   .forms button{
+ 
+     padding: 10px;
+     border-radius: 5px;
+     background-color: #04CF72;
+     color: white;
+     margin: 10px auto !important;
+   }
