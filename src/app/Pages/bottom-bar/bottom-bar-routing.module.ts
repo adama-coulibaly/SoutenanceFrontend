@@ -21,7 +21,11 @@ const routes: Routes = [
         {
           path: 'produits',
           loadChildren: () => import('../produits/produits.module').then( m => m.ProduitsPageModule)
-        }
+        },
+        {
+          path: 'profil',
+          loadChildren: () => import('../profil/profil.module').then( m => m.ProfilPageModule)
+        },
       ]
     },
 

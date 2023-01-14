@@ -10,7 +10,7 @@ export class SplashScreenPage implements OnInit {
 
   constructor(private router:Router) { setTimeout(()=>{ 
     this.router.navigateByUrl('bottom-bar/forum'); 
-    //this.router.navigateByUrl('bienveue');
+    this.router.navigateByUrl('bienveue');
 
 },2000)}
 

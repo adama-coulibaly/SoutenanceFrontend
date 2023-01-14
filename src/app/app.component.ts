@@ -9,10 +9,10 @@ import { initialize } from '@ionic/core';
 })
 export class AppComponent {
   constructor(public router:Router) {
-    // this.initializeApp();
+    this.initializeApp();
   }
 
-  // initializeApp(){
-  //   this.router.navigateByUrl("splash-screen")
-  // }
+  initializeApp(){
+    this.router.navigateByUrl("splash-screen")
+  }
 }

@@ -1,14 +1,3 @@
-ion-content{
-    // ICI ON BLOCK LE SCROLLING
-    --offset-bottom: auto!important;
-    background: #F8F6FB;
-  --overflow: hidden;
-  overflow: auto;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-}
-
 ion-toolbar{
     --background:#04CF72;
       padding: 3%;

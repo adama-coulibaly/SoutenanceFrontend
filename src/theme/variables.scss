@@ -76,6 +76,18 @@
   --ion-color-light-tint: #f5f6f9;
 }
 
+
+ion-content{
+  // ICI ON BLOCK LE SCROLLING
+  --offset-bottom: auto!important;
+  background: #F8F6FB;
+--overflow: hidden;
+overflow: auto;
+&::-webkit-scrollbar {
+  display: none;
+}
+}
+
 @media (prefers-color-scheme: dark) {
   /*
    * Dark Colors

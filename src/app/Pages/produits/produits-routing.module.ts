@@ -11,6 +11,8 @@ const routes: Routes = [
   {
     path: 'accueil',
     loadChildren: () => import('../accueil/accueil.module').then(m => m.AccueilPageModule)
+
+
   },
   // {
   //   path: 'forum',

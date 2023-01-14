@@ -1,0 +1,75 @@
+.principal{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+}
+
+.profil{
+    width: 30%;
+    height: 100px;
+
+}
+.donnees{
+    width: 67%;
+    height: 100%;
+    font-size: 10px;
+    color: black;
+}
+
+.profil img{
+    width: 100%;
+    height: inherit;
+    object-fit: cover;
+}
+ion-badge{
+    position: absolute; top: 65px;left: 20px; font-size: 35px;
+    background-color: transparent;cursor: pointer; color: #fff;
+}
+.boutons{
+    display: flex;
+    justify-content: space-around;
+    size: 100px;
+}
+.deconnexion ion-button{
+    --background: red;
+}
+.listefermes{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+    align-items: center;
+}
+.listefermes ion-icon{
+    border: 1px solid;
+    border-radius: 100%;
+}
+// =======================================LES FERMES
+.ferme1{
+    text-align: center;
+    width: 50%;
+}
+
+.ferme1 img{
+      width: 70%;
+      padding: 5%;
+}
+.ferme1 ion-card-title{
+    font-weight: bold;
+    font-size: 10px;
+}
+.ferme1 ion-button{
+    font-size: 10px;
+//    height: 25px;
+padding: 5%;
+}
+.containerFerme{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 2%;
+    flex-wrap: wrap;
+}
+.lienVoirPlus{
+    text-align: center;
+}
