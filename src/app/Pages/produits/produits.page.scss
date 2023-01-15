@@ -1,20 +1,25 @@
 .produits{
     display: grid;
     grid-template-columns: auto auto;
+    background: #F8F6FB;
 }
 .nonETprix{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    font-size: 10px;
     color: black;
 }
 ion-card-title{
     font-weight: 700;
     text-align: center;
+    font-size: 15px;
 }
 .montant{color: black;}
 
 .boutonpanier button{
     background: #04CF72;
     color: white;
+    width: 100%;
+    pad: 1%;
 }

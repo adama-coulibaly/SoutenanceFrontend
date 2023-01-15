@@ -44,6 +44,7 @@ ion-badge{
     border: 1px solid;
     border-radius: 100%;
 }
+.listefermes ion-button{font-size: 9px;font-weight: 700;}
 // =======================================LES FERMES
 .ferme1{
     text-align: center;
@@ -73,3 +74,59 @@ padding: 5%;
 .lienVoirPlus{
     text-align: center;
 }
+
+// =============================================================== MODAL
+ion-modal#example-modal {
+    --width: fit-content;
+    --min-width: 250px;
+    --height: fit-content;
+    --border-radius: 6px;
+    --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
+  }
+  
+  ion-modal#example-modal h1 {
+    margin: 20px 20px 10px 20px;
+  }
+  
+  ion-modal#example-modal ion-icon {
+    margin-right: 6px;
+  
+    width: 48px;
+    height: 48px;
+  
+    padding: 4px 0;
+  
+    color: #aaaaaa;
+  }
+  
+  ion-modal#example-modal .wrapper {
+    margin-bottom: 10px;
+  }
+
+  .forms h2{
+    font-size: 15px;
+    margin: 10px;
+    color: #04CF72;
+    font-weight: bold;
+  }
+  .forms button{
+
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #04CF72;
+    color: white;
+    margin: 10px auto !important;
+  }
+  ion-item span{color: red;}
+  .bottoms-boutons{
+    display: flex;
+    justify-content: space-around;
+    margin: 2%;
+  }
+  .bottoms-boutons .annuler{
+    --background: red;
+  }
+  .file-input{
+    font-size: 9px;
+    text-align: center;
+  }

@@ -13,4 +13,11 @@ export class ProfilPage implements OnInit {
   }
   Adama=[1,2,3,4,5];
 
+  // POUR FERMER LE MODAL 
+  isModalOpen = false;
+
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
+
 }
