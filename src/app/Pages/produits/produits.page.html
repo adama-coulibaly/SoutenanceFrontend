@@ -1,22 +1,90 @@
-<app-menu></app-menu>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Boutique</ion-title>
+  </ion-toolbar>
+  <div padding>
+    <ion-segment [(ngModel)]="poulets">
+      <ion-segment-button value="poulet">
+        poulets
+      </ion-segment-button>
+      <ion-segment-button value="outils">
+        Outils
+      </ion-segment-button>
+
+      <ion-segment-button value="aliment">
+        aliment
+      </ion-segment-button>
+      </ion-segment>
+  </div>
+</ion-header>
+
 
 <ion-content>
-<ion-tabs>
-  <ion-tab-bar slot="top">
 
-    <ion-tab-button tab="accueil">
-      <p>Poulet</p>
-    </ion-tab-button>
+  
+  
+  <div [ngSwitch]="poulets">
 
-    <ion-tab-button tab="accueil">
-      <p>Materiel/outils</p>
-    </ion-tab-button>
+    <ion-list *ngSwitchCase="'poulet'">
+      <div class="produits">
+          <ion-card *ngFor="let adama of Adama">
+              <img src="../../../assets/produits/chairPur.jpg" alt="">
+              <ion-card-title>Chairs faso</ion-card-title>
+              <div class="nonETprix">
+                  <div class="prix">
+                      <p>Prix</p>
+                  </div>
+                  <div class="montant">
+                    <p><strong>75000 Fcfa</strong></p>
+                </div>
+              </div>
+              <div class="boutonpanier"> 
+                <button>Ajouter au panier <ion-icon name="cart"></ion-icon></button>
+              </div>
+          </ion-card>
+      </div>
+    </ion-list>
 
-    <ion-tab-button tab="accueil">
-      <p>Aliments</p>
-    </ion-tab-button>
+    <ion-list *ngSwitchCase="'outils'">
+      <div class="produits">
+          <ion-card *ngFor="let adama of Adama">
+              <img src="../../../assets/produits/51OzdTdR8dL._AC_UL320_.jpg" alt="">
+              <ion-card-title>Chairs faso</ion-card-title>
+              <div class="nonETprix">
+                  <div class="prix">
+                      <p>Prix</p>
+                  </div>
+                  <div class="montant">
+                    <p><strong>75000 Fcfa</strong></p>
+                </div>
+              </div>
+              <div class="boutonpanier"> 
+                <button>Ajouter au panier <ion-icon name="cart"></ion-icon></button>
+              </div>
+          </ion-card>
+      </div>
+    </ion-list>
 
+    <ion-list *ngSwitchCase="'aliment'">
+      <div class="produits">
+          <ion-card *ngFor="let adama of Adama">
+              <img src="../../../assets/produits/Slider_Product-1.png" alt="">
+              <ion-card-title>Chairs faso</ion-card-title>
+              <div class="nonETprix">
+                  <div class="prix">
+                      <p>Prix</p>
+                  </div>
+                  <div class="montant">
+                    <p><strong>75000 Fcfa</strong></p>
+                </div>
+              </div>
+              <div class="boutonpanier"> 
+                <button>Ajouter au panier <ion-icon name="cart"></ion-icon></button>
+              </div>
+          </ion-card>
+      </div>
+    </ion-list>
 
-  </ion-tab-bar>
-</ion-tabs>
+  </div>
+
 </ion-content>

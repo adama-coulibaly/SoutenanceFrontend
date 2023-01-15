@@ -1,0 +1,20 @@
+.produits{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.nonETprix{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color: black;
+}
+ion-card-title{
+    font-weight: 700;
+    text-align: center;
+}
+.montant{color: black;}
+
+.boutonpanier button{
+    background: #04CF72;
+    color: white;
+}
