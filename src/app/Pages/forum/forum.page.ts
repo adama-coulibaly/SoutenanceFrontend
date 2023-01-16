@@ -29,13 +29,14 @@ tailleMinimum:any
   ];
 
   maDate:any
-  lesThemes:any;
+
  filterTerm!: string;
 
   constructor(private location: Location, private ThemesService:ThemeServiceService) {
 
     // this.maDate = this.datePipe.transform(this.maDate, 'dd/MM/yyyy');
    }
+    lesThemes:any;
  
    theme:Theme = {
     idtheme :'',
@@ -47,8 +48,8 @@ tailleMinimum:any
 
   ngOnInit() {
       this.ThemesService.toutLesThemes().subscribe(data=>{
-        this.lesThemes = data
-        console.log("Voici mes theme: "+this.lesThemes.dateposte)
+        this.lesThemes = data;
+        // console.log("Voici mes theme: "+this.lesThemes.dateposte)
       });
     
   }

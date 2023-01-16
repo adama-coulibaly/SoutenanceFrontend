@@ -26,7 +26,8 @@
   </div>
 <!-- ================================================ SECTION FORUM QUESTIONS OR THEMES -->
   <div class="sectionTheme">
-  <div class="contenu" *ngFor="let themes of lesThemes.slice().reverse() | filter: filterTerm">
+    <!-- .slice().reverse()  Pour mettre a l'ordre decroissant --> 
+  <div class="contenu" *ngFor="let themes of lesThemes | filter: filterTerm">
     <div class="imgEtTheme">
       <div class="images">
         <img src="{{themes.user.avatar}}" alt="" srcset="">
