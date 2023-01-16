@@ -21,12 +21,12 @@
         </ion-fab-button>
       </ion-fab>
    <div style="width: 75%; margin-top: 2%;">
-    <ion-searchbar slot="end" animated="true" placeholder="Recherche"></ion-searchbar>
+    <ion-searchbar slot="end" animated="true" placeholder="Recherche"  [(ngModel)]="filterTerm" ></ion-searchbar>
    </div> 
   </div>
 <!-- ================================================ SECTION FORUM QUESTIONS OR THEMES -->
   <div class="sectionTheme">
-  <div class="contenu" *ngFor="let themes of lesThemes.slice().reverse()">
+  <div class="contenu" *ngFor="let themes of lesThemes.slice().reverse() | filter: filterTerm">
     <div class="imgEtTheme">
       <div class="images">
         <img src="{{themes.user.avatar}}" alt="" srcset="">
@@ -42,7 +42,7 @@
     <div class="commentaires">
         <p><strong>{{themes.nbreCommentaire}}</strong> Commentaire(s)</p>
     </div>
-    <div class="voirplus">
+    <div class="voirplus" *ngIf="themes.nbreCommentaire != 0">
       <a [routerLink]="['/bottom-bar/forum/detail-forum',themes.idtheme]">Voir plus</a>
 
       <!-- [routerLink]="['/details-regions',regions.id_regions]" -->
@@ -76,13 +76,19 @@
   <ng-template>
     <div class="forms">
       <h2>Poser votre question ici </h2>
-      <form>
+
+      <div *ngIf="tailleMinimum == false" style="color: red; font-size: 15px; text-align: center;">{{erreur}}</div>
+
+      <form name="contact-form" (ngSubmit)="ajouter()">
         <ion-item counter="true">
-          <ion-label position="floating">Question</ion-label>
-          <ion-input maxlength="150" minlength="10"></ion-input>
+          <ion-label position="floating">Question ou Thème</ion-label>
+          <ion-input type="text" maxlength="150" minlength="25" name="titretheme" [(ngModel)]="theme.titretheme"></ion-input>
         </ion-item>
-        <div align="center"><button>Poster la question</button></div>
+        <div align="center">
+          <button  >Poster la question</button>
+        </div>
       </form>
+      <!-- (click)="ajouter()" -->
     </div>
       
   </ng-template>

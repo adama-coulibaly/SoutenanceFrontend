@@ -16,4 +16,10 @@ export class ThemeServiceService {
   toutLesThemes(): Observable<any>{
     return this.http.get<any>('http://localhost:8080/theme/liste');
   }
+
+  //  CETTE METHODE NOUS PERMET D'AJOUTER UN THEME
+
+  posterTheme(theme:any,user_id:any):Observable<any>{
+    return this.http.post(`http://localhost:8080/theme/ajouter/${user_id}`,theme);
+  }
 }

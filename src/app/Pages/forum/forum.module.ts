@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { ForumPageRoutingModule } from './forum-routing.module';
 
 import { ForumPage } from './forum.page';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ForumPageRoutingModule
+    ForumPageRoutingModule,
+    Ng2SearchPipeModule
   ],
   declarations: [ForumPage]
 })
