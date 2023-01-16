@@ -20,27 +20,28 @@
 <ion-content>
   <!-- / ================================== SECTION POUR QUESTION TITRE FIXE-->
   <div class="section1">
-    <ion-fab vertical="top" horizontal="end" slot="fixed" id="open-custom-dialog" expand="block">
+    <ion-fab vertical="top" horizontal="end" slot="fixed" id="ajoutercommentaire" expand="block">
       <ion-fab-button>
         <ion-icon name="add"></ion-icon>
       </ion-fab-button>
     </ion-fab>
  <div class="title-text">
-  <p>Comment produire une pondeuses avec peut d'argent ?</p>
+  <p>{{titre}}</p>
+
  </div> 
 </div>
 
   <!-- ================================================ SECTION FORUM QUESTIONS OR THEMES -->
   <div class="sectionTheme">
-    <div class="contenu" *ngFor="let adama of Adama">
+    <div class="contenu" *ngFor="let commentaire of lesCommentaires.slice().reverse()">
         <div class="imgEtTheme">
             <div class="images">
-              <img src="../../../assets/img/noss.png" alt="" srcset="">
-              <p>COULIBALY Adama</p>
+              <img src="{{commentaire.user.avatar}}" alt="" srcset="">
+              <p>{{commentaire.user.nom}} {{commentaire.user.prenom}}</p>
             </div>
             <div class="titre">
-               <span>le 20/01/22 à 10 h 02</span>
-                <p>Pour démarrer votre élevage, il est généralement conseillé de commencer avec deux poules. En effet, elles se tiendront compagnie et ne vous demanderont pas trop d'entretien.</p>
+               <span>{{commentaire.datecom | date: 'dd/MM/yy, à HH:mm'}}</span>
+                <p>{{commentaire.descriptioncom}}</p>
                
             </div>
         </div>
@@ -61,14 +62,14 @@
 
     <!-- ======================================================== -->
 
-<ion-modal id="example-modal" #modal trigger="open-custom-dialog">
+<ion-modal id="example-modal" #modal trigger="ajoutercommentaire">
   <ng-template>
     <div class="forms">
       <h2>Ajouter votre commentaire </h2>
       <form>
         <ion-item counter="true">
           <ion-label position="floating">Réponse</ion-label>
-          <ion-input maxlength="350" minlength="10"></ion-input>
+          <ion-input maxlength="500" minlength="10"></ion-input>
         </ion-item>
         <div align="center"><button>Commenter</button></div>
       </form>

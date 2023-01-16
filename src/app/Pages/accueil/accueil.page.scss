@@ -73,10 +73,12 @@ transition: 400ms all ease-in-out;
     font-weight: bold;
     font-size: 10px;
 }
-.produits1 ion-button{
-  width: 80%;
-  margin: 10px auto;
-   padding: 0;
+.boutonpanier button{
+    background: #04CF72;
+    color: white;
+    width: 100%;
+    padding: 2%;
+    margin-top: 15px;
 }
 
 

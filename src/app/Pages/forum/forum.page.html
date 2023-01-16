@@ -26,8 +26,29 @@
   </div>
 <!-- ================================================ SECTION FORUM QUESTIONS OR THEMES -->
   <div class="sectionTheme">
-  <div class="contenu" *ngFor="let adama of Adama">
-      <div class="imgEtTheme">
+  <div class="contenu" *ngFor="let themes of lesThemes.slice().reverse()">
+    <div class="imgEtTheme">
+      <div class="images">
+        <img src="{{themes.user.avatar}}" alt="" srcset="">
+        <!-- <img src="../../../assets/img/noss.png" alt="" srcset=""> -->
+      </div>
+      <div class="titre">
+          <p>{{themes.titretheme}}</p>
+          <span>Par: <strong>{{themes.user.nom}} {{themes.user.prenom}}</strong> le {{themes.dateposte | date: 'dd/MM/yy, à HH:mm'}}</span>
+      </div>
+  </div>
+
+  <div class="commentaireEtVoirplus">
+    <div class="commentaires">
+        <p><strong>{{themes.nbreCommentaire}}</strong> Commentaire(s)</p>
+    </div>
+    <div class="voirplus">
+      <a [routerLink]="['/bottom-bar/forum/detail-forum',themes.idtheme]">Voir plus</a>
+
+      <!-- [routerLink]="['/details-regions',regions.id_regions]" -->
+    </div>
+</div>
+      <!-- <div class="imgEtTheme">
           <div class="images">
             <img src="../../../assets/img/noss.png" alt="" srcset="">
           </div>
@@ -44,7 +65,7 @@
         <div class="voirplus">
           <a routerLink="/bottom-bar/forum/detail-forum">Voir plus</a>
         </div>
-    </div>
+    </div> -->
       
   </div>
   </div>

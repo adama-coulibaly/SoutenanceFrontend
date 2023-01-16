@@ -9,7 +9,7 @@ const routes: Routes = [
     component: ForumPage
   },
   {
-    path: 'detail-forum',
+    path: 'detail-forum/:id_theme',
     loadChildren: () => import('../detail-forum/detail-forum.module').then(m => m.DetailForumPageModule)
   },
 ];

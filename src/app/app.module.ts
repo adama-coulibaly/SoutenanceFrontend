@@ -9,10 +9,12 @@ import { AppRoutingModule } from './app-routing.module';
 
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {HttpClientModule } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,FontAwesomeModule,],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,FontAwesomeModule,HttpClientModule,],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
