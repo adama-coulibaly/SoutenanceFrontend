@@ -1,20 +1,14 @@
-// ion-content{
-//     // ICI ON BLOCK LE SCROLLING
-//     --offset-bottom: auto!important;
-//     background: #F8F6FB;
-//   --overflow: hidden;
-//   overflow: auto;
-//   &::-webkit-scrollbar {
-//     display: none;
-//   }
-// }
-
 ion-toolbar{
     --background:#04CF72;
-      padding: 3%;
+      // padding: 5%;
 }
 ion-title{
     color: white;
+}
+// ========================
+
+.retourB{
+ display: flex;
 }
 
 // ========================================================= HEADER ICONES
@@ -23,10 +17,11 @@ ion-title{
     font-size: 30px;
     cursor: pointer !important;
     padding:0;
+    margin-right: 15px;
 }
 .lefts .cart{
     position: absolute;
-    right: 37px;
+    right: 67px;
     top: 2px;
     background-color: red; color: white; 
     height: 15px; 
@@ -35,7 +30,7 @@ ion-title{
 }
 .lefts .notif{
     position: absolute;
-    right: 1px;
+    right: 16px;
     background-color: red; color: white; 
     height: 15px; 
     border-radius: 100%;

@@ -14,78 +14,78 @@
       <ion-segment-button value="aliment">
         aliment
       </ion-segment-button>
-      </ion-segment>
+    </ion-segment>
   </div>
 </ion-header>
 
 
 <ion-content>
 
-  
-  
+
+
   <div [ngSwitch]="poulets">
 
     <ion-list *ngSwitchCase="'poulet'">
       <div class="produits">
-          <ion-card *ngFor="let adama of Adama">
-              <img src="../../../assets/produits/chairPur.jpg" alt="">
-              <ion-card-title>Chairs faso</ion-card-title>
-              <div class="nonETprix">
-                  <div class="prix">
-                      <p>Prix</p>
-                  </div>
-                  <div class="montant">
-                    <p><strong>75000 Fcfa</strong></p>
-                </div>
-              </div>
-              <div class="boutonpanier"> 
-                <button>Ajouter au panier <ion-icon name="cart"></ion-icon></button>
-              </div>
-          </ion-card>
+        <ion-card *ngFor="let adama of Adama">
+          <img src="../../../assets/produits/chairPur.jpg" alt="">
+          <ion-card-title>Chairs faso</ion-card-title>
+          <div class="nonETprix">
+            <div class="prix">
+              <p>Prix</p>
+            </div>
+            <div class="montant">
+              <p><strong>75000 Fcfa</strong></p>
+            </div>
+          </div>
+          <div class="boutonpanier">
+            <button>Ajouter au panier <ion-icon name="cart"></ion-icon></button>
+          </div>
+        </ion-card>
       </div>
     </ion-list>
 
     <ion-list *ngSwitchCase="'outils'">
       <div class="produits">
-          <ion-card *ngFor="let adama of Adama">
-              <img src="../../../assets/produits/51OzdTdR8dL._AC_UL320_.jpg" alt="">
-              <ion-card-title>Chairs faso</ion-card-title>
-              <div class="nonETprix">
-                  <div class="prix">
-                      <p><strong>Prix</strong></p>
-                  </div>
-                  <div class="montant">
-                    <p><strong>75000 Fcfa</strong></p>
-                </div>
-              </div>
-              <div class="boutonpanier"> 
-                <button>Ajouter au panier <ion-icon name="cart"></ion-icon></button>
-              </div>
-          </ion-card>
+        <ion-card *ngFor="let adama of Adama">
+          <img src="../../../assets/produits/51OzdTdR8dL._AC_UL320_.jpg" alt="">
+          <ion-card-title>Chairs faso</ion-card-title>
+          <div class="nonETprix">
+            <div class="prix">
+              <p><strong>Prix</strong></p>
+            </div>
+            <div class="montant">
+              <p><strong>75000 Fcfa</strong></p>
+            </div>
+          </div>
+          <div class="boutonpanier">
+            <button>Ajouter au panier <ion-icon name="cart"></ion-icon></button>
+          </div>
+        </ion-card>
       </div>
     </ion-list>
 
     <ion-list *ngSwitchCase="'aliment'">
       <div class="produits">
-          <ion-card *ngFor="let adama of Adama">
-              <img src="../../../assets/produits/Slider_Product-1.png" alt="">
-              <ion-card-title>Chairs faso</ion-card-title>
-              <div class="nonETprix">
-                  <div class="prix">
-                      <p>Prix</p>
-                  </div>
-                  <div class="montant">
-                    <p><strong>75000 Fcfa</strong></p>
-                </div>
-              </div>
-              <div class="boutonpanier"> 
-                <button>Ajouter au panier <ion-icon name="cart"></ion-icon></button>
-              </div>
-          </ion-card>
+        <ion-card *ngFor="let adama of Adama">
+          <img src="../../../assets/produits/Slider_Product-1.png" alt="">
+          <ion-card-title>Chairs faso</ion-card-title>
+          <div class="nonETprix">
+            <div class="prix">
+              <p>Prix</p>
+            </div>
+            <div class="montant">
+              <p><strong>75000 Fcfa</strong></p>
+            </div>
+          </div>
+          <div class="boutonpanier">
+            <button>Ajouter au panier <ion-icon name="cart"></ion-icon></button>
+          </div>
+        </ion-card>
       </div>
     </ion-list>
   </div>
 
-  
+
 
 </ion-content>

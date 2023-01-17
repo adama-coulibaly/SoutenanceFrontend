@@ -42,7 +42,7 @@
     <ion-card *ngFor="let product of production">
      <div class="titreProduction">
         <div class="nomTitre"> <p>{{product.typeproduction.nomtype}}</p></div>
-        <div class="status"><p>Terminer</p></div>
+        <div class="status"><p>{{product.status}}</p></div>
      </div>
       
       <div class="contenu">
@@ -57,7 +57,7 @@
       <div>Quantité</div>
       <div class="timer"> <p>{{product.quantite}}</p> </div>
   </div>
-  <div align="center">  <ion-button>Voir plus</ion-button></div>
+  <div align="center">  <ion-button>Détails</ion-button></div>
     </ion-card>
   </div>
 

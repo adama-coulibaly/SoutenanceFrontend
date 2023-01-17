@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccueilServiceService } from 'src/app/Services/accueil-service.service';
 import { ThemeServiceService } from 'src/app/Services/theme-service.service';
 
 
@@ -9,15 +10,15 @@ import { ThemeServiceService } from 'src/app/Services/theme-service.service';
   styleUrls: ['./accueil.page.scss'],
 })
 export class AccueilPage implements OnInit {
+  lesproduits: any;
 
-  constructor(private ThemesService:ThemeServiceService) { }
+  constructor(private serviceAccueil:AccueilServiceService) { }
   lesThemes:any;
 
   ngOnInit() {
-      // this.ThemesService.toutLesThemes().subscribe(data=>{
-      //   this.lesThemes = data
-      //   console.log("Voici mes theme: "+this.lesThemes)
-      // })
+     this.serviceAccueil.lesProduits().subscribe(data=>{
+      this.lesproduits = data
+     })
     
   }
 

@@ -1,17 +1,20 @@
 <ion-header>
   <ion-toolbar>
-    <div slot="start">
+    <div slot="start" class="retourB">
+      <ion-back-button slot="start" defaultHref=""></ion-back-button>
         <ion-title>forum</ion-title>
     </div>
 
     <div slot="end" class="lefts">
       <ion-icon name="cart-outline"></ion-icon>
       <ion-badge class="cart">5</ion-badge>
-      <ion-icon name="notifications"></ion-icon>
+      <ion-icon name="notifications-outline"></ion-icon>
       <ion-badge class="notif"> 5 </ion-badge>
     </div>
   </ion-toolbar>
 </ion-header>
+
+
 
 <ion-content>
   <div class="section1">
@@ -43,7 +46,8 @@
     <div class="commentaires">
         <p><strong>{{themes.nbreCommentaire}}</strong> Commentaire(s)</p>
     </div>
-    <div class="voirplus" *ngIf="themes.nbreCommentaire != 0">
+    <div class="voirplus" >
+      <!-- *ngIf="themes.nbreCommentaire != 0" -->
       <a [routerLink]="['/bottom-bar/forum/detail-forum',themes.idtheme]">Voir plus</a>
 
       <!-- [routerLink]="['/details-regions',regions.id_regions]" -->

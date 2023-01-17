@@ -1,5 +1,11 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="primary">
+      <!-- <ion-button>
+        <ion-icon name="notifications-outline"></ion-icon>
+        <ion-badge>3</ion-badge>
+      </ion-button> -->
+    </ion-buttons>
     <ion-img src="../../../assets/img/logo2.png" ></ion-img>
   </ion-toolbar>
 </ion-header>
@@ -52,18 +58,18 @@
 <div class="containerFormation">
     <ion-slides [options]="options2">
 
-        <ion-slide class="produits1">
+        <ion-slide class="produits1" *ngFor="let prod  of lesproduits">
                <ion-card>
-              <img src="../../../assets/produits/poulet-de-chair (1).jpg">
-              <ion-card-title>Chairs frais à <strong>2.500 Fcfa</strong></ion-card-title>
+              <img src="{{prod.phtoproduit}}">
+              <ion-card-title>{{prod.nomproduit}}<strong>{{prod.prix}} Fcfa</strong></ion-card-title>
               <div class="boutonpanier"> 
-                <button>Ajouter au panier <ion-icon name="cart"></ion-icon></button>
+                <button routerLink="{{prod.idproduits}}">Ajouter au panier <ion-icon name="cart"></ion-icon></button>
               </div>
           </ion-card>
 
         </ion-slide>
 
-        <ion-slide class="produits1">
+        <!-- <ion-slide class="produits1">
           <ion-card>
             <img src="../../../assets/produits/Slider_Product-1.png">
             <ion-card-title>Aliment bétail à <strong>5.000 Fcfa</strong></ion-card-title>
@@ -88,7 +94,7 @@
             <button>+ Panier</button>
 
             </ion-card>
-        </ion-slide>
+        </ion-slide> -->
       </ion-slides>
 </div>
 
