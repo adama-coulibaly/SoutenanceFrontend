@@ -35,6 +35,11 @@ const routes: Routes = [
     loadChildren: () => import('./Pages/connexion/connexion.module').then( m => m.ConnexionPageModule)
   },
   // {
+  //   path: 'ferme',
+  //   loadChildren: () => import('./Pages/ferme/ferme.module').then( m => m.FermePageModule)
+  // },
+
+  // {
   //   path: 'profil',
   //   loadChildren: () => import('./Pages/profil/profil.module').then( m => m.ProfilPageModule)
   // },

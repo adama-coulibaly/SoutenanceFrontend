@@ -1,0 +1,58 @@
+.section1{
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    margin: 3%;
+}
+
+.icons{
+    font-size: 29px;
+    display: flex;
+    justify-content: space-between;
+}
+.icons .create{
+    color: rgb(10, 112, 180);
+}
+.icons .delete{
+    color: red;
+}
+//  IONC CARD DES FERMES
+.card ion-card img{
+    text-align:center;
+    width: 60%;
+}
+
+// ========================================
+.titreProduction{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 3%;
+}
+.titreProduction .nomTitre{
+    font-weight: 900;
+    text-decoration: underline;
+}
+.titreProduction .status p{
+   background-color: rgb(221, 212, 212);
+   padding: 4px; border-radius: 10px;
+}
+.description .inline{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 120%;
+    
+}
+ .contenu{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.contenu .timer{
+    align-items: center;
+}
+.productions ion-title{
+    margin: 2%;
+}

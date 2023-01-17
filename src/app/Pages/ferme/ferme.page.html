@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button defaultHref="profil" slot="start"></ion-back-button>
+    <ion-title>ferme</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="section1">
+    <div class="titre"> <p>{{info.nomferme}}</p></div>
+    <div class="icons">
+      <ion-icon class="create" name="create-outline"></ion-icon>
+      <ion-icon class="delete" name="trash-outline"></ion-icon>
+    </div>
+  </div>
+
+  <div class="card">
+      <ion-card class="ion-text-center">
+          <img src="{{info.imageferme}}" alt="" >
+          <div class="description">
+             <div class="inline">
+              <div><p>Activité:</p></div> 
+              <div><p>{{info.activiteferme}}</p></div>
+             </div>
+
+             <div class="inline">
+              <div><p>Adresse:</p></div> 
+              <div><p>{{info.adresseferme}}</p></div>
+             </div>
+
+             <div class="inline">
+              <div><p>Taille:</p></div> 
+              <div><p>{{info.taille}}</p></div>
+             </div>
+
+          </div>
+      </ion-card>
+  </div>
+<div class="titreInterim"><ion-title>Mes productions</ion-title></div>
+  <div class="productions">
+    <ion-card *ngFor="let product of production">
+     <div class="titreProduction">
+        <div class="nomTitre"> <p>{{product.typeproduction.nomtype}}</p></div>
+        <div class="status"><p>Terminer</p></div>
+     </div>
+      
+      <div class="contenu">
+          <div>Date d'entrée</div>
+          <div class="timer"> <p>{{product.dateentrer | date: 'dd/MM/yy'}} <ion-icon name="time"></ion-icon> </p> </div>
+      </div>
+      <div class="contenu">
+        <div>Date de sortie</div>
+        <div class="timer"> <p>{{product.dateentrer | date: 'dd/MM/yy'}} <ion-icon name="time"></ion-icon> </p> </div>
+    </div>
+    <div class="contenu">
+      <div>Quantité</div>
+      <div class="timer"> <p>{{product.quantite}}</p> </div>
+  </div>
+  <div align="center">  <ion-button>Voir plus</ion-button></div>
+    </ion-card>
+  </div>
+
+</ion-content>

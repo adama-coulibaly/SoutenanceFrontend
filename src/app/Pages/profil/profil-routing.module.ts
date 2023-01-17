@@ -7,7 +7,15 @@ const routes: Routes = [
   {
     path: '',
     component: ProfilPage
-  }
+  },
+  {
+    path: 'ferme/:idferme',
+    loadChildren: () => import('../ferme/ferme.module').then( m => m.FermePageModule)
+  },
+  // {
+  //   path: 'ferme/:idferme',
+  //   loadChildren: () => import('../ferme/ferme.module').then( m => m.FermePageModule)
+  // },
 ];
 
 @NgModule({

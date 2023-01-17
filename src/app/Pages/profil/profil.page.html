@@ -10,14 +10,14 @@
           <div class="principal">
 
             <div class="profil">
-                <img src="../../../assets/img/noss.png" alt="" srcset="">
+                <img src="{{user.avatar}}" alt="" srcset="">
                 <ion-badge><ion-icon name="camera"></ion-icon></ion-badge>
             </div>
             <div class="donnees">
-                <p>coulibalyadamabekaye03@gmail.com</p>
-                <p>Coulibaly Adama</p>
-                <p>(+223) 70 44 67 11</p>
-                <p>Doumanzana</p>
+                <p>{{user.email}}</p>
+                <p>{{user.nom}} {{user.prenom}}</p>
+                <p>{{user.username}}</p>
+                <p>{{user.adresse}}</p>
             </div>
       </div>
         </ion-card>
@@ -44,11 +44,12 @@
 <!-- =============================================== LES FERMES =========== -->
 
 <div class="containerFerme">
-  <div class="ferme1" *ngFor="let adama of Adama">
+  <div class="ferme1" *ngFor="let fermes of lesFermes">
       <ion-card>
-          <img src="../../../assets/produits/téléchargement (2).jpg">
-          <ion-card-title>Production des chairs et pintades</ion-card-title>
-          <ion-button>Voir plus</ion-button>
+          <img src="{{fermes.imageferme}}">
+          <ion-card-title>{{fermes.nomferme}}</ion-card-title>
+          <ion-button [routerLink]="['ferme',fermes.idferme]">Voir plus</ion-button>
+          <!-- [routerLink]="['/bottom-bar/forum/detail-forum',themes.idtheme]" -->
       </ion-card>
   </div>
 </div>
