@@ -12,11 +12,11 @@ export class SplashScreenPage implements OnInit {
   [x: string]: any;
   roles: any;
 
-  constructor(private router:Router,private tokenStorage: TokenStorageService) { setTimeout(()=>{ 
+  constructor(private router:Router,private tokenStorage: TokenStorageService) { 
+    setTimeout(()=>{ 
     this.roles = this.tokenStorage.getUser().id;
     if(this.roles){ this.router.navigateByUrl('bottom-bar/accueil'); }else{this.router.navigateByUrl('bienveue');}
     
-
 },2000)}
 
   ngOnInit() {

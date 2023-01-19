@@ -16,6 +16,7 @@ export class AccueilPage implements OnInit {
   lesThemes:any;
 
   ngOnInit() {
+
      this.serviceAccueil.lesProduits().subscribe(data=>{
       this.lesproduits = data
      })

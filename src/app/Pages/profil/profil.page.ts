@@ -30,9 +30,16 @@ export class ProfilPage implements OnInit {
     //  ICI ON RECUPERER L'UTILISATEUR CONNECTE
     this.user = this.tokenStorage.getUser();
     // MAINTENANT ON PREND LES FERMES D'UN SEUL UTILISATEUR
-    this.fermeService.mesFermes(this.user.id).subscribe(data => {
+    if(this.user != ""){
+ this.fermeService.mesFermes(this.user.id).subscribe(data => {
       this.lesFermes = data;
+     // console.log("Je suis vraiment "+this.user.id)
     });
+    }
+    else{
+      this.router.navigateByUrl('connexion')
+    }
+   
 
 
     

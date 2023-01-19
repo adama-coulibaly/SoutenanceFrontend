@@ -44,8 +44,7 @@ Message!:String
         this.roles = this.tokenStorage.getUser().roles;
         // this.reloadPage();
         if(this.isLoggedIn == true)
-          this.route.navigateByUrl("bottom-bar/accueil");
-        
+           this.route.navigateByUrl("bottom-bar/accueil");
       },
       err => {
         this.errorMessage = err.error.message;

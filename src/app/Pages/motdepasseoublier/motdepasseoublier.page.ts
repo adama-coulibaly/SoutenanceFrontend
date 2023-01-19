@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { MotDePasseOublierService } from 'src/app/Services/mot-de-passe-oublier.service';
 
 @Component({
@@ -24,7 +25,7 @@ export class MotdepasseoublierPage implements OnInit {
 
   resultat:any
 
-  constructor(private motDEpasse:MotDePasseOublierService) { }
+  constructor(private motDEpasse:MotDePasseOublierService,private router:Router) { }
 
   ngOnInit() {
   }
@@ -51,14 +52,18 @@ onReset() {
   this.form2.confirmpassword = this.form.confirmpassword;
   this.form2.newpassword = this.form.newpassword;
   this.form2.currentpassword = this.form.currentpassword;
-  alert("Je suis "+this.form);
+  // alert("Je suis "+this.form);
 
   this.motDEpasse.nouveauMDP(this.form2).subscribe(data=>{
     this.resultat = data
+
+if(this.resultat.status == true){
+  setTimeout(() =>{this.router.navigateByUrl('connexion');},5000)
+}
   })
 
 
-
   }
+  
 
 }

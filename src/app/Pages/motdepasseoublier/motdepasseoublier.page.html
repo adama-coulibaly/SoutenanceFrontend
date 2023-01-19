@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>My Farmed</ion-title>
+    <ion-title class="title">My Farmed</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -42,10 +42,10 @@
       <div class="imgT ion-text-center">
         <img src="../../../assets/img/log.png" alt="" srcset="" width="15%">
       </div>
-      <p style="margin-top:5%;margin-bottom:10%; font-size: 15px; padding: 10px; text-align: center;">Un mail vous à été envoyer contenant un code de réinitialisation</p>
+      <!-- <p style="margin-top:5%;margin-bottom:10%; font-size: 15px; padding: 10px; text-align: center;">Un mail vous à été envoyer contenant un code de réinitialisation</p> -->
       
 
-      <div *ngIf="resultat"><p>{{resultat.message}}</p></div>
+      <div *ngIf="resultat"><p style="margin-top:5%;margin-bottom:10%; font-size: 15px; padding: 10px; text-align: center; color: #04CF72;">{{resultat.message}}</p></div>
 
       <form name="contact-form1" style="margin: 10px auto;" (ngSubmit)="G.form.valid && onReset()" #G="ngForm"
       novalidate>
