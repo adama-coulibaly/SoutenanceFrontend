@@ -23,4 +23,9 @@ export class FermeService {
      lesProductions(id_ferme:any):Observable<any>{
       return this.http.get(`http://localhost:8080/production/listerParFerme/${id_ferme}`);
     }
+
+     // ICI ON RECUPERE LES PRODUITS D'UNE FERME
+     lesProduitsParFermes(id_ferme:any):Observable<any>{
+      return this.http.get(`http://localhost:8080/produit/listerParFerme/${id_ferme}`);
+    }
 }

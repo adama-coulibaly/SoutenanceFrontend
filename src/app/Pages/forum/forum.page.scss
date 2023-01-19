@@ -79,24 +79,27 @@ padding: 2%;
 }
 .imgEtTheme  .titre p{
     font-weight: bold;
-   font-size: 12px;
+   font-size: 13px;
+   overflow-wrap: break-word;
 }
 .imgEtTheme  .titre span{
-    font-size: 9px;
+    font-size: 10px;
  }
 .commentaireEtVoirplus{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    font-size: 10px;
+    font-size: 12px;
+    margin: 2%;
 }
 .commentaireEtVoirplus .commentaires strong{
     background-color: #04CF72;
     padding: 5px;
     text-align: center;
     color: white;
-
-    border-radius: 100px;
+height: 10px !important;
+width: 10px !important;
+    border-radius: 100%;
 }
 
 .commentaireEtVoirplus .voirplus{
@@ -105,6 +108,11 @@ padding: 2%;
 }
 .commentaireEtVoirplus .voirplus a{
     text-decoration: none;
+}
+.commentaires{
+  display: flex;
+  align-items: center;
+  gap: 5%;
 }
 
 // =============================================================== MODAL

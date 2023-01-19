@@ -61,7 +61,8 @@
         <ion-slide class="produits1" *ngFor="let prod  of lesproduits">
                <ion-card>
               <img src="{{prod.phtoproduit}}">
-              <ion-card-title>{{prod.nomproduit}}<strong>{{prod.prix}} Fcfa</strong></ion-card-title>
+              <ion-card-title>{{prod.nomproduit}}</ion-card-title>
+              <p><strong>{{prod.prix}} Fcfa</strong></p>
               <div class="boutonpanier"> 
                 <button routerLink="{{prod.idproduits}}">Ajouter au panier <ion-icon name="cart"></ion-icon></button>
               </div>

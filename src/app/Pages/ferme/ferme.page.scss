@@ -1,58 +1,145 @@
-.section1{
+.section1 {
     display: grid;
     grid-template-columns: auto auto;
     align-items: center;
     margin: 3%;
 }
 
-.icons{
+.icons {
     font-size: 29px;
     display: flex;
     justify-content: space-between;
 }
-.icons .create{
+
+.icons .create {
     color: rgb(10, 112, 180);
 }
-.icons .delete{
+
+.icons .delete {
     color: red;
 }
+
 //  IONC CARD DES FERMES
-.card ion-card img{
-    text-align:center;
+.card ion-card img {
+    text-align: center;
     width: 60%;
 }
 
 // ========================================
-.titreProduction{
+.titreProduction {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin: 3%;
 }
-.titreProduction .nomTitre{
+
+.titreProduction .nomTitre {
     font-weight: 900;
     text-decoration: underline;
 }
-.titreProduction .status p{
-   background-color: rgb(221, 212, 212);
-   padding: 4px; border-radius: 10px;
+
+.titreProduction .status p {
+    background-color: rgb(221, 212, 212);
+    padding: 4px;
+    border-radius: 10px;
 }
-.description .inline{
+
+.description .inline,.inline {
+    width: 94%;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
     font-size: 120%;
-    
+    gap: 5%;
+
 }
- .contenu{
+.inline2 {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    font-size: 120%;
+    gap: 2%;
+
+}
+
+.contenu {
+    width: 94%;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+    align-items: center !important;
 }
-.contenu .timer{
+
+.contenu .timer p {
     align-items: center;
 }
-.productions ion-title{
+.monp{
+    display: inline-block;
+}
+.contenu ion-icon {
+    font-size: 20px;
+}
+
+.productions ion-title {
     margin: 2%;
 }
+
+// ======================================== LES PRODUITS =================================
+.containerFerme{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    // margin: 2%;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+.ferme1{
+    text-align: center;
+    width: 50%;
+}
+
+.ferme1 img{
+      width: 70%;
+      padding: 5%;
+}
+.ferme1 ion-card-title{
+    font-weight: bold;
+    font-size: 10px;
+}
+.ferme1 ion-button{
+    font-size: 10px;
+//    height: 25px;
+padding: 5%;
+}
+.iconsProduits {
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 5px;
+}
+
+.iconsProduits .create {
+    color: rgb(10, 112, 180);
+    cursor: pointer;
+}
+
+.iconsProduits .delete {
+    color: red;cursor: pointer;
+}
+ion-segment {
+    background-color: #04CF72;
+
+  }
+
+  .essai{
+    background: red;
+  }

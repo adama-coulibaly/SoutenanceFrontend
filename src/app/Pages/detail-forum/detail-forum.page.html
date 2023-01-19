@@ -36,7 +36,9 @@
     <div class="contenu" *ngFor="let commentaire of lesCommentaires.slice().reverse()">
         <div class="imgEtTheme">
             <div class="images">
+            <ion-avatar>
               <img src="{{commentaire.user.avatar}}" alt="" srcset="">
+            </ion-avatar>
               <p>{{commentaire.user.nom}} {{commentaire.user.prenom}}</p>
             </div>
             <div class="titre">

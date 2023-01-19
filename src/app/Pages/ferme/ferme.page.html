@@ -8,57 +8,134 @@
 <ion-content>
 
   <div class="section1">
-    <div class="titre"> <p>{{info.nomferme}}</p></div>
+    <div class="titre">
+      <p>{{info.nomferme}}</p>
+    </div>
     <div class="icons">
       <ion-icon class="create" name="create-outline"></ion-icon>
       <ion-icon class="delete" name="trash-outline"></ion-icon>
     </div>
   </div>
-
+<!--  -->
   <div class="card">
-      <ion-card class="ion-text-center">
-          <img src="{{info.imageferme}}" alt="" >
-          <div class="description">
-             <div class="inline">
-              <div><p>Activité:</p></div> 
-              <div><p>{{info.activiteferme}}</p></div>
-             </div>
+    <ion-card class="ion-text-center">
+      <img src="{{info.imageferme}}" alt="">
+      <div class="description">
+        <div class="inline">
+          <div><span>Activité:</span></div>
+          <div><span>{{info.activiteferme}}</span></div>
+        </div>
 
-             <div class="inline">
-              <div><p>Adresse:</p></div> 
-              <div><p>{{info.adresseferme}}</p></div>
-             </div>
+        <div class="inline">
+          <div><span>Adresse:</span></div>
+          <div><span>{{info.adresseferme}}</span></div>
+        </div>
 
-             <div class="inline">
-              <div><p>Taille:</p></div> 
-              <div><p>{{info.taille}}</p></div>
-             </div>
+        <div class="inline">
+          <div><span>Tailles : </span></div>
+          <div><span> {{info.taille}}</span></div>
+        </div>
 
-          </div>
-      </ion-card>
-  </div>
-<div class="titreInterim"><ion-title>Mes productions</ion-title></div>
-  <div class="productions">
-    <ion-card *ngFor="let product of production">
-     <div class="titreProduction">
-        <div class="nomTitre"> <p>{{product.typeproduction.nomtype}}</p></div>
-        <div class="status"><p>{{product.status}}</p></div>
-     </div>
-      
-      <div class="contenu">
-          <div>Date d'entrée</div>
-          <div class="timer"> <p>{{product.dateentrer | date: 'dd/MM/yy'}} <ion-icon name="time"></ion-icon> </p> </div>
       </div>
-      <div class="contenu">
-        <div>Date de sortie</div>
-        <div class="timer"> <p>{{product.dateentrer | date: 'dd/MM/yy'}} <ion-icon name="time"></ion-icon> </p> </div>
-    </div>
-    <div class="contenu">
-      <div>Quantité</div>
-      <div class="timer"> <p>{{product.quantite}}</p> </div>
-  </div>
-  <div align="center">  <ion-button>Détails</ion-button></div>
     </ion-card>
   </div>
+
+
+  <!--  =========================================  SEGMENTS ===========================  -->
+
+  <ion-segment [(ngModel)]="pages">
+    <ion-segment-button value="productions">
+      <ion-label>Productions</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="produits">
+      <ion-label>produits</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="pages" style="background-color: #e0dfe2;">
+
+    <ion-list *ngSwitchCase="'productions'" style="background-color: #e0dfe2;">
+     
+      <!-- <div class="titreInterim"><ion-title>Mes productions</ion-title></div> -->
+      <div class="productions" style="background-color: #e0dfe2;">
+        <ion-card *ngFor="let product of production">
+          <div class="titreProduction">
+            <div class="nomTitre">
+              <p>{{product.typeproduction.nomtype}}</p>
+            </div>
+            <div class="status">
+              <p>{{product.status}}</p>
+            </div>
+          </div>
+    
+    
+          <div class="contenu">
+            <div class="inline2">
+              <div style="margin-top: 1% !important;"><span><ion-icon name="stopwatch-outline"></ion-icon></span></div>
+              <div><span>Date d'entrée</span></div>
+            </div>
+            <div class="timer">
+              <p>{{product.dateentrer | date: 'dd/MM/yy'}} </p>
+            </div>
+          </div>
+    
+          <div class="contenu">
+            <div class="inline2">
+              <div style="margin-top: 1% !important;"><span><ion-icon name="stopwatch-outline"></ion-icon></span></div>
+              <div><span>Date de sortie</span></div>
+            </div>
+            <div class="timer">
+              <p>{{product.dateentrer | date: 'dd/MM/yy'}} </p>
+            </div>
+          </div>
+    
+    
+          <div class="contenu">
+            <div>Quantité</div>
+            <div class="timer">
+              <p>{{product.quantite}}</p>
+            </div>
+          </div>
+          <div align="center"> <ion-button>Détails</ion-button></div>
+        </ion-card>
+      </div>
+        </ion-list>
+
+   <!-- =========================================================== SECTION DES PRODUITS++++++++++++++++++++++++++++++ -->
+
+    <ion-list *ngSwitchCase="'produits'" style="background-color: #e0dfe2;">
+
+      <div class="containerFerme" style="background-color: #e0dfe2;">
+        <div class="ferme1" *ngFor="let prod of produits">
+            <ion-card>
+                <img src="{{prod.phtoproduit}}" (click)="produit(prod.idproduit)" style="cursor: pointer;" id="custom-dialog" expand="block">
+                <ion-card-title>{{prod.nomproduit}}</ion-card-title>
+                <ion-card-content>Qté: {{prod.quantiteVente}}</ion-card-content>
+                <div class="iconsProduits">
+                  <ion-icon class="create" name="create-outline"></ion-icon>
+                  <span style="font-size: 10px;color: black;">En vente</span>
+                  <ion-icon class="delete" name="trash-outline"></ion-icon>
+                </div>
+            </ion-card>
+        </div>
+      </div>
+    </ion-list>
+  </div>
+
+
+
+  <!-- ======================================================== -->
+
+<ion-modal id="example-modal" #modal trigger="custom-dialog">
+  <ng-template>
+    <div class="forms">
+      <h2>Poser votre question ici </h2>
+
+     
+      <!-- (click)="ajouter()" -->
+    </div>
+      
+  </ng-template>
+</ion-modal>
 
 </ion-content>

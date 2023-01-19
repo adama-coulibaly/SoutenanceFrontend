@@ -33,19 +33,34 @@
   <div class="contenu" *ngFor="let themes of lesThemes | filter: filterTerm">
     <div class="imgEtTheme">
       <div class="images">
-        <img src="{{themes.user.avatar}}" alt="" srcset="">
+        <ion-avatar>
+          <img src="{{themes.user.avatar}}" alt="" srcset="">
+        </ion-avatar>
+        
         <!-- <img src="../../../assets/img/noss.png" alt="" srcset=""> -->
       </div>
       <div class="titre">
-          <p>{{themes.titretheme}}</p>
+          <p>{{themes.titretheme.slice(0,50)}}</p>
           <span>Par: <strong>{{themes.user.nom}} {{themes.user.prenom}}</strong> le {{themes.dateposte | date: 'dd/MM/yy, à HH:mm'}}</span>
       </div>
   </div>
 
   <div class="commentaireEtVoirplus">
+    <!-- <div class="commentaires" style="display: flex;">
+      <p style="width: 20px; background-color: red; height: 20px; border-radius: 100%; text-align: center;"> <span>{{themes.nbreCommentaire}}</span>  </p>
+        <p> Commentaire(s)</p>
+    </div> -->
     <div class="commentaires">
-        <p><strong>{{themes.nbreCommentaire}}</strong> Commentaire(s)</p>
+     <div> 
+      <ion-fab-button style="width: 25px !important; height: 25px !important;">
+      {{themes.nbreCommentaire}}
+      </ion-fab-button>
     </div>
+      <div>
+        <p> Commentaire(s)</p>
+      </div>
+    </div>
+     
     <div class="voirplus" >
       <!-- *ngIf="themes.nbreCommentaire != 0" -->
       <a [routerLink]="['/bottom-bar/forum/detail-forum',themes.idtheme]">Voir plus</a>
@@ -53,24 +68,7 @@
       <!-- [routerLink]="['/details-regions',regions.id_regions]" -->
     </div>
 </div>
-      <!-- <div class="imgEtTheme">
-          <div class="images">
-            <img src="../../../assets/img/noss.png" alt="" srcset="">
-          </div>
-          <div class="titre">
-              <p>Comment produire une pondeuses ?</p>
-              <span>Par: <strong>COULIBALY Adama</strong> le 20/01/22 à 10 h 02</span>
-          </div>
-      </div>
 
-      <div class="commentaireEtVoirplus">
-        <div class="commentaires">
-            <p><strong>10</strong> Commentaire(s)</p>
-        </div>
-        <div class="voirplus">
-          <a routerLink="/bottom-bar/forum/detail-forum">Voir plus</a>
-        </div>
-    </div> -->
       
   </div>
   </div>

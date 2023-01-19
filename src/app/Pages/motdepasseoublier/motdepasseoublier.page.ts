@@ -56,9 +56,8 @@ onReset() {
 
   this.motDEpasse.nouveauMDP(this.form2).subscribe(data=>{
     this.resultat = data
-
 if(this.resultat.status == true){
-  setTimeout(() =>{this.router.navigateByUrl('connexion');},5000)
+  setTimeout(() =>{this.router.navigateByUrl('connexion');},3000)
 }
   })
 
