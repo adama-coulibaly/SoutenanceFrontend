@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Ferme } from 'src/app/Models/Ferme';
 import { FermeService } from 'src/app/Services/ferme.service';
 import { TokenStorageService } from 'src/app/Services/token-storage.service';
@@ -23,7 +24,7 @@ export class ProfilPage implements OnInit {
     User: undefined
   }
 
-  constructor(private tokenStorage: TokenStorageService, private fermeService: FermeService) { }
+  constructor(private tokenStorage: TokenStorageService, private fermeService: FermeService, private router:Router) { }
 
   ngOnInit() {
     //  ICI ON RECUPERER L'UTILISATEUR CONNECTE
@@ -34,8 +35,19 @@ export class ProfilPage implements OnInit {
     });
 
 
+    
+  }
+
+    // ===============================================CETTE FONCTION PERMET DE DECONNECTER L'UTILISATEUR
+  logout(): void {
+    // console.log("Je suis cliquer")
+    this.tokenStorage.signOut();
+    this.router.navigateByUrl('connexion')
+    // window.location.reload();
 
   }
+
+
 
   Adama = [1, 2, 3, 4, 5];
 

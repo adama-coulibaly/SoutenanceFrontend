@@ -1,0 +1,96 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>My Farmed</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div style="margin-top: 5%;">
+
+    <div class="SaisirEmail" [hidden]="!isVisible">
+
+
+      <div class="imgT ion-text-center">
+        <img src="../../../assets/img/log.png" alt="" srcset="" width="40%">
+      </div>
+      <ion-title style="margin-top:10%;margin-bottom:10%;">Veuillez saisir votre email</ion-title>
+
+      <form name="contact-form" style="margin: 10px auto;" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"
+        novalidate>
+        <ion-item counter="true">
+          <ion-label position="floating">Email</ion-label>
+
+          <ion-input type="email" name="email" [(ngModel)]="form.email" required #usernameOrEmail="ngModel"></ion-input>
+
+        </ion-item>
+
+        <!-- EN CAS D'4NVOI SANS REMPLIR LE CHAMP DE USERNAME  -->
+        <div class="ion-text-center alert alert-danger col-md-6" role="alert"
+          *ngIf="usernameOrEmail.errors && f.submitted" style="color: red; margin: 5px;">
+          Veuillez remplir le champs !
+        </div>
+
+        <div align="center" class="bouttonEnyoyer" style="margin-top: 15%;">
+          <button>Envoyer</button>
+        </div>
+      </form>
+    </div>
+<!-- ============================================== REINITIALISER LE MOT DE PASSE =============================== -->
+    <div class="reinitialiser" [hidden]="isVisible">
+      
+      <div class="imgT ion-text-center">
+        <img src="../../../assets/img/log.png" alt="" srcset="" width="15%">
+      </div>
+      <p style="margin-top:5%;margin-bottom:10%; font-size: 15px; padding: 10px; text-align: center;">Un mail vous à été envoyer contenant un code de réinitialisation</p>
+      
+
+      <div *ngIf="resultat"><p>{{resultat.message}}</p></div>
+
+      <form name="contact-form1" style="margin: 10px auto;" (ngSubmit)="G.form.valid && onReset()" #G="ngForm"
+      novalidate>
+
+      <ion-item>
+        <ion-label position="floating">Téléphone ou Email</ion-label>
+        <ion-input type="text" name="emailOrNumero" [(ngModel)]="form.emailOrNumero" required #emailOrNumero="ngModel"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Code de reinitialisation</ion-label>
+        <ion-input type="text" name="currentpassword" maxlength="10" placeholder="XXXXXXXXXX" [(ngModel)]="form.currentpassword" required #currentpassword="ngModel"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Nouveau mot de passe</ion-label>
+        <ion-input type="password" name="newpassword" [(ngModel)]="form.newpassword" required #newpassword="ngModel"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Confirmer</ion-label>
+        <ion-input type="password" name="confirmpassword"  [(ngModel)]="form.confirmpassword" required #confirmpassword="ngModel"></ion-input>
+      </ion-item>
+
+      <!-- EN CAS D'4NVOI SANS REMPLIR LE CHAMP DE USERNAME  -->
+      <div class="ion-text-center alert alert-danger col-md-6" role="alert"
+        *ngIf="usernameOrEmail.errors && f.submitted" style="color: red; margin: 5px;">
+        Veuillez remplir le champs !
+      </div>
+
+      <div align="center" class="bouttonEnyoyer" style="margin-top: 10%;">
+        <button>Envoyer</button>
+      </div>
+    </form>
+
+
+    </div>
+
+
+
+
+
+
+
+
+  </div>
+
+</ion-content>

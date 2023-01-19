@@ -12,6 +12,12 @@
 <!-- <span *ngIf="Message" style="color: red; margin: 2%;">{{Message}}</span> -->
   <div class="formLogin">
       <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+
+        <div class="alert alert-danger errorMessages" *ngIf="f.submitted && isLoginFailed">
+          Mot de passe ou email incorrect 
+        </div>
+
+
         <!-- #form="ngForm" (ngSubmit)="connexion(form)" -->
           <div class="emailForm">
               <ion-input type="text" placeholder="Adresse email" ngModel autofocus   name="usernameOrEmail"
@@ -45,17 +51,23 @@
          6 caractères au minimum
         </div>
       </div>
+
+      <div style="cursor: pointer; margin-top: 5%;"> <a routerLink="/motdepasseoublier" >Mot de passe oublier ?</a> </div>
+
       <!-- ================================= BOUTON  DE CONNEXON ================================ -->
           <div class="Connexion">
               <button>Connexion</button>
           </div>
 
-          <div class="alert alert-danger errorMessages" *ngIf="f.submitted && isLoginFailed">
+          <!-- <div class="alert alert-danger errorMessages" *ngIf="f.submitted && isLoginFailed">
             Mot de passe ou email incorrect 
-            <!-- Connexion impossible : {{ errorMessage }} -->
-          </div>
+          </div> -->
 
       </form>
+
+<!-- ================================== MOT DE PASSE OUBLIER ============================ -->
+
+
       <div><p><strong>OU</strong></p></div>
 
       <!-- ====================================================== LES BUTTONS OATH2 -->
@@ -83,5 +95,7 @@
              </div>
       
     </div>
+
+
 
 </ion-content>

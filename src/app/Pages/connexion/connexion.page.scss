@@ -2,6 +2,9 @@
     text-align: center;
     margin-top: 20%;
 }
+.alert{
+    color: red;
+}
 .formLogin{
 
     text-align: center;
@@ -49,7 +52,7 @@
     cursor: pointer;
 }
 .creerCompte{
-    margin-top: 30px;
+    margin-top: 20px;
 }
 .creerCompte a{
     text-decoration: none;
@@ -66,11 +69,45 @@
 
 
 
-
-// .OauthGoogle ion-button{
-//     width: 95%;
-//     margin: 2% auto;
-//     font-size: 15px;
-//     text-transform: lowercase;
+// =============================================================== MODAL
+ion-modal#example-modal {
+    --width: fit-content;
+    --min-width: 250px;
+    --height: fit-content;
+    --border-radius: 6px;
+    --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
+  }
   
-// }
+  ion-modal#example-modal h1 {
+    margin: 20px 20px 10px 20px;
+  }
+  
+  ion-modal#example-modal ion-icon {
+    margin-right: 6px;
+  
+    width: 48px;
+    height: 48px;
+  
+    padding: 4px 0;
+  
+    color: #aaaaaa;
+  }
+  
+  ion-modal#example-modal .wrapper {
+    margin-bottom: 10px;
+  }
+
+  .forms h2{
+    font-size: 15px;
+    margin: 10px;
+    color: #04CF72;
+    font-weight: bold;
+  }
+  .forms button{
+
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #04CF72;
+    color: white;
+    margin: 10px auto !important;
+  }

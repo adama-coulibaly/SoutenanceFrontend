@@ -32,7 +32,6 @@ Message!:String
 
 
   onSubmit(): void {
-    alert("================================")
     const { usernameOrEmail, password } = this.form;
 
     this.authService.login(usernameOrEmail, password).subscribe(
