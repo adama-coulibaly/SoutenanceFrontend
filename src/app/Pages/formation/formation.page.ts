@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { FormationServiceService } from 'src/app/Services/formation-service.service';
 import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-formation',
@@ -11,7 +13,7 @@ import Swal from 'sweetalert2';
 export class FormationPage implements OnInit {
   lesFormation: any;
 
-  constructor(private serviceFormation:FormationServiceService,private router:Router) { }
+  constructor(private serviceFormation:FormationServiceService,private router:Router,private iab: InAppBrowser) { }
 
   ngOnInit() {
 
@@ -35,7 +37,7 @@ export class FormationPage implements OnInit {
       confirmButtonText: 'Continuer'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.router.navigate(['https://www.youtube.com/channel/UCg13jYjmtpVZyZWthQ-g5Dg'])
+       this.iab.create('https://www.youtube.com/channel/UCg13jYjmtpVZyZWthQ-g5Dg')
       }
     })
     

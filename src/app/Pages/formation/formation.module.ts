@@ -13,7 +13,8 @@ import { FormationPage } from './formation.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    FormationPageRoutingModule
+    FormationPageRoutingModule,
+    
   ],
   declarations: [FormationPage]
 })
