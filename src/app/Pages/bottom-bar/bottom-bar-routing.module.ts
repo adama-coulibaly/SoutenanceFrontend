@@ -23,6 +23,10 @@ const routes: Routes = [
           loadChildren: () => import('../produits/produits.module').then( m => m.ProduitsPageModule)
         },
         {
+          path: 'formation',
+          loadChildren: () => import('../formation/formation.module').then( m => m.FormationPageModule)
+        },
+        {
           path: 'profil',
           loadChildren: () => import('../profil/profil.module').then( m => m.ProfilPageModule)
         },

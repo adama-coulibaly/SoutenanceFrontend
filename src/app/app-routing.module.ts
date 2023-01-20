@@ -38,6 +38,11 @@ const routes: Routes = [
     path: 'motdepasseoublier',
     loadChildren: () => import('./Pages/motdepasseoublier/motdepasseoublier.module').then( m => m.MotdepasseoublierPageModule)
   },
+  // {
+  //   path: 'formation',
+  //   loadChildren: () => import('./Pages/formation/formation.module').then( m => m.FormationPageModule)
+  // },
+
 
   // {
   //   path: 'ferme',

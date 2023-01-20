@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>formation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="produits">
+    <ion-card *ngFor="let formation of lesFormation">
+      <ion-avatar class="ion-text-center">
+        <img src="{{formation.photoformation}}" alt="">
+      </ion-avatar>
+      <ion-card-title>{{formation.titreformation.slice(0,45)}}</ion-card-title>
+      <!-- <div class="nonETprix">
+        <div class="prix">
+          <p>Prix</p>
+        </div>
+        <div class="montant">
+          <p><strong>75000 Fcfa</strong></p>
+        </div>
+      </div> -->
+      <div class="boutonpanier">
+         <ion-button (click)="visiter('https://www.youtube.com/channel/UCg13jYjmtpVZyZWthQ-g5Dg')">Commencer</ion-button>
+      </div>
+    </ion-card>
+  </div>
+
+</ion-content>
