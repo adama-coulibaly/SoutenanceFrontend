@@ -118,25 +118,6 @@ supprimerProd(idproduit:any){
 
 }
 
-// async presentAlert() {
-//   const alert = await this.alertController.create({
-//     header: 'Are you sure?',
-//     cssClass: 'custom-alert',
-//     buttons: [
-//       {
-//         text: 'No',
-//         cssClass: 'alert-button-cancel',
-//       },
-//       {
-//         text: 'Yes',
-//         cssClass: 'alert-button-confirm',
-      
-//       },
-//     ],
-//   });
-
-//   await alert.present();
-// }
 
 
   

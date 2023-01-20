@@ -12,6 +12,19 @@ import Swal from 'sweetalert2';
 })
 export class FormationPage implements OnInit {
   lesFormation: any;
+  uneformation: any;
+  isModalOpen = false;
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
+
+  options={
+    slidesPerView:1,   // NOMBRE DE SLIDE PAR PAGE = 1
+    centeredSlider:true,
+    loop:true,
+    spaceBetween:10,
+    autoplay:true
+  }
 
   constructor(private serviceFormation:FormationServiceService,private router:Router,private iab: InAppBrowser) { }
 
@@ -21,8 +34,13 @@ export class FormationPage implements OnInit {
       this.lesFormation = data;
     })
   }
-
-
+//=============================================== ICI ON PREND UNE SEULE FORMATION
+uneFormation(idformation:any){
+  this.serviceFormation.lesFormationsParId(idformation).subscribe(data=>{
+    this.uneformation = data
+  })
+}
+// ============================================== ICI ON REDIRIGE VERS LE LIEN YOURUBE
   visiter(url:any){
 
     Swal.fire({

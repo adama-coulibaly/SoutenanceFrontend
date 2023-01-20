@@ -14,4 +14,10 @@ export class FormationServiceService {
   mesFormations():Observable<any>{
     return this.http.get("http://localhost:8080/formation/lister")
   }
+
+  // =========================================== UNE SEULE PRODUCTIONS ===================
+
+  lesFormationsParId(idformation:any):Observable<any>{
+    return this.http.get(`http://localhost:8080/formation/listerId/${idformation}`);
+  }
 }
