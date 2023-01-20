@@ -37,7 +37,9 @@ export class FormationPage implements OnInit {
       confirmButtonText: 'Continuer'
     }).then((result) => {
       if (result.isConfirmed) {
-       this.iab.create('https://www.youtube.com/channel/UCg13jYjmtpVZyZWthQ-g5Dg')
+       this.iab.create(url)
+
+      //  this.iab.create('https://www.youtube.com/channel/UCg13jYjmtpVZyZWthQ-g5Dg')
       }
     })
     
