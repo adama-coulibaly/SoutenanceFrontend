@@ -42,8 +42,9 @@
 
 
   <!--  =========================================  SEGMENTS ===========================  -->
-<div #target>
-  
+
+  <div style="display: grid;height: 550px;">
+<div>
   <ion-segment [(ngModel)]="pages" >
     <ion-segment-button value="productions">
       <ion-label>Productions</ion-label>
@@ -55,12 +56,17 @@
 
 </div>
 
+<div >
+
+
+
   <div [ngSwitch]="pages" style="background-color: #e0dfe2;" >
 
     <ion-list *ngSwitchCase="'productions'" style="background-color: #e0dfe2;">
 
       <!-- <div class="titreInterim"><ion-title>Mes productions</ion-title></div> -->
-      <div class="productions" style="background-color: #e0dfe2;">
+      <div class="productions" style="background-color: #e0dfe2;overflow-y: scroll;
+      background-color: #e0dfe2;">
         <ion-card *ngFor="let product of production">
           <div class="titreProduction">
             <div class="nomTitre">
@@ -182,6 +188,8 @@
         </ion-modal>
       </ion-content>
     </ion-list>
+  </div>
+</div>
   </div>
 
 </ion-content>
