@@ -38,10 +38,26 @@
     text-decoration: underline;
 }
 
-.titreProduction .status p {
-    background-color: rgb(221, 212, 212);
+.titreProduction .status .p1 {
+    // background-color: rgb(221, 212, 212);
+    background-color: #04CF72;
+    color: white;
     padding: 4px;
     border-radius: 10px;
+}
+.titreProduction .status .p2 {
+  background-color: rgb(221, 212, 212);
+  // background-color: #04CF72;
+  color: white;
+  padding: 4px;
+  border-radius: 10px;
+}
+.titreProduction .status .p3 {
+  // background-color: rgb(221, 212, 212);
+  background-color: red;
+  color: white;
+  padding: 4px;
+  border-radius: 10px;
 }
 
 .description .inline,.inline {
@@ -92,16 +108,12 @@
 
 // ======================================== LES PRODUITS =================================
 .containerFerme{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    // margin: 2%;
-    margin-bottom: 50px;
-    flex-wrap: wrap;
+  display: grid;
+  grid-template-columns:auto auto;
 }
 .ferme1{
     text-align: center;
-    width: 50%;
+    // width: 50%;
 }
 
 .ferme1 img{
@@ -135,9 +147,13 @@ padding: 5%;
 .iconsProduits .delete {
     color: red;cursor: pointer;
 }
-ion-segment {
+ion-segment-button {
     background-color: #04CF72;
-
+    width: 100%;
+    margin: 5px auto;
+  }
+  ion-segment ion-label{
+   color: white;
   }
 
   .essai{
@@ -212,4 +228,9 @@ ion-alert.custom-alert {
   .ios button.alert-button.alert-button-confirm {
     border-bottom-right-radius: 13px;
     border-top-right-radius: 13px;
+  }
+
+  .mesproduits{
+    height: 500px;
+    display: grid;
   }

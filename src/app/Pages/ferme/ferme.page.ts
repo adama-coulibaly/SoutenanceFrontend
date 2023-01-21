@@ -32,6 +32,8 @@ export class FermePage implements OnInit  {
     quantiteVente: undefined,
     etat: undefined
   }
+  taille: any;
+  produitTotal: any;
 
 
   constructor(private route:ActivatedRoute,private fermeService: FermeService,private animationCtrl: AnimationController,public navCtrl: NavController) { }
@@ -53,17 +55,19 @@ export class FermePage implements OnInit  {
     // RECUPERATION DES PRODUCTIONS D'UNE FERME
     this.fermeService.lesProductions(idferme).subscribe(data=>{
       this.production = data;
+      this.taille = this.production.length
     });
 
     // RECUPERATION DES PRODUITS PAR FERMES
     this.fermeService.lesProduitsParFermes(idferme).subscribe(data=>{
       this.produits = data;
- 
+  
+      this.produitTotal = this.produits.length
     });
 
     // RECUPERER LES PRODUITS PAR LEURS ID
     
-    console.log('je suis le ID '+idferme)
+    // console.log('je suis le ID '+idferme)
   }
   
   // ========================== ICI ON RECUPERE LES PRODUITS PAR ID

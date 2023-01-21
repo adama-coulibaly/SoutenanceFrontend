@@ -35,7 +35,7 @@
    
 
   <div class="produits">
-    <ion-card *ngFor="let formation of lesFormation.slice().reverse()">
+    <ion-card *ngFor="let formation of lesFormation">
       <ion-avatar class="ion-text-center" style="cursor: pointer;" (click)="uneFormation(formation.idformation)" expand="block"
       (click)="setOpen(true)">
         <img src="{{formation.photoformation}}" alt="">

@@ -43,97 +43,115 @@
 
   <!--  =========================================  SEGMENTS ===========================  -->
 
-  <div style="display: grid;height: 550px;">
-<div>
-  <ion-segment [(ngModel)]="pages" >
-    <ion-segment-button value="productions">
-      <ion-label>Productions</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="produits">
-      <ion-label>produits</ion-label>
-    </ion-segment-button>
-  </ion-segment>
+  <div class="">
+    <div>
+      <ion-segment [(ngModel)]="pages">
+        <ion-segment-button value="productions">
+          <ion-label>Productions</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="produits">
+          <ion-label>produits</ion-label>
+        </ion-segment-button>
+      </ion-segment>
 
-</div>
+    </div>
 
-<div >
+    <div class="mesproduits contenues" style="overflow-y: scroll;display: grid;">
+
+      <div [ngSwitch]="pages" style="background-color: #e0dfe2;">
+
+        <ion-list *ngSwitchCase="'productions'" style="background-color: #e0dfe2;">
+
+          <!-- <div class="titreInterim"><ion-title>Mes productions</ion-title></div> -->
+          <div class="productions" style="background-color: #e0dfe2;" *ngIf="taille != 0 ">
+            <ion-card *ngFor="let product of production"  >
+              <div class="titreProduction">
+                <div class="nomTitre">
+                  <p>{{product.typeproduction.nomtype}}</p>
+                </div>
+                <div class="status">
+                  <p class="p1" *ngIf="product.status=='ENCOURS'">en cours</p>
+                  <p class="p2" *ngIf="product.status=='AVENIR'">a venir</p>
+                  <p class="p3" *ngIf="product.status=='TERMINER'">terminer</p>
+                </div>
+              </div>
 
 
+              <div class="contenu">
+                <div class="inline2">
+                  <div style="margin-top: 1% !important;"><span><ion-icon name="stopwatch-outline"></ion-icon></span>
+                  </div>
+                  <div><span>Date d'entrée</span></div>
+                </div>
+                <div class="timer">
+                  <p>{{product.dateentrer | date: 'dd/MM/yy'}} </p>
+                </div>
+              </div>
 
-  <div [ngSwitch]="pages" style="background-color: #e0dfe2;" >
+              <div class="contenu">
+                <div class="inline2">
+                  <div style="margin-top: 1% !important;"><span><ion-icon name="stopwatch-outline"></ion-icon></span>
+                  </div>
+                  <div><span>Date de sortie</span></div>
+                </div>
+                <div class="timer">
+                  <p>{{product.datesortie | date: 'dd/MM/yy'}} </p>
+                </div>
+              </div>
 
-    <ion-list *ngSwitchCase="'productions'" style="background-color: #e0dfe2;">
 
-      <!-- <div class="titreInterim"><ion-title>Mes productions</ion-title></div> -->
-      <div class="productions" style="background-color: #e0dfe2;overflow-y: scroll;
-      background-color: #e0dfe2;">
-        <ion-card *ngFor="let product of production">
-          <div class="titreProduction">
-            <div class="nomTitre">
-              <p>{{product.typeproduction.nomtype}}</p>
-            </div>
-            <div class="status">
-              <p>{{product.status}}</p>
-            </div>
+              <div class="contenu">
+                <div>Quantité</div>
+                <div class="timer">
+                  <p>{{product.quantite}}</p>
+                </div>
+              </div>
+              <div align="center"> <ion-button>Détails</ion-button></div>
+            </ion-card>
+          </div>
+
+        <!-- ======================================================== SI IL N'Y A PAS DE PRODUITS ============================== -->
+          <div class="ion-text-center" id="pasDeProductions" *ngIf="taille == 0 ">
+            <P>Vous n'avez pas de production encore</P>
           </div>
 
 
-          <div class="contenu">
-            <div class="inline2">
-              <div style="margin-top: 1% !important;"><span><ion-icon name="stopwatch-outline"></ion-icon></span></div>
-              <div><span>Date d'entrée</span></div>
-            </div>
-            <div class="timer">
-              <p>{{product.dateentrer | date: 'dd/MM/yy'}} </p>
+        </ion-list>
+
+          
+        <!-- =========================================================== SECTION DES PRODUITS++++++++++++++++++++++++++++++ -->
+
+        <ion-list *ngSwitchCase="'produits'" style="background-color: #e0dfe2;">
+
+          <div class="containerFerme" style="background-color: #e0dfe2;" *ngIf="produitTotal != 0">
+            <div class="ferme1" *ngFor="let prod of produits">
+              <ion-card *ngIf="prod.etat == true">
+                <img src="{{prod.phtoproduit}}" style="cursor: pointer;" (click)="produit(prod.idproduit)"
+                  expand="block" (click)="setOpen(true)">
+                <ion-card-title>{{prod.nomproduit}}</ion-card-title>
+                <ion-card-content>Qté: {{prod.quantiteVente}}</ion-card-content>
+                <div class="iconsProduits">
+                  <ion-icon class="create" name="create-outline"></ion-icon>
+                  <span style="font-size: 10px;color: black;">En vente</span>
+                  <ion-icon class="delete" name="trash-outline" (click)="supprimerProd(prod.idproduit)"></ion-icon>
+                </div>
+              </ion-card>
             </div>
           </div>
 
-          <div class="contenu">
-            <div class="inline2">
-              <div style="margin-top: 1% !important;"><span><ion-icon name="stopwatch-outline"></ion-icon></span></div>
-              <div><span>Date de sortie</span></div>
-            </div>
-            <div class="timer">
-              <p>{{product.dateentrer | date: 'dd/MM/yy'}} </p>
-            </div>
+           <!-- ======================================================== SI IL N'Y A PAS DE PRODUITS ============================== -->
+           <div class="ion-text-center" id="pasDeProductions" *ngIf="produitTotal == 0 ">
+            <P>Vous n'avez pas de produit encore</P>
           </div>
 
-
-          <div class="contenu">
-            <div>Quantité</div>
-            <div class="timer">
-              <p>{{product.quantite}}</p>
-            </div>
-          </div>
-          <div align="center"> <ion-button>Détails</ion-button></div>
-        </ion-card>
+        </ion-list>
       </div>
-    </ion-list>
-
-    <!-- =========================================================== SECTION DES PRODUITS++++++++++++++++++++++++++++++ -->
-
-    <ion-list *ngSwitchCase="'produits'" style="background-color: #e0dfe2;">
-
-      <div class="containerFerme" style="background-color: #e0dfe2;">
-        <div class="ferme1" *ngFor="let prod of produits">
-          <ion-card *ngIf="prod.etat == true">
-            <img src="{{prod.phtoproduit}}" style="cursor: pointer;" (click)="produit(prod.idproduit)" expand="block"
-              (click)="setOpen(true)">
-            <ion-card-title>{{prod.nomproduit}}</ion-card-title>
-            <ion-card-content>Qté: {{prod.quantiteVente}}</ion-card-content>
-            <div class="iconsProduits">
-              <ion-icon class="create" name="create-outline"></ion-icon>
-              <span style="font-size: 10px;color: black;">En vente</span>
-              <ion-icon class="delete" name="trash-outline" (click)="supprimerProd(prod.idproduit)"></ion-icon>
-            </div>
-          </ion-card>
-        </div>
-      </div>
+    </div>
+  </div>
 
 
 
-
-
+      <!-- =========================================== Mon Modal -->
       <ion-content>
         <ion-modal [isOpen]="isModalOpen" backdrop-dismiss="false">
           <ng-template>
@@ -187,9 +205,4 @@
           </ng-template>
         </ion-modal>
       </ion-content>
-    </ion-list>
-  </div>
-</div>
-  </div>
-
 </ion-content>
