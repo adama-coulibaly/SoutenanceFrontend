@@ -10,7 +10,7 @@ import { ProduitsPage } from './produits.page';
 import { MenuComponent } from '../menu/menu.component';
 
 @NgModule({
-declarations: [ProduitsPage,MenuComponent],
+declarations: [ProduitsPage],
 imports: [
 CommonModule,
 FormsModule,

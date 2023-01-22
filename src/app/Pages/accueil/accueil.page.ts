@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { PanierComponent } from 'src/app/panier/panier.component';
 import { AccueilServiceService } from 'src/app/Services/accueil-service.service';
 import { ThemeServiceService } from 'src/app/Services/theme-service.service';
 
+import { AnimationController } from '@ionic/angular';
 
 
 @Component({
@@ -12,7 +15,7 @@ import { ThemeServiceService } from 'src/app/Services/theme-service.service';
 export class AccueilPage implements OnInit {
   lesproduits: any;
 
-  constructor(private serviceAccueil:AccueilServiceService) { }
+  constructor(private serviceAccueil:AccueilServiceService, private modalCtrl: ModalController,private animationCtrl: AnimationController) { }
   lesThemes:any;
 
   ngOnInit() {
@@ -39,5 +42,22 @@ export class AccueilPage implements OnInit {
     // spaceBetween:1,
     autoplay:true
   }
+
+  // ================================== MODAL PANIERE
+
+  async openModal() {
+    const myEnterAnimation = await this.animationCtrl.create('myEnter')
+      .duration(400)
+    .fromTo('transform', 'translateX(100%)', 'translateX(0)');
+    
+    const modal = await this.modalCtrl.create({
+      component: PanierComponent,
+      // enterAnimation: myEnterAnimation
+    });
+    modal.present();
+  }
+
+  
+
 
 }

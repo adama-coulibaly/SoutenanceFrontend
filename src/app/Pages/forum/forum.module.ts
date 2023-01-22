@@ -8,15 +8,17 @@ import { ForumPageRoutingModule } from './forum-routing.module';
 
 import { ForumPage } from './forum.page';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { MenuComponent,  } from '../menu/menu.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    ForumPageRoutingModule,
-    Ng2SearchPipeModule
-  ],
-  declarations: [ForumPage]
+    declarations: [ForumPage,],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        ForumPageRoutingModule,
+        Ng2SearchPipeModule,
+        
+    ]
 })
 export class ForumPageModule {}

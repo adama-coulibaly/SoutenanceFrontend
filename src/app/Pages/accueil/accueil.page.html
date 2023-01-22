@@ -1,17 +1,23 @@
+
+<!-- MON MENU -->
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="primary">
-      <!-- <ion-button>
-        <ion-icon name="notifications-outline"></ion-icon>
-        <ion-badge>3</ion-badge>
-      </ion-button> -->
-    </ion-buttons>
-    <ion-img src="../../../assets/img/logo2.png" ></ion-img>
+    <div slot="start" class="retourB">
+        <ion-title>Accueil</ion-title>
+    </div>
+
+    <div slot="end" class="lefts">
+      <ion-icon name="cart-outline" (click)="openModal()"></ion-icon>
+      <ion-badge class="cart">5</ion-badge>
+      <ion-icon name="notifications-outline"></ion-icon>
+      <ion-badge class="notif"> 5 </ion-badge>
+    </div>
   </ion-toolbar>
 </ion-header>
 
+<!--  -->
 <ion-content>
- <div class="principale">
+ <div class="principale" >
   <ion-slides [options]="options">
 
     <ion-slide>
@@ -46,7 +52,7 @@
               poulets de chairs necessite un grand sacrifice de temps et veilles aux entretiens.
             </p>
 
-           <div class="buttonMesfermes"> <ion-button>Mes fermes</ion-button></div>
+           <div class="buttonMesfermes"> <ion-button >Mes fermes</ion-button></div>
         </ion-card-content>
     </ion-card>
 </div>

@@ -4,7 +4,6 @@ import { ThemeServiceService } from 'src/app/Services/theme-service.service';
 import { Theme } from 'src/app/Models/Teheme';
 
 
-
 @Component({
   selector: 'app-forum',
   templateUrl: './forum.page.html',

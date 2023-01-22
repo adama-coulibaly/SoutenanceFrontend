@@ -1,18 +1,54 @@
+ion-toolbar{
+    --background:#04CF72;
+      // padding: 5%;
+}
+ion-title{
+    color: white;
+}
+// ========================
+
+.retourB{
+ display: flex;
+}
+
+// ========================================================= HEADER ICONES
+.lefts ion-icon{
+    color: white;
+    font-size: 30px;
+    cursor: pointer !important;
+    padding:0;
+    margin-right: 15px;
+}
+.lefts .cart{
+    position: absolute;
+    right: 67px;
+    top: 2px;
+    background-color: red; color: white; 
+    height: 15px; 
+    border-radius: 100%;
+    // text-align: center;
+}
+.lefts .notif{
+    position: absolute;
+    right: 16px;
+    background-color: red; color: white; 
+    height: 15px; 
+    border-radius: 100%;
+}
+.lefts ion-badge{
+     font-size: 10px;
+    }
+
+
+
+
+
+
+
 .lesTitres p{
     font-weight: 600; text-align: center;
     color: #04CF72;
 }
-
-
-ion-header{
-    background-color: #04CF72;
-}
-ion-toolbar ion-img{
-    margin: 1%;
-    width: 20%;
-}
-
-
 //  LES IONS CARDS
 ion-card img{
     object-fit: cover;
@@ -142,6 +178,9 @@ padding: 2%;
     // text-align: justify;
     padding: 2%;
 }
+
+// /
+
 
 
 

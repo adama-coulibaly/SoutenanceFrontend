@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Mon panier
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="stylePanie">
+<div style="height: 430px; display: grid; overflow-y: scroll;" class="panierScroll">
+
+
+  <div *ngFor="let prod of panierProd">
+    <ion-card>
+      <!-- =========================== TEXT DESC ET IMAGES ============================= -->
+      <div class="prodPanier">
+        <div class="contenuDesc">
+          <p>{{prod.produits[0].nomproduit}}</p>
+          <p>{{prod.produits[0].prix}} Fcfa</p>
+        </div>
+
+        <div class="contenuImage">
+          <ion-badge> <ion-icon name="trash"></ion-icon> </ion-badge>
+          <img src="{{prod.produits[0].phtoproduit}}" alt="" srcset="">
+        </div>
+      </div>
+
+      <!-- ================================= increment et total =================================================== -->
+      <div style="display: flex;flex-direction: row;align-items: center;">
+          <div> <div style="display: grid;grid-template-columns: auto auto auto;">
+            <ion-col size="2" class="ion-align-items-center">
+              <ion-button fill="clear">
+                  <ion-icon name="add-circle" slot="icon-only" ></ion-icon>
+              </ion-button>
+            </ion-col>
+            <ion-input  type="number" value="{{prod.quantite}}" min="0" style="width: 60px;"></ion-input>
+            <ion-col size="2" class="ion-align-items-center">
+              <ion-button fill="clear">
+                  <ion-icon name="remove-circle" slot="icon-only"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </div>
+        </div>
+
+        <div>
+          <p><strong>{{prod.totalproduit}} Fcfa</strong></p>
+        </div>
+      </div>
+    </ion-card>
+  </div>
+
+</div>
+
+<div>
+  <div class="first" style="display: flex; flex-direction: row;margin-top: 10px; justify-content: space-around;">
+    <div><ion-title>Total</ion-title></div>
+    <div>
+      <ion-title>{{MontantTotal}} Fcfa</ion-title>
+    </div>
+  </div>
+
+<div class="ion-text-center" ><ion-icon name="reload-circle-outline" style="font-size: 50px;color:#04CF72;"></ion-icon></div>
+
+  <div class="ion-text-center"><ion-button>Passer au payement</ion-button></div>
+</div>
+  
+</ion-content>
+
+<!-- <ion-footer>
+  <div class="pied">
+
+  </div>
+</ion-footer> -->

@@ -1,0 +1,35 @@
+ion-toolbar{
+    --background: #04CF72;
+    color: white;
+}
+.pied{
+    height: 80px; background: #04CF72;
+}
+.prodPanier{
+    display: grid;
+    grid-template-columns: auto 120px;
+}
+.contenuDesc{
+    margin: 1px auto;
+}
+.contenuImage{
+    width: 100%;
+    margin: auto;
+}
+.contenuImage img{
+    height: 100px;
+    padding: 5px;
+    text-align: center;
+    object-fit: contain;
+}
+ion-badge{
+    position: absolute;
+   background: none;
+    right: 5px;
+    cursor: pointer;
+}
+ion-badge ion-icon{
+    color: red;
+    font-size: 25px;
+   
+}

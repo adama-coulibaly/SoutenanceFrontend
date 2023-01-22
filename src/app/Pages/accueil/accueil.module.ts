@@ -8,14 +8,16 @@ import { AccueilPageRoutingModule } from './accueil-routing.module';
 
 import { AccueilPage } from './accueil.page';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ProduitsPageModule } from "../produits/produits.module";
+import { MenuComponent } from '../menu/menu.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    AccueilPageRoutingModule,
-  ],
-  declarations: [AccueilPage]
+    declarations: [AccueilPage,MenuComponent],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        AccueilPageRoutingModule,
+    ]
 })
 export class AccueilPageModule {}

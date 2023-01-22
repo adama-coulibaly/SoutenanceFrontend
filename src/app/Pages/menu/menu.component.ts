@@ -9,6 +9,7 @@ import { IonInput } from '@ionic/angular';
 })
 
 
+
 export class MenuComponent implements OnInit {
 
   message!:String;
