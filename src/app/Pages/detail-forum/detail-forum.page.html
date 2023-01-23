@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-back-button slot="start" defaultHref="forum"></ion-back-button>
 
@@ -15,9 +15,15 @@
       <ion-badge class="notif"> 50 </ion-badge>
     </div>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
+
+  
 
 <ion-content>
+  <ion-toolbar style="margin-top: 60px;">
+    <ion-back-button slot="start" defaultHref="forum" style="color: white;"></ion-back-button>
+  <ion-title slot="end">Forum</ion-title>
+  </ion-toolbar>
   <!-- / ================================== SECTION POUR QUESTION TITRE FIXE-->
   <div class="section1">
     <ion-fab vertical="top" horizontal="end" slot="fixed" id="ajoutercommentaire" expand="block">
@@ -25,7 +31,7 @@
         <ion-icon name="add"></ion-icon>
       </ion-fab-button>
     </ion-fab>
- <div class="title-text">
+ <div class="titreForum title-text">
   <p>{{titre}}</p>
 
  </div> 

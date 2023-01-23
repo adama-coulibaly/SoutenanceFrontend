@@ -1,0 +1,78 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>inscription</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  
+  <div class="contenaire">
+    <div class=" imageLogog ion-text-center"><img src="../../../assets/img/logo1.png" alt="" width="40%">
+      <div class="annuler" style="position: absolute;top: 40px; right: 20px;"> <a routerLink="/connexion" style="color: red;">Annuler</a></div>
+    </div>
+
+    <div class="formulaire">
+      <form class="container" *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"
+      novalidate>
+
+        <ion-item>
+          <ion-label color="primary" position="floating">Nom</ion-label>
+          <ion-input autocorrect="on" autofocus="on" clearInput="true" clearOnEdit="true" color="primary"
+            inputmode="text" placeholder="Entrer votre nom" required="true" name="nom" [(ngModel)]="form.nom"  minlength="3" maxlength="20"
+            #nom="ngModel"></ion-input>
+          <ion-icon name="person" color="primary" slot="end"></ion-icon>
+        </ion-item>
+
+          <ion-item>
+          <ion-label color="primary" position="floating">Prénom</ion-label>
+          <ion-input autocorrect="on" autofocus="on" clearInput="true" clearOnEdit="true" color="primary"
+            inputmode="text" placeholder="Entre votre numero" required="true" name="prenom" [(ngModel)]="form.prenom"  minlength="3" maxlength="20"
+            #prenom="ngModel"></ion-input>
+          <ion-icon name="person" color="primary" slot="end"></ion-icon>
+        </ion-item>
+
+        <ion-item>
+          <ion-label color="primary" position="floating">Username</ion-label>
+          <ion-input autocorrect="on" autofocus="on" clearInput="true" clearOnEdit="true" color="primary"
+            inputmode="text" placeholder="Entre votre numero" required="true" name="username" [(ngModel)]="form.username"  minlength="3" maxlength="20"
+            #username="ngModel"></ion-input>
+          <ion-icon name="person" color="primary" slot="end"></ion-icon>
+        </ion-item>
+
+        <ion-item>
+          <ion-label color="primary" position="floating">Eemail</ion-label>
+          <ion-input autocorrect="on" autofocus="on" clearInput="true" clearOnEdit="true" color="primary"
+            inputmode="email" placeholder="Entre votre nom" required="true" name="email" [(ngModel)]="form.email"  minlength="3" maxlength="45"
+            #email="ngModel"></ion-input>
+          <ion-icon name="email" color="primary" slot="end"></ion-icon>
+        </ion-item>
+
+        <ion-item>
+          <ion-label color="primary" position="floating">Adresse</ion-label>
+          <ion-input autocorrect="on" autofocus="on" clearInput="true" clearOnEdit="true" color="primary"
+            inputmode="text" placeholder="Entre votre nom" required="true" name="adresse" [(ngModel)]="form.adresse"  minlength="3" maxlength="20"
+            #adresse="ngModel"></ion-input>
+          <ion-icon name="map" color="primary" slot="end"></ion-icon>
+       
+        </ion-item> <ion-item>
+          <ion-label color="primary" position="floating"> Mot de passe </ion-label>
+          <ion-input type="password" autocorrect="on" autofocus="on" clearInput="true" clearOnEdit="true" color="primary"
+            inputmode="text" placeholder="Entre votre nom" required="true" name="passord" [(ngModel)]="form.password"  minlength="3" maxlength="20"
+            #passord="ngModel"></ion-input>
+          <ion-icon name="person" color="primary" slot="end"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary" position="floating">Confirmer le mot de passe </ion-label>
+          <ion-input type="password" autocorrect="on" autofocus="on" clearInput="true" clearOnEdit="true" color="primary"
+            inputmode="text" placeholder="Entre votre nom" required="true" name="pass2" [(ngModel)]="form.pass2"  minlength="3" maxlength="20"
+            #pass2="ngModel"></ion-input>
+          <ion-icon name="person" color="primary" slot="end"></ion-icon>
+        </ion-item>
+
+        <div class="ion-text-center"> 
+          <ion-button type="submit">Créer un compte</ion-button>
+        </div>
+      </form>
+    </div>
+  </div>
+</ion-content>

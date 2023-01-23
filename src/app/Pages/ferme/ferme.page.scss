@@ -1,3 +1,17 @@
+ion-toolbar{
+  margin-top: 70px;
+}
+.menu2{
+  background: #04CF72;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+
+// style=" "
+
 .section1 {
     display: grid;
     grid-template-columns: auto auto;
@@ -231,6 +245,6 @@ ion-alert.custom-alert {
   }
 
   .mesproduits{
-    height: 500px;
+    height: 469px;
     display: grid;
   }

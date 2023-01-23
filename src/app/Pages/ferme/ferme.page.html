@@ -1,12 +1,13 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-back-button defaultHref="profil" slot="start"></ion-back-button>
-    <ion-title>ferme</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <ion-toolbar >
+    <div class="menu2" >
+        <div><ion-back-button slot="start" defaultHref="profile" style="color: white;"></ion-back-button></div>
+        <div> <ion-title slot="end">Ferme</ion-title></div>
+    </div>
+   
+  </ion-toolbar>
 
+<div class="principale">
   <div class="section1">
     <div class="titre">
       <p>{{info.nomferme}}</p>
@@ -15,7 +16,7 @@
       <ion-icon class="create" name="create-outline"></ion-icon>
       <ion-icon class="delete" name="trash-outline"></ion-icon>
     </div>
-  </div>
+  </div></div>
   <!--  -->
   <div class="card">
     <ion-card class="ion-text-center">

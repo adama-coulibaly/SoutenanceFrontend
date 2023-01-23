@@ -38,6 +38,11 @@ const routes: Routes = [
     path: 'motdepasseoublier',
     loadChildren: () => import('./Pages/motdepasseoublier/motdepasseoublier.module').then( m => m.MotdepasseoublierPageModule)
   },
+  {
+    path: 'inscription',
+    loadChildren: () => import('./Pages/inscription/inscription.module').then( m => m.InscriptionPageModule)
+  },
+
   // {
   //   path: 'formation',
   //   loadChildren: () => import('./Pages/formation/formation.module').then( m => m.FormationPageModule)

@@ -20,11 +20,25 @@ export class AuthService {
     }, httpOptions);
   }
 
-  register(username: string, email: string, password: string): Observable<any> {
-    return this.http.post(AUTH_API + 'signup', {
-      username,
-      email,
-      password
-    }, httpOptions);
+
+
+  register(user:any): Observable<any> {
+    return this.http.post("http://localhost:8080/api/auth/signup",user);
   }
+
+
+  registerO(nom:string,prenom:string,username:string,email:string,password:string,adresse:string): Observable<any> {
+    alert("email "+email);
+    alert("username "+username);
+    const user = {
+      "nom":nom,
+      "prenom":prenom,
+      "username":username,
+      "email":email,
+      "password":password,
+      "adresse":adresse
+    }
+    return this.http.post("http://localhost:8080/api/auth/signup",user);
+  }
+
 }

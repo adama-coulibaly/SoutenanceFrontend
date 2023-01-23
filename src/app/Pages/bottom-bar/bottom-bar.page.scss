@@ -18,9 +18,16 @@ ion-title{
 
 .retourB{
  display: flex;
+ align-items: center;
+}
+.retourB img{
+    margin-left: 5%  ;
 }
 
 // ========================================================= HEADER ICONES
+.lefts{
+    display: flex;
+}
 .lefts ion-icon{
     color: white;
     font-size: 30px;
@@ -31,15 +38,17 @@ ion-title{
 .lefts .cart{
     position: absolute;
     right: 67px;
-    top: 2px;
+    top: 5px;
     background-color: red; color: white; 
     height: 15px; 
     border-radius: 100%;
+    // bottom: 35px;
     // text-align: center;
 }
 .lefts .notif{
     position: absolute;
-    right: 16px;
+    right: 22px;
+    bottom: 35px;
     background-color: red; color: white; 
     height: 15px; 
     border-radius: 100%;
