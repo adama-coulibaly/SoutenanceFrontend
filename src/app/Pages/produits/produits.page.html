@@ -27,62 +27,129 @@
 
     <ion-list *ngSwitchCase="'poulet'">
       <div class="produits">
-        <ion-card *ngFor="let adama of Adama">
-          <img src="../../../assets/produits/chairPur.jpg" alt="">
-          <ion-card-title>Chairs faso</ion-card-title>
-          <div class="nonETprix">
-            <div class="prix">
-              <p>Prix</p>
+        <ion-card *ngFor="let prod of lesPoulets" >
+         
+           <!-- =============================================== ICI ON VERIFIE LA CATEGORIES DES PRODUITS  -->
+           <div *ngIf="prod.categorieProd.nomcategories == 'poulets' ">
+            <img src="{{prod.phtoproduit}}" alt="" (click)="unProduit(prod.idproduit)"  (click)="setOpen(true)">
+
+            <ion-card-title (click)="unProduit(prod.idproduit)" (click)="setOpen(true)">{{prod.nomproduit.slice(0,10)}} . . .</ion-card-title>
+            <div class="nonETprix">
+              <div class="prix">
+                <p>Prix</p>
+              </div>
+              <div class="montant">
+                <p><strong>{{prod.prix}} Fcfa</strong></p>
+              </div>
             </div>
-            <div class="montant">
-              <p><strong>75000 Fcfa</strong></p>
+            <div class="boutonpanier">
+              <button>Ajouter au panier <ion-icon name="cart"></ion-icon></button>
             </div>
           </div>
-          <div class="boutonpanier">
-            <button>Ajouter au panier <ion-icon name="cart"></ion-icon></button>
-          </div>
+
+
+
         </ion-card>
       </div>
     </ion-list>
 
     <ion-list *ngSwitchCase="'outils'">
-      <div class="produits">
-        <ion-card *ngFor="let adama of Adama">
-          <img src="../../../assets/produits/51OzdTdR8dL._AC_UL320_.jpg" alt="">
-          <ion-card-title>Chairs faso</ion-card-title>
-          <div class="nonETprix">
-            <div class="prix">
-              <p><strong>Prix</strong></p>
+      <div  class="produits">
+        <ion-card *ngFor="let prod of lesOutils">
+          <!-- =============================================== ICI ON VERIFIE LA CATEGORIES DES PRODUITS  -->
+          <div *ngIf="prod.categorieProd.nomcategories == 'outils' ">
+            <img src="{{prod.phtoproduit}}" alt="" (click)="unProduit(prod.idproduit)" (click)="setOpen(true)">
+
+            <ion-card-title (click)="unProduit(prod.idproduit)" (click)="setOpen(true)">{{prod.nomproduit.slice(0,10)}} . . .</ion-card-title>
+            <div class="nonETprix">
+              <div class="prix">
+                <p>Prix</p>
+              </div>
+              <div class="montant">
+                <p><strong>{{prod.prix}} Fcfa</strong></p>
+              </div>
             </div>
-            <div class="montant">
-              <p><strong>75000 Fcfa</strong></p>
+            <div class="boutonpanier">
+              <button>Ajouter au panier <ion-icon name="cart"></ion-icon></button>
             </div>
           </div>
-          <div class="boutonpanier">
-            <button>Ajouter au panier <ion-icon name="cart"></ion-icon></button>
-          </div>
+
         </ion-card>
       </div>
     </ion-list>
 
     <ion-list *ngSwitchCase="'aliment'">
-      <div class="produits">
-        <ion-card *ngFor="let adama of Adama">
-          <img src="../../../assets/produits/Slider_Product-1.png" alt="">
-          <ion-card-title>Chairs faso</ion-card-title>
-          <div class="nonETprix">
-            <div class="prix">
-              <p>Prix</p>
+      <div  class="produits">
+        <ion-card *ngFor="let prod of lesAliments" >
+          <!-- =============================================== ICI ON VERIFIE LA CATEGORIES DES PRODUITS  -->
+          <div>
+            <img src="{{prod.phtoproduit}}" alt="" (click)="unProduit(prod.idproduit)"  (click)="setOpen(true)">
+
+            <ion-card-title (click)="unProduit(prod.idproduit)" (click)="setOpen(true)" >{{prod.nomproduit.slice(0,10)}} . . .</ion-card-title>
+            <div class="nonETprix">
+              <div class="prix">
+                <p>Prix</p>
+              </div>
+              <div class="montant">
+                <p><strong>{{prod.prix}} Fcfa</strong></p>
+              </div>
             </div>
-            <div class="montant">
-              <p><strong>75000 Fcfa</strong></p>
+            <div class="boutonpanier">
+              <button>Ajouter au panier <ion-icon name="cart"></ion-icon></button>
             </div>
-          </div>
-          <div class="boutonpanier">
-            <button>Ajouter au panier <ion-icon name="cart"></ion-icon></button>
           </div>
         </ion-card>
       </div>
     </ion-list>
   </div>
+
+
+
+   <!-- ====================================================MODAL==================================== -->
+
+   <ion-modal [isOpen]="isModalOpen" backdrop-dismiss="false">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Produits</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="setOpen(false)" style="color: white; background: red;">Fermer</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="cont">
+        <h5>{{unProd.nomproduit}}</h5>
+        <div align="center"><img src="{{unProd.phtoproduit}}" alt="" srcset="" width="50%"
+            class="ion-text-center"></div>
+
+        <div class="modalProduits">
+
+          <div class="sec1">
+            <div class="titre">
+              <p>Prix:</p>
+            </div>
+            <div class="valeurs">
+              <p><span class="sp">{{unProd.prix}} Fcfa</span></p>
+            </div>
+          </div>
+          <div class="sec1">
+            <div class="titre">
+              <p>Quantité disponible:</p>
+            </div>
+            <div class="valeurs">
+              <p><span class="sp">{{unProd.quantiteVente}}</span></p>
+            </div>
+          </div>
+          
+          <p>
+            {{unProd.descriptionproduit}}
+          </p>
+
+        </div>
+
+
+
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>

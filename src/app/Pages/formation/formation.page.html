@@ -40,7 +40,7 @@
       (click)="setOpen(true)">
         <img src="{{formation.photoformation}}" alt="">
       </ion-avatar>
-      <ion-card-title>{{formation.titreformation.slice(0,45)}}</ion-card-title>
+      <ion-card-title (click)="uneFormation(formation.idformation)" (click)="setOpen(true)">{{formation.titreformation.slice(0,25)}} ...</ion-card-title>
       
       <div class="boutonpanier d-flex justify-content-center">
          <ion-button (click)="visiter(formation.urlformation)">Commencer</ion-button>

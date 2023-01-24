@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: auto auto;
     background: #F8F6FB;
-}
+  }
 .nonETprix{
     display: flex;
     flex-direction: row;
@@ -10,22 +10,33 @@
     font-size: 12px;
     color: black;
 }
+ion-card img{
+    width: 100%;
+    height: 90px;
+    object-fit: fill;
+    cursor: pointer;
+}
 ion-card-title{
     font-weight: 700;
     text-align: center;
     font-size: 15px;
+    cursor: pointer;
 }
-// .montant{color: black;}
-// .prix p{
 
-// }
-
+.boutonpanier{
+    align-items: center;
+}
 .boutonpanier button{
     background: #04CF72;
     color: white;
     width: 100%;
-    padding: 2%;
+    padding: 5%;
 }
+.boutonpanier button ion-icon{
+   font-size: 25px;
+}
+
+
 ion-segment{
     background: #04CF72;
 }
@@ -35,3 +46,48 @@ ion-segment-button{
 ion-segment-button:hover{
     color:black;
 }
+
+// =============================================================== MODAL
+ion-modal {
+    --height: 50%;
+    width: 90%;
+    --border-radius: 5px;
+    margin: 5px auto;
+    --box-shadow: 1px 1px 6px #04CF72;
+  }
+  ion-modal p{
+    font-size: 15px;
+  }
+  ion-modal h5{
+    padding: 2%;
+    text-align: center;
+  }
+
+  ion-modal::part(backdrop) {
+    background: rgba(209, 213, 219);
+    opacity: 1;
+  }
+  
+  ion-modal ion-toolbar {
+    --background: #04CF72;
+    --color: white;
+  }
+.cont{
+    background: white;
+    border: 2px solid #04CF72;
+  }
+
+  .modalProduits{
+    padding: 10px;
+  }
+  .titre p{
+    font-weight: 900;
+}
+.sec1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+  .sp{
+    color: red;
+  }

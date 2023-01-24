@@ -13,4 +13,14 @@ export class AccueilServiceService {
    lesProduits():Observable<any>{
     return this.http.get('http://localhost:8080/produit/lister');
   }
+
+    // Recuperation de toute les Produits par categories
+    lesProduitsParCategories(idcategoris:number):Observable<any>{
+      return this.http.get(`http://localhost:8080/produit/listerParCategorie/${idcategoris}`);
+    }
+  
+    // RECUPERER MES PRODUITS PAR LEURS ID
+    lesProduitsParID(idcategoris:number):Observable<any>{
+      return this.http.get(`http://localhost:8080/produit/listerParid/${idcategoris}`);
+    }
 }

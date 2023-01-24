@@ -1,5 +1,5 @@
 <ion-content>
-  <ion-toolbar >
+  <ion-toolbar class="tools" >
     <div class="menu2" >
         <div><ion-back-button slot="start" defaultHref="profile" style="color: white;"></ion-back-button></div>
         <div> <ion-title slot="end">Ferme</ion-title></div>
@@ -125,11 +125,11 @@
         <ion-list *ngSwitchCase="'produits'" style="background-color: #e0dfe2;">
 
           <div class="containerFerme" style="background-color: #e0dfe2;" *ngIf="produitTotal != 0">
-            <div class="ferme1" *ngFor="let prod of produits">
-              <ion-card *ngIf="prod.etat == true">
+            <div  *ngFor="let prod of produits">
+              <ion-card *ngIf="prod.etat == true" class="ferme1">
                 <img src="{{prod.phtoproduit}}" style="cursor: pointer;" (click)="produit(prod.idproduit)"
                   expand="block" (click)="setOpen(true)">
-                <ion-card-title>{{prod.nomproduit}}</ion-card-title>
+                <ion-card-title>{{prod.nomproduit.slice(0,18)}} . . .</ion-card-title>
                 <ion-card-content>Qté: {{prod.quantiteVente}}</ion-card-content>
                 <div class="iconsProduits">
                   <ion-icon class="create" name="create-outline"></ion-icon>
@@ -151,59 +151,63 @@
   </div>
 
 
+ <!-- ====================================================MODAL==================================== -->
+  <ion-modal [isOpen]="isModalOpen" backdrop-dismiss="false">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Produits</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="setOpen(false)" style="color: white; background: red;">Fermer</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="cont">
+        <h5>{{bien.nomproduit}}</h5>
+        <div align="center"><img src="{{bien.phtoproduit}}" alt="" srcset="" width="50%"
+            class="ion-text-center"></div>
 
-      <!-- =========================================== Mon Modal -->
-      <ion-content>
-        <ion-modal [isOpen]="isModalOpen" backdrop-dismiss="false">
-          <ng-template>
-            <ion-header>
-              <ion-toolbar>
-                <ion-title>{{bien.nomproduit}}</ion-title>
-                <ion-buttons slot="end">
-                  <ion-button (click)="setOpen(false)" style="color: white; background: red;">Fermer</ion-button>
-                </ion-buttons>
-              </ion-toolbar>
-            </ion-header>
-            <ion-content class="cont">
-              <div align="center"><img src="{{bien.phtoproduit}}" alt="" srcset="" width="50%"
-                  class="ion-text-center"></div>
+        <div class="modalProduits">
 
-              <div class="modalProduits">
+          <div class="sec1">
+            <div class="titre">
+              <p>Prix:</p>
+            </div>
+            <div class="valeurs">
+              <p><span class="sp">{{bien.prix}}</span></p>
+            </div>
+          </div>
 
-                <div class="sec1">
-                  <div class="titre">
-                    <p>Prix:</p>
-                  </div>
-                  <div class="valeurs">
-                    <p><span class="sp">{{bien.prix}} Fcfa</span></p>
-                  </div>
-                </div>
-                <div class="sec1">
-                  <div class="titre">
-                    <p>Référence:</p>
-                  </div>
-                  <div class="valeurs">
-                    <p><span class="sp">{{bien.reference}}</span></p>
-                  </div>
-                </div>
-                <div class="sec1">
-                  <div class="titre">
-                    <p>Quantité:</p>
-                  </div>
-                  <div class="valeurs">
-                    <p><span class="sp">{{bien.quantiteVente}}</span></p>
-                  </div>
-                </div>
-                <p>
-                  {{bien.descriptionproduit}}
-                </p>
+          <div class="sec1">
+            <div class="titre">
+              <p>Référence:</p>
+            </div>
+            <div class="valeurs">
+              <p><span class="sp">{{bien.reference}}</span></p>
+            </div>
+          </div>
 
-              </div>
+          <div class="sec1">
+            <div class="titre">
+              <p>Quantité:</p>
+            </div>
+            <div class="valeurs">
+              <p><span class="sp">{{bien.quantiteVente}}</span></p>
+            </div>
+          </div>
+          
+          <p>
+            {{bien.descriptionproduit}}
+          </p>
+
+        </div>
 
 
 
-            </ion-content>
-          </ng-template>
-        </ion-modal>
       </ion-content>
+    </ng-template>
+  </ion-modal>
+
+
+    
 </ion-content>
