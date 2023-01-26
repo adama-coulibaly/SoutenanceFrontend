@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AnimationController, ModalController } from '@ionic/angular';
 import { PanierComponent } from 'src/app/panier/panier.component';
+import { PanierServiceService } from 'src/app/Services/panier-service.service';
+import { TokenStorageService } from 'src/app/Services/token-storage.service';
 
 
 @Component({
@@ -9,10 +11,25 @@ import { PanierComponent } from 'src/app/panier/panier.component';
   styleUrls: ['./bottom-bar.page.scss'],
 })
 export class BottomBarPage implements OnInit {
+  user: any;
+  panierProd: any;
+  panierTotal =  0;
+  MontantTotal: any;
 
-  constructor(private modalCtrl: ModalController,private animationCtrl: AnimationController) { }
+  constructor(private modalCtrl: ModalController,private animationCtrl: AnimationController,private tokenStorage:TokenStorageService,private panierService:PanierServiceService) { }
 
   ngOnInit() {
+
+    this.user = this.tokenStorage.getUser();
+    this.panierService.lesProduitsParFermes(this.user.id).subscribe(data=>{
+      this.panierProd = data;
+
+
+      for(let a of this.panierProd)
+        this.panierTotal += a.quantite 
+        // this.MontantTotal += a.totalproduit
+    
+    })
   }
 
 

@@ -1,7 +1,6 @@
 export class Ferme {
-
     idferme: any
-    omferme: any;
+    nomferme: any;
     activiteferme: any;
     adresseferme: any;
     taille: any;

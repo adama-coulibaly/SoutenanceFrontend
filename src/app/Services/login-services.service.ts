@@ -28,8 +28,6 @@ export class AuthService {
 
 
   registerO(nom:string,prenom:string,username:string,email:string,password:string,adresse:string): Observable<any> {
-    alert("email "+email);
-    alert("username "+username);
     const user = {
       "nom":nom,
       "prenom":prenom,

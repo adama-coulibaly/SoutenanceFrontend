@@ -15,6 +15,7 @@ export class PanierComponent implements OnInit {
   inc = 0;
   value = 0;
   MontantTotal=0
+  valeur=0;
 
   constructor(private modalCtrl: ModalController, private panierService:PanierServiceService, private tokenStorage:TokenStorageService) { }
 
@@ -26,15 +27,32 @@ export class PanierComponent implements OnInit {
 
       for(let a of this.panierProd){
         this.inc += a.quantite 
+        this.valeur = a.quantite
         this.MontantTotal += a.totalproduit
       }
     })
 
   }  
-  increment(added:any) {
-   
+   increment() {
+    this.panierService.lesProduitsParFermes(this.user.id).subscribe(data=>{
+      this.panierProd = data;
+
+
+      for(let a of this.panierProd){
+        this.valeur = a.quantite;
+      }
+    })
+  
   }
 
+  decrement() {
+    // valeur--;
+  }
+
+  // ================================== LE COMPTEUR 
+
+
+ 
   // =============================== LA FONCTION POUR FERMER LE MODAL
 
   closeModal() {

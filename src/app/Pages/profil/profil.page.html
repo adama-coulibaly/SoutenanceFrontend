@@ -6,7 +6,7 @@
 
 <ion-content>
     <div class="principalG">
-        <ion-card class="s">
+        <!-- <ion-card class="s">
           <div class="principal">
 
             <div class="profil">
@@ -20,7 +20,18 @@
                 <p>{{user.adresse}}</p>
             </div>
       </div>
+        </ion-card> -->
+        <ion-card style="text-align: center;">
+          <div><ion-avatar style="position: absolute;left: 40%; top: 10%;"><img src="{{user.avatar}}" alt="" srcset=""></ion-avatar></div>
+            <div style="margin-top: 25%;">
+              <ion-title>{{user.nom}} {{user.prenom}}</ion-title>
+            <p>{{user.email}}</p>
+            <p><strong>Téléphone:</strong> {{user.username}}</p>
+            <p><strong>Adresse:</strong>  {{user.adresse}}</p>
+            </div>
+
         </ion-card>
+
     </div>
 <!-- ================================= LES BOUTTONS AJOUTER ET DECONNEXION -->
 <div class="boutons">
@@ -46,7 +57,9 @@
 <div class="containerFerme">
   <div class="ferme1" *ngFor="let fermes of lesFermes">
       <ion-card>
-          <img src="{{fermes.imageferme}}">
+          <div style="height: 150px;">
+            <img src="{{fermes.imageferme}}">
+          </div>
           <ion-card-title>{{fermes.nomferme}}</ion-card-title>
           <ion-button [routerLink]="['ferme',fermes.idferme]">Voir plus</ion-button>
           <!-- [routerLink]="['/bottom-bar/forum/detail-forum',themes.idtheme]" -->
@@ -63,33 +76,81 @@
   <ng-template>
     <div class="forms">
       <h2>Ajouter une ferme </h2>
-      <form>
+
+      <div *ngIf="nonValide" style="color: red; text-align: center;">
+        <p>{{nonValide}}</p>
+      </div>
+
+      <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"
+      novalidate>
+<!-- ======================================================  CHAMPS NOM ================================= -->
         <ion-item counter="true">
           <ion-label position="floating">Nom <span>*</span></ion-label>
-          <ion-input type="text" maxlength="15" ></ion-input>
+          <ion-input type="text" equired="true" required name="nomferme" [(ngModel)]="form.nomferme"  minlength="3" maxlength="20"
+            #nomferme="ngModel" ></ion-input>
         </ion-item>
+
+        <div class="alert "
+        role="alert"
+        *ngIf="nomferme.errors && f.submitted">
+        <div *ngIf="nomferme.errors">Le nom est obligatoire</div>
+      </div>
+
+<!-- ======================================================  CHAMPS PRENOM ================================= -->
 
         <ion-item counter="true">
           <ion-label position="floating">Activité <span>*</span></ion-label>
-          <ion-input type="text" maxlength="15" ></ion-input>
+          <ion-input type="text"  name="activiteferme" required [(ngModel)]="form.activiteferme"  minlength="3" maxlength="50"
+          #activiteferme="ngModel" ></ion-input>
         </ion-item>
+
+        <div class="alert "
+        role="alert"
+        *ngIf="activiteferme.errors && f.submitted">
+        <div *ngIf="activiteferme.errors">Veuillez donner une activité !</div>
+      </div>
+<!-- ======================================================  CHAMPS ADRESSE ================================= -->
 
         <ion-item counter="true">
           <ion-label position="floating">Adresse <span>*</span></ion-label>
-          <ion-input type="text" maxlength="15" ></ion-input>
+          <ion-input type="text" name="adresseferme" required [(ngModel)]="form.adresseferme"  minlength="3" maxlength="50"
+          #adresseferme="ngModel" ></ion-input>
         </ion-item>
 
+        <div class="alert "
+        role="alert"
+        *ngIf="adresseferme.errors && f.submitted">
+        <div *ngIf="adresseferme.errors">Adresse incorrect !</div>
+      </div>
+<!-- ======================================================  CHAMPS TAILLE ================================= -->
+
         <ion-item counter="true">
-          <ion-label position="floating">Taills <span>*</span></ion-label>
-          <ion-input type="text" maxlength="15" ></ion-input>
+          <ion-label position="floating">Tailles <span>*</span></ion-label>
+          <ion-input type="text" name="taille" [(ngModel)]="form.taille" required  minlength="3" maxlength="50"
+          #taille="ngModel" placeholder="2 héctares" ></ion-input>
         </ion-item>
+        <div class="alert "
+        role="alert"
+        *ngIf="taille.errors && f.submitted">
+        <div *ngIf="taille.errors">Veuillez donner une taille avec "héctares"</div>
+      </div>
+<!-- ======================================================  CHAMPS IMAGES ================================= -->
 
         <ion-item class="file-input">
           <ion-icon name="camera" style="color: #04CF72;"></ion-icon>
-          <ion-input type="file" ></ion-input>
+          <ion-input type="file"  (change)="fileChangm($event)" name="file" [(ngModel)]="form.file" 
+          #file="ngModel" required></ion-input>
         </ion-item>
+        <div class="alert "
+        role="alert"
+        *ngIf="nomferme.errors && f.submitted">
+        <div *ngIf="nomferme.errors">Veuillez selectionner une image !</div>
+      </div>
+
+
+
         <div class="bottoms-boutons">
-          <div><ion-button>Créer</ion-button></div>
+          <div><ion-button type="submit">Créer</ion-button></div>
           <div><ion-button class="annuler" (click)="setOpen(false)">annuler</ion-button></div>
           
           

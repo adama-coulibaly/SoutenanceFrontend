@@ -9,17 +9,6 @@ const routes: Routes = [
 
   },
 
-  //  {
-  //   path: '',
-  //   redirectTo: 'bienveue',
-  //   pathMatch: 'full'
-  // }
-  // ,
-  // {
-  //   path: 'bottom-bar',
-  //   loadChildren: () => import('./bottom-bar/bottom-bar.module').then( m => m.BottomBarPageModule)
-  // },
-
 
   {
     path: 'splash-screen',
@@ -42,6 +31,16 @@ const routes: Routes = [
     path: 'inscription',
     loadChildren: () => import('./Pages/inscription/inscription.module').then( m => m.InscriptionPageModule)
   },
+  {
+    path: 'valider-commende',
+    loadChildren: () => import('./Pages/valider-commende/valider-commende.module').then( m => m.ValiderCommendePageModule)
+  },
+
+  // {
+  //   path: 'detail-production',
+  //   loadChildren: () => import('./Pages/detail-production/detail-production.module').then( m => m.DetailProductionPageModule)
+  // },
+
 
   // {
   //   path: 'formation',

@@ -26,9 +26,15 @@ export class ConnexionPage implements OnInit {
 Message!:String 
 
   ngOnInit() {
+    this.loadData();
   }
 
-
+//   ionViewWillEnter() {
+    
+// }
+  loadData() {
+   this.route.navigateByUrl('/connexion')
+  }
 
 
   onSubmit(): void {

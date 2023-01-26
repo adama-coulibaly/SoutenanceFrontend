@@ -1,0 +1,65 @@
+.lesBoutons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+     align-items: center;
+     margin: 2%;
+}
+.supprimer ion-button{
+    color:red;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.ajouter button{
+    // margin-right: 5%;
+    color:#04CF72;
+    border: 1px solid; 
+    padding: 5%;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.supprimer button ion-icon{
+    font-size: 25px;
+}
+.ajouter button ion-icon{
+    font-size: 25px;
+}
+.textButton{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 10%;
+    align-items: center;
+}
+ .recherche input{
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border: none;
+    padding: 2%;
+    border-radius: 5px;    
+}
+.cardes{
+    margin-top: 10%;
+}
+ion-card{
+    height: 70px;
+    padding: 2%;
+    border: 1px solid #04CF72;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    align-items: center;
+}
+.carde{
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.heures span{
+    position: absolute;
+    color: red;
+    font-weight: bold;
+    right: 8px;
+    top: 48px;
+}

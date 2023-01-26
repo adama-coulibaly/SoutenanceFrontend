@@ -10,6 +10,7 @@ import { DatePipe } from '@angular/common';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { PanierComponent } from './panier/panier.component';
+import { FirebaseX } from '@awesome-cordova-plugins/firebase-x/ngx';
 
 
 
@@ -19,7 +20,7 @@ import { PanierComponent } from './panier/panier.component';
 @NgModule({
   declarations: [AppComponent,PanierComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,FontAwesomeModule,HttpClientModule,Ng2SearchPipeModule,],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },InAppBrowser],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },InAppBrowser,FirebaseX],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

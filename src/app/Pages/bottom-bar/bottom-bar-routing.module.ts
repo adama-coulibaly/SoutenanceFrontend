@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { GuardsGuard } from 'src/app/guards.guard';
 
 import { BottomBarPage } from './bottom-bar.page';
 
@@ -10,6 +11,7 @@ const routes: Routes = [
   path: 'bottom-bar',
   component: BottomBarPage,
       children: [
+       
         {
           path: 'accueil',
           loadChildren: () => import('../accueil/accueil.module').then(m => m.AccueilPageModule)
@@ -28,16 +30,15 @@ const routes: Routes = [
         },
         {
           path: 'profil',
-          loadChildren: () => import('../profil/profil.module').then( m => m.ProfilPageModule)
+          loadChildren: () => import('../profil/profil.module').then( m => m.ProfilPageModule),canActivate: [GuardsGuard]
         },
+        {
+          path: 'detail-production',
+          loadChildren: () => import('../../Pages/detail-production/detail-production.module').then( m => m.DetailProductionPageModule)
+        },
+       
       ]
     },
-
-    // {
-    //   path: '',
-    //   loadChildren: () => import('../accueil/accueil.module').then(m => m.AccueilPageModule)
-    // },
-   
    
     {
       path: '',

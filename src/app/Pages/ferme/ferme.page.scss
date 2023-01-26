@@ -1,6 +1,13 @@
 .tools{
   margin-top: 70px;
 }
+.inline{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 2%;  
+
+}
 .menu2{
   background: #04CF72;
   display: flex;
@@ -8,10 +15,6 @@
   align-items: center;
   color: white;
 }
-
-
-// style=" "
-
 .section1 {
     display: grid;
     grid-template-columns: auto auto;
@@ -122,23 +125,24 @@
 
 // ======================================== LES PRODUITS =================================
 .containerFerme{
+  // display: flex;
+  // flex-direction: row;
   display: grid;
   grid-template-columns:auto auto;
 }
 .ferme1{
     text-align: center;
-    height: 85%;
 }
 
-.ferme1 img{
-      width: 100%;
-      height: 50%;
-     object-fit: fill;
+.ferme1 .cardeH img{
+  width: 100%;
+  height: 100%;
 }
 .ferme1 ion-card-title{
     font-weight: bold;
     font-size: 12px;
 }
+
 .ferme1 ion-button{
     font-size: 10px;
 //    height: 25px;
@@ -174,44 +178,6 @@ ion-segment-button {
   .essai{
     background: red;
   }
-// // =============================================================== MODAL
-// ion-modal {
-//     --height: 50%;
-//     width: 90%;
-//     --border-radius: 5px;
-//     margin: 5px auto;
-//     --box-shadow: 1px 1px 6px #04CF72;
-    
-
-//   }
-  
-//   ion-modal::part(backdrop) {
-//     background: white;
-//     // opacity: 1;
-//   }
-  
-//   ion-modal ion-toolbar {
-//     --background: #04CF72;
-//     --color: white;
-//   }
-// .cont{
-//     background: white;
-//     border: 2px solid #04CF72;
-//   }
-
-//   .modalProduits{
-//     padding: 10px;
-//   }
-// .sec1{
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: space-around;
-// }
-//   .sp{
-//     color: red;
-//   }
-
-//   ====================================================CONFIRM POPUP
 
 ion-alert.custom-alert {
     --backdrop-opacity: 0.7;
@@ -278,10 +244,6 @@ ion-modal {
 .cont{
     background: white;
     border: 2px solid #04CF72;
-  }
-
-  .modalProduits{
-    padding: 10px;
   }
   .titre p{
     font-weight: 900;

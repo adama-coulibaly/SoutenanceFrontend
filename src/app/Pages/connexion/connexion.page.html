@@ -41,11 +41,9 @@
           </div>
         
         <!-- ============================ EN CAS D'ERREUR  DE MOT DE PASSE ========================================== -->
-        <div
-        class="alert alert-danger  col-md-6"
+        <div class="alert alert-danger  col-md-6"
         role="alert"
-        *ngIf="password.errors && f.submitted"
-      >
+        *ngIf="password.errors && f.submitted">
         <div *ngIf="password.errors">Mot de passe est obligatoire !</div>
         <div *ngIf="password.errors">
          6 caractères au minimum

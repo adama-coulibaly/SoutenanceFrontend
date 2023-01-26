@@ -16,6 +16,10 @@ const routes: Routes = [
   //   path: 'forum',
   //   loadChildren: () => import('../forum/forum.module').then( m => m.ForumPageModule)
   // },
+  {
+    path: 'detail-production',
+    loadChildren: () => import('../detail-production/detail-production.module').then( m => m.DetailProductionPageModule)
+  },
 ];
 
 @NgModule({

@@ -1,0 +1,70 @@
+<ion-toolbar style="margin-top: 15%;">
+  <div>
+    <ion-segment [(ngModel)]="pages">
+      <ion-segment-button value="entretiens">
+        <ion-label>Entretiens</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="mortalite">
+        <ion-label>Mortalités</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+</ion-toolbar>
+
+<ion-content>
+
+<div [ngSwitch]="pages">
+
+  <ion-list *ngSwitchCase="'entretiens'" style="  background: #efecee;
+  ">
+    <div class="lesBoutons">
+      <div class="supprimer"> <ion-button fill="outline"> <ion-icon name="trash-outline"></ion-icon> Supprimer</ion-button></div>
+      <div class="ajouter"> <ion-button fill="outline"> <ion-icon name="add-circle-outline"></ion-icon> Ajouter</ion-button> </div>
+    </div>
+    
+    <div class="textButton">
+      <div class="text">Les entretiens</div>
+      <div class="recherche"> <input type="text" placeholder="Recherche..."> </div>
+    </div>
+    
+    
+    <div class="cardes">
+      <ion-card class="carde" *ngFor="let ada of Adama">
+        <div class="case"><input type="checkbox"></div>
+      <div class="date">12/12/2023</div>
+      <div class="titreEent">Entretien pour les vaccins</div>
+      <div class="heures">09:00 <span>Unique</span> </div>
+      </ion-card>
+    </div>
+
+  </ion-list>
+
+
+
+  <!-- ============================================================= -->
+  <ion-list *ngSwitchCase="'mortalite'" style="  background: #efecee;
+  ">
+    
+    <div class="lesBoutons">
+      <div class="supprimer"> <ion-button fill="outline"><ion-icon name="trash-outline"></ion-icon> Supprimer</ion-button></div>
+      <div class="ajouter"> <ion-button fill="outline"> <ion-icon name="add-circle-outline"></ion-icon> Ajouter</ion-button> </div>
+    </div>
+    
+    <div class="textButton">
+      <div class="text">Les mortalités</div>
+      <div class="recherche"> <input type="text" placeholder="Recherche..."> </div>
+    </div>
+    
+    
+    <div class="cardes">
+      <ion-card class="carde" *ngFor="let ada of Adama">
+        <div class="case"><input type="checkbox"></div>
+      <div class="date">12/12/2023</div>
+      <div class="titreEent">Entretien pour les vaccins</div>
+      <div class="heures">09:00 <span>Unique</span> </div>
+      </ion-card>
+    </div>
+  </ion-list>
+
+</div>
+</ion-content>

@@ -1,22 +1,23 @@
 <ion-content>
-  <ion-toolbar class="tools" >
-    <div class="menu2" >
-        <div><ion-back-button slot="start" defaultHref="profile" style="color: white;"></ion-back-button></div>
-        <div> <ion-title slot="end">Ferme</ion-title></div>
+  <ion-toolbar class="tools">
+    <div class="menu2">
+      <div><ion-back-button slot="start" defaultHref="profile" style="color: white;"></ion-back-button></div>
+      <div> <ion-title slot="end">Ferme</ion-title></div>
     </div>
-   
+
   </ion-toolbar>
 
-<div class="principale">
-  <div class="section1">
-    <div class="titre">
-      <p>{{info.nomferme}}</p>
+  <div class="principale">
+    <div class="section1">
+      <div class="titre">
+        <p>{{info.nomferme}}</p>
+      </div>
+      <div class="icons">
+        <ion-icon class="create" name="create-outline"></ion-icon>
+        <ion-icon class="delete" name="trash-outline"></ion-icon>
+      </div>
     </div>
-    <div class="icons">
-      <ion-icon class="create" name="create-outline"></ion-icon>
-      <ion-icon class="delete" name="trash-outline"></ion-icon>
-    </div>
-  </div></div>
+  </div>
   <!--  -->
   <div class="card">
     <ion-card class="ion-text-center">
@@ -62,10 +63,12 @@
       <div [ngSwitch]="pages" style="background-color: #e0dfe2;">
 
         <ion-list *ngSwitchCase="'productions'" style="background-color: #e0dfe2;">
-
+          <!-- ============================================================================================================ -->
+          <div style="display: flex;justify-content: flex-end;"> <ion-button fill="outline" style="margin-right: 10px;">
+              <ion-icon name="add-circle-outline" style="margin-right: 5px;"> </ion-icon> production</ion-button></div>
           <!-- <div class="titreInterim"><ion-title>Mes productions</ion-title></div> -->
           <div class="productions" style="background-color: #e0dfe2;" *ngIf="taille != 0 ">
-            <ion-card *ngFor="let product of production"  >
+            <ion-card *ngFor="let product of production">
               <div class="titreProduction">
                 <div class="nomTitre">
                   <p>{{product.typeproduction.nomtype}}</p>
@@ -107,11 +110,11 @@
                   <p>{{product.quantite}}</p>
                 </div>
               </div>
-              <div align="center"> <ion-button>Détails</ion-button></div>
+              <div align="center"> <ion-button routerLink="/bottom-bar/detail-production">Détails</ion-button></div>
             </ion-card>
           </div>
 
-        <!-- ======================================================== SI IL N'Y A PAS DE PRODUITS ============================== -->
+          <!-- ======================================================== SI IL N'Y A PAS DE PRODUITS ============================== -->
           <div class="ion-text-center" id="pasDeProductions" *ngIf="taille == 0 ">
             <P>Vous n'avez pas de production encore</P>
           </div>
@@ -119,17 +122,19 @@
 
         </ion-list>
 
-          
+
         <!-- =========================================================== SECTION DES PRODUITS++++++++++++++++++++++++++++++ -->
 
         <ion-list *ngSwitchCase="'produits'" style="background-color: #e0dfe2;">
 
           <div class="containerFerme" style="background-color: #e0dfe2;" *ngIf="produitTotal != 0">
-            <div  *ngFor="let prod of produits">
+            <div *ngFor="let prod of produits">
               <ion-card *ngIf="prod.etat == true" class="ferme1">
-                <img src="{{prod.phtoproduit}}" style="cursor: pointer;" (click)="produit(prod.idproduit)"
-                  expand="block" (click)="setOpen(true)">
-                <ion-card-title>{{prod.nomproduit.slice(0,18)}} . . .</ion-card-title>
+                <div class="cardeH" style="height: 150px;">
+                  <img src="{{prod.phtoproduit}}" style="cursor: pointer;" (click)="produit(prod.idproduit)"
+                    expand="block" (click)="setOpen(true)">
+                </div>
+                <ion-card-title style="margin: 2%;">{{prod.nomproduit.slice(0,18)}} . . .</ion-card-title>
                 <ion-card-content>Qté: {{prod.quantiteVente}}</ion-card-content>
                 <div class="iconsProduits">
                   <ion-icon class="create" name="create-outline"></ion-icon>
@@ -140,8 +145,8 @@
             </div>
           </div>
 
-           <!-- ======================================================== SI IL N'Y A PAS DE PRODUITS ============================== -->
-           <div class="ion-text-center" id="pasDeProductions" *ngIf="produitTotal == 0 ">
+          <!-- ======================================================== SI IL N'Y A PAS DE PRODUITS ============================== -->
+          <div class="ion-text-center" id="pasDeProductions" *ngIf="produitTotal == 0 ">
             <P>Vous n'avez pas de produit encore</P>
           </div>
 
@@ -151,7 +156,7 @@
   </div>
 
 
- <!-- ====================================================MODAL==================================== -->
+  <!-- ====================================================MODAL==================================== -->
   <ion-modal [isOpen]="isModalOpen" backdrop-dismiss="false">
     <ng-template>
       <ion-header>
@@ -164,8 +169,7 @@
       </ion-header>
       <ion-content class="cont">
         <h5>{{bien.nomproduit}}</h5>
-        <div align="center"><img src="{{bien.phtoproduit}}" alt="" srcset="" width="50%"
-            class="ion-text-center"></div>
+        <div align="center"><img src="{{bien.phtoproduit}}" alt="" srcset="" width="50%" class="ion-text-center"></div>
 
         <div class="modalProduits">
 
@@ -195,7 +199,7 @@
               <p><span class="sp">{{bien.quantiteVente}}</span></p>
             </div>
           </div>
-          
+
           <p>
             {{bien.descriptionproduit}}
           </p>
@@ -209,5 +213,5 @@
   </ion-modal>
 
 
-    
+
 </ion-content>

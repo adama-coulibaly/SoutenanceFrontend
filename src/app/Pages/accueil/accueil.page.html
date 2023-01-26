@@ -1,21 +1,3 @@
-
-<!-- MON MENU -->
-<!-- <ion-header>
-  <ion-toolbar>
-    <div slot="start" class="retourB">
-        <ion-title>Accueil</ion-title>
-    </div>
-
-    <div slot="end" class="lefts">
-      <ion-icon name="cart-outline" (click)="openModal()"></ion-icon>
-      <ion-badge class="cart">5</ion-badge>
-      <ion-icon name="notifications-outline"></ion-icon>
-      <ion-badge class="notif"> 5 </ion-badge>
-    </div>
-  </ion-toolbar>
-</ion-header> -->
-
-<!--  -->
 <ion-content>
  <div class="principale" >
   <ion-slides [options]="options">
@@ -52,7 +34,7 @@
               poulets de chairs necessite un grand sacrifice de temps et veilles aux entretiens.
             </p>
 
-           <div class="buttonMesfermes"> <ion-button >Mes fermes</ion-button></div>
+           <div class="buttonMesfermes"> <ion-button routerLink="/detail-production">Mes fermes</ion-button></div>
         </ion-card-content>
     </ion-card>
 </div>
@@ -60,13 +42,13 @@
 <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++ LES PRODUITS ACCUEILS -->
 <div class="lesTitres"><p>Les produits</p></div>
 
-<div class="containerFormation">
+<div class="containerFormation1">
     <ion-slides [options]="options2">
 
         <ion-slide class="produits1" *ngFor="let prod  of lesproduits">
                <ion-card>
-              <img src="{{prod.phtoproduit}}">
-              <ion-card-title>{{prod.nomproduit}}</ion-card-title>
+             <div style="height: 100px; cursor: pointer;"> <img src="{{prod.phtoproduit}}" (click)="unProduit(prod.idproduit)"  (click)="setOpen(true)"> </div>
+              <ion-card-title style="font-size: 12px;" (click)="unProduit(prod.idproduit)"  (click)="setOpen(true)">{{prod.nomproduit.slice(0,15)}}</ion-card-title>
               <p><strong>{{prod.prix}} Fcfa</strong></p>
               <div class="boutonpanier"> 
                 <button routerLink="{{prod.idproduits}}">Ajouter au panier <ion-icon name="cart"></ion-icon></button>
@@ -80,26 +62,21 @@
 
 <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++ LES FORMATIONS ACCUEILS -->
 <div class="lesTitres"><p>Suivre des formations</p></div>
-<div class="containerFormation">
-    <div class="formation1">
-        <ion-card>
-            <img src="../../../assets/produits/téléchargement (2).jpg">
-            <ion-card-title>Débuter en aviculture</ion-card-title>
-            <ion-button>Commencer</ion-button>
-        </ion-card>
+
+
+<div class="produits">
+  <ion-card *ngFor="let formation of lesFormation" class="card">
+    <ion-avatar class="ion-text-center" style="cursor: pointer;" (click)="uneFormation(formation.idformation)" expand="block"
+    (click)="setOpen(true)">
+      <img src="{{formation.photoformation}}" alt="">
+    </ion-avatar>
+    <ion-card-title (click)="uneFormation(formation.idformation)" (click)="setOpen(true)">{{formation.titreformation.slice(0,25)}} ...</ion-card-title>
+    
+    <div class="boutonpaniers d-flex justify-content-center">
+       <ion-button (click)="visiter(formation.urlformation)">Commencer</ion-button>
     </div>
-
-    <div class="formation1">
-      <ion-card>
-          <img src="../../../assets/produits/recette.jpg">
-          <ion-card-title>Création des recettes</ion-card-title>
-          <!-- <ion-card-content><p>Nous vous proposons des formations certifiées a des couts exceptionnels</p></ion-card-content> -->
-          <ion-button>Commencer</ion-button>
-      </ion-card>
-  </div>
+  </ion-card>
 </div>
-<div class="lienVoirPlus"> <a routerLink="/bottom-bar/formation">Voir plus >></a></div>
-
 <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++ LES PRODUITS ACCUEILS -->
 <div class="lesTitres"><p>Rétrouver des experts ici</p></div>
 <div class="containeurExperts">
@@ -111,6 +88,98 @@
       </ion-card>
 </div>
 
+
+
+
+ <!-- ====================================================MODAL FORMATIONS==================================== -->
+
+ <ion-modal [isOpen]="isModalOpen" backdrop-dismiss="false">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Formation</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="setOpen(false)" style="color: white; background: red;">Fermer</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="cont">
+      <h5>{{uneformation.titreformation}}</h5>
+      <div align="center"><img src="{{uneformation.photoformation}}" alt="" srcset="" width="50%"
+          class="ion-text-center"></div>
+
+      <div class="modalProduits">
+
+        <div class="sec1">
+          <div class="titre">
+            <p>Durée:</p>
+          </div>
+          <div class="valeurs">
+            <p><span class="sp">{{uneformation.dureformation}}</span></p>
+          </div>
+        </div>
+        
+        <p>
+          {{uneformation.description}}
+        </p>
+
+      </div>
+
+
+
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+<!-- ======================================================================== -->
+
+<!-- ==================================================== MODAL PRODUITS ==================================== -->
+
+<ion-modal [isOpen]="isModalOpen" backdrop-dismiss="false">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Produits</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="setOpen(false)" style="color: white; background: red;">Fermer</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="cont">
+      <h5>{{unProd.nomproduit}}</h5>
+      <div align="center"><img src="{{unProd.phtoproduit}}" alt="" srcset="" width="50%"
+          class="ion-text-center"></div>
+
+      <div class="modalProduits">
+
+        <div class="sec1">
+          <div class="titre">
+            <p>Prix:</p>
+          </div>
+          <div class="valeurs">
+            <p><span class="sp">{{unProd.prix}} Fcfa</span></p>
+          </div>
+        </div>
+        <div class="sec1">
+          <div class="titre">
+            <p>Quantité disponible:</p>
+          </div>
+          <div class="valeurs">
+            <p><span class="sp">{{unProd.quantiteVente}}</span></p>
+          </div>
+        </div>
+        
+        <p>
+          {{unProd.descriptionproduit}}
+        </p>
+
+      </div>
+
+
+
+    </ion-content>
+  </ng-template>
+</ion-modal>
 
 
 </ion-content>

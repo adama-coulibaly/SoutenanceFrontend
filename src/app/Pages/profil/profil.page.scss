@@ -55,7 +55,8 @@ ion-badge{
 }
 
 .ferme1 img{
-      width: 70%;
+      width: 100%;
+      height: 100%;
       padding: 5%;
 }
 .ferme1 ion-card-title{
@@ -132,4 +133,12 @@ ion-modal#example-modal {
   .file-input{
     font-size: 9px;
     text-align: center;
+  }
+  .alert{
+    color: red;
+    text-align: center;
+    font-size: 12px;
+  }
+  ion-avatar{
+    --size: 200px;
   }

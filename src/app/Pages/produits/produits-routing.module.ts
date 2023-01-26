@@ -14,6 +14,10 @@ const routes: Routes = [
 
 
   },
+  {
+    path: 'valider-commende',
+    loadChildren: () => import('../valider-commende/valider-commende.module').then( m => m.ValiderCommendePageModule)
+  },
   // {
   //   path: 'forum',
   //   loadChildren: () => import('../forum/forum.module').then(m => m.ForumPageModule)
