@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { PanierComponent } from 'src/app/panier/panier.component';
 import { AccueilServiceService } from 'src/app/Services/accueil-service.service';
 import { ThemeServiceService } from 'src/app/Services/theme-service.service';
@@ -7,6 +7,7 @@ import { ThemeServiceService } from 'src/app/Services/theme-service.service';
 import { AnimationController } from '@ionic/angular';
 import { FormationServiceService } from 'src/app/Services/formation-service.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -43,7 +44,7 @@ export class AccueilPage implements OnInit {
       autoplay:true
     }
 
-  constructor(private serviceAccueil:AccueilServiceService, private modalCtrl: ModalController,private animationCtrl: AnimationController,private serviceFormation:FormationServiceService) { }
+  constructor(private router:Router, public navCtrl: NavController,private serviceAccueil:AccueilServiceService, private modalCtrl: ModalController,private animationCtrl: AnimationController,private serviceFormation:FormationServiceService) { }
   lesThemes:any;
 
   ngOnInit() {
@@ -88,7 +89,15 @@ uneFormation(idformation:any){
       }
     })
     
-  }
+  } 
+  // ionViewWillEnter() {
+  //   console.log("Page is about to be loaded and displayed");
+  //   this.loadData();
+  // }
+
+  // loadData() {
+  //  this.router.navigateByUrl('bottom-bar/accueil')
+  // }
 
     // LISTER LES PRODUIT PAR LEURS ID
   unProduit(idproduit: any) {

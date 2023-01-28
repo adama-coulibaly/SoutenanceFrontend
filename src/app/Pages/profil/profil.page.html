@@ -1,39 +1,5 @@
-<!-- <ion-header>
-  <ion-toolbar>
-    <ion-title>profil</ion-title>
-  </ion-toolbar>
-</ion-header> -->
-
 <ion-content>
-    <div class="principalG">
-        <!-- <ion-card class="s">
-          <div class="principal">
-
-            <div class="profil">
-                <img src="{{user.avatar}}" alt="" srcset="">
-                <ion-badge><ion-icon name="camera"></ion-icon></ion-badge>
-            </div>
-            <div class="donnees">
-                <p>{{user.email}}</p>
-                <p>{{user.nom}} {{user.prenom}}</p>
-                <p>{{user.username}}</p>
-                <p>{{user.adresse}}</p>
-            </div>
-      </div>
-        </ion-card> -->
-        <ion-card style="text-align: center;">
-          <div><ion-avatar style="position: absolute;left: 40%; top: 10%;"><img src="{{user.avatar}}" alt="" srcset=""></ion-avatar></div>
-            <div style="margin-top: 25%;">
-              <ion-title>{{user.nom}} {{user.prenom}}</ion-title>
-            <p>{{user.email}}</p>
-            <p><strong>Téléphone:</strong> {{user.username}}</p>
-            <p><strong>Adresse:</strong>  {{user.adresse}}</p>
-            </div>
-
-        </ion-card>
-
-    </div>
-<!-- ================================= LES BOUTTONS AJOUTER ET DECONNEXION -->
+   <!-- ================================= LES BOUTTONS AJOUTER ET DECONNEXION -->
 <div class="boutons">
   <div class="modifier">
       <ion-button>Modifier</ion-button>
@@ -90,7 +56,7 @@
             #nomferme="ngModel" ></ion-input>
         </ion-item>
 
-        <div class="alert "
+        <div class="alerts "
         role="alert"
         *ngIf="nomferme.errors && f.submitted">
         <div *ngIf="nomferme.errors">Le nom est obligatoire</div>
@@ -104,7 +70,7 @@
           #activiteferme="ngModel" ></ion-input>
         </ion-item>
 
-        <div class="alert "
+        <div class="alerts "
         role="alert"
         *ngIf="activiteferme.errors && f.submitted">
         <div *ngIf="activiteferme.errors">Veuillez donner une activité !</div>
@@ -117,7 +83,7 @@
           #adresseferme="ngModel" ></ion-input>
         </ion-item>
 
-        <div class="alert "
+        <div class="alerts "
         role="alert"
         *ngIf="adresseferme.errors && f.submitted">
         <div *ngIf="adresseferme.errors">Adresse incorrect !</div>
@@ -129,7 +95,7 @@
           <ion-input type="text" name="taille" [(ngModel)]="form.taille" required  minlength="3" maxlength="50"
           #taille="ngModel" placeholder="2 héctares" ></ion-input>
         </ion-item>
-        <div class="alert "
+        <div class="alerts "
         role="alert"
         *ngIf="taille.errors && f.submitted">
         <div *ngIf="taille.errors">Veuillez donner une taille avec "héctares"</div>
@@ -141,7 +107,7 @@
           <ion-input type="file"  (change)="fileChangm($event)" name="file" [(ngModel)]="form.file" 
           #file="ngModel" required></ion-input>
         </ion-item>
-        <div class="alert "
+        <div class="alerts "
         role="alert"
         *ngIf="nomferme.errors && f.submitted">
         <div *ngIf="nomferme.errors">Veuillez selectionner une image !</div>

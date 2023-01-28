@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AnimationController, ModalController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { AnimationController, ModalController, PopoverController } from '@ionic/angular';
 import { PanierComponent } from 'src/app/panier/panier.component';
 import { PanierServiceService } from 'src/app/Services/panier-service.service';
 import { TokenStorageService } from 'src/app/Services/token-storage.service';
+import { CompteUserComponent } from '../compte-user/compte-user.component';
 
 
 @Component({
@@ -16,7 +18,7 @@ export class BottomBarPage implements OnInit {
   panierTotal =  0;
   MontantTotal: any;
 
-  constructor(private modalCtrl: ModalController,private animationCtrl: AnimationController,private tokenStorage:TokenStorageService,private panierService:PanierServiceService) { }
+  constructor(private modalCtrl: ModalController,private animationCtrl: AnimationController,private tokenStorage:TokenStorageService,private panierService:PanierServiceService,public popoverCtrl: PopoverController,private route:Router) { }
 
   ngOnInit() {
 
@@ -31,10 +33,27 @@ export class BottomBarPage implements OnInit {
     
     })
   }
+  // =======================================================Popopup de profile 
+  async presentPopover(ev: any) {
+    const popover = await this.popoverCtrl.create({
+      component: CompteUserComponent,
+      event: ev,
+      translucent: true
+    });
+    return await popover.present();
+  }
 
 
-
+  customPopoverOptions = {
+    header: 'Hair Color',
+    subHeader: 'Select your hair color',
+    message: 'Only select your dominant hair color',
+  };
   
+redirection(){
+  this.route.navigateByUrl("/connexion")
+}
+
   async openModal() {
     const myEnterAnimation = await this.animationCtrl.create('myEnter')
       .duration(400)

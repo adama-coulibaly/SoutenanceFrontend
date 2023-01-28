@@ -36,7 +36,7 @@ Message!:String
    this.route.navigateByUrl('/connexion')
   }
 
-
+// =========================================================== CONNEXION =====================================================
   onSubmit(): void {
     const { usernameOrEmail, password } = this.form;
 
@@ -48,26 +48,17 @@ Message!:String
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        // this.reloadPage();
         if(this.isLoggedIn == true)
            this.route.navigateByUrl("bottom-bar/accueil");
+        else{
+          this.isLoginFailed = true;
+        }
       },
-      err => {
+      err => { this.isLoginFailed = true;
         this.errorMessage = err.error.message;
-        this.isLoginFailed = true;
+       
       }
     );
   }
-
-
-  // connexion(form: any){
-  //   if(form.value.email == "coulibalyadamabekaye03@gmail.com" && form.value.password == "123456"){
-  //        alert("Connexion reussie avec succès")
-  //        this.route.navigateByUrl("/bottom")
-  //   }
-  //   else{
-  //     this.Message = "Donnés incorrectes"
-  //   }
-  
 
 }

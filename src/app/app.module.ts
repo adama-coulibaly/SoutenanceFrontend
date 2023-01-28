@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { IonicModule, IonicRouteStrategy, PopoverController } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -11,6 +11,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { PanierComponent } from './panier/panier.component';
 import { FirebaseX } from '@awesome-cordova-plugins/firebase-x/ngx';
+import { CompteUserComponent } from './Pages/compte-user/compte-user.component';
 
 
 
@@ -18,8 +19,8 @@ import { FirebaseX } from '@awesome-cordova-plugins/firebase-x/ngx';
 
 
 @NgModule({
-  declarations: [AppComponent,PanierComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,FontAwesomeModule,HttpClientModule,Ng2SearchPipeModule,],
+  declarations: [AppComponent,PanierComponent,CompteUserComponent],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,FontAwesomeModule,HttpClientModule,Ng2SearchPipeModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },InAppBrowser,FirebaseX],
   bootstrap: [AppComponent],
 })

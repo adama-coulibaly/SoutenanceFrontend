@@ -2,6 +2,7 @@
 <ion-header>
   <ion-toolbar>
     <div slot="start" class="retourB">
+    
       <!-- <ion-back-button slot="start"></ion-back-button> -->
       <img slot="start" src="../../../assets/img/logo2.png" alt="" srcset="" width="20%">
         <!-- <ion-title>Accueil</ion-title> -->
@@ -9,13 +10,27 @@
 
     <div slot="end" class="lefts">
       <ion-icon name="cart-outline" (click)="openModal()"></ion-icon>
-      <ion-badge class="cart">{{panierTotal}}</ion-badge>
+      <ion-fab-button class="cart" color="danger">{{panierTotal}}</ion-fab-button>
+
+      <!-- <ion-badge ></ion-badge> -->
       <ion-icon name="notifications-outline"></ion-icon>
-      <ion-badge class="notif" > 5 </ion-badge>
+      <ion-fab-button class="notif" color="danger">5</ion-fab-button>
     </div>
+
+    <div class="profil">
+      <!-- ===================================================SI UTILISATEUR EST CONNECTE============================== -->
+      <ion-avatar style="cursor: pointer;" (click)="presentPopover($event)" *ngIf="user.avatar">
+        <img src="{{user.avatar}}" alt="" srcset="">
+      </ion-avatar>
+      <!-- ===================================================SI UTILISATEUR N'EST PAS CONNECTE============================== -->
+
+      <ion-avatar style="cursor: pointer;"  *ngIf="!user.avatar">
+        <img src="../../../assets/img/avatar.jpg" (click)="redirection()" alt="" srcset="">
+      </ion-avatar>
+    </div>
+   
   </ion-toolbar>
 </ion-header>
-
 
 
 
@@ -43,8 +58,8 @@
       <ion-label>Cours</ion-label>
     </ion-tab-button>
     <ion-tab-button tab="profil">
-      <ion-icon name="person"></ion-icon>
-      <ion-label>Profil</ion-label>
+      <ion-icon name="albums"></ion-icon>
+      <ion-label>Fermes</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>

@@ -1,0 +1,21 @@
+<div class=" ion-text-center">
+  <div class=" ion-text-center"  style="margin: 10px auto;align-items: center;">
+    <!-- <ion-avatar> -->
+      <img src="../../../assets/icon/favicon.png" alt="" srcset="" width="40%" height="40%" style="border-radius: 100%;" *ngIf="!user.avatar">
+
+      <img src="{{user.avatar}}" alt="" srcset="" width="40%" height="40%" style="border-radius: 100%;" *ngIf="user.avatar">
+    <!-- </ion-avatar> -->
+  </div>
+  <div style="margin: 2%;">
+    <ion-title>{{user.nom}} {{user.prenom}}</ion-title>
+    <p style="font-size: 85%;">{{user.email}}</p>
+    <p><strong>Téléphone:</strong> {{user.username}}</p>
+    <p><strong>Adresse:</strong> {{user.adresse}}</p>
+  </div>
+
+  <div class="mesIcones">
+      <div class="modifier"> <ion-icon name="create-outline"></ion-icon> Modifier</div>
+      <div class="deconnexion" (click)="logout()"> <ion-icon name="log-out-outline"></ion-icon> Déconnexion</div>
+  </div>
+
+</div>

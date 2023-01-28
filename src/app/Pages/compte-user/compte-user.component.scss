@@ -1,0 +1,28 @@
+.mesIcones{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 2%;
+    align-items: center;
+}
+.modifier{
+    display: flex;
+    border: 1px solid #04CF72;
+    color: #04CF72;
+    align-items: center;
+    padding: 2%;
+    border-radius: 5px;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.deconnexion{
+    display: flex;
+    border: 1px solid red;
+    color: red;
+    align-items: center;
+    padding: 2%;
+    border-radius: 5px;
+    justify-content: space-between;
+    cursor: pointer;
+}

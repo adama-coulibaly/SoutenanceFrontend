@@ -57,9 +57,7 @@ export class ProfilPage implements OnInit {
      // console.log("Je suis vraiment "+this.user.id)
     });
     }
-    else{
-      this.router.navigateByUrl('connexion')
-    }
+    
    
 
 
@@ -70,9 +68,8 @@ export class ProfilPage implements OnInit {
   logout(): void {
     // console.log("Je suis cliquer")
     this.tokenStorage.signOut();
-    this.router.navigateByUrl('/connexion')
+        this.router.navigateByUrl('bottom-bar/accueil')
     // window.location.reload();
-
   }
 
 
