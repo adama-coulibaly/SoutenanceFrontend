@@ -32,9 +32,9 @@ export class FermeService {
 
 
 
-  // ICI ON RECUPERE LES FERMES DE L'UTILISATEURS CONNECTER
-  mesFermes(id_ferme:any):Observable<any>{
-    return this.http.get(`http://localhost:8080/ferme/UserFermes/${id_ferme}`);
+  // ICI ON RECUPERE LES FERMES DE L'UTILISATEURS CONNECTER AVEC ETAT
+  mesFermes(id_ferme:any,etat:boolean):Observable<any>{
+    return this.http.get(`http://localhost:8080/ferme/UserFermesEtat/${id_ferme}/${etat}`);
   }
 
    // ICI ON RECUPERE LES FERMES INFORMATIONS D'UNE FERME
@@ -51,6 +51,10 @@ export class FermeService {
      lesProduitsParFermes(id_ferme:any):Observable<any>{
       return this.http.get(`http://localhost:8080/produit/listerParFerme/${id_ferme}`);
     }
+    // ICI ON RECUPERE LES PRODUITS D'UNE FERME AVEC ETAT
+    lesProduitsParFermesEtat(id_ferme:any,etat:boolean):Observable<any>{
+      return this.http.get(`http://localhost:8080/produit/listerParFermes/${id_ferme}/${etat}`);
+    }
 
         // ICI ON RECUPERE LES PRODUITS D'UNE FERME
         lesProduitsParId(idproduit:any):Observable<any>{
@@ -60,5 +64,10 @@ export class FermeService {
       // ICI ON SUPPRIME UN PRODUIT 
       supprimerProduit(produit:any,idproduit:any):Observable<any>{
         return this.http.patch(`http://localhost:8080/produit/etat/${idproduit}`,produit)
+      }
+
+       // ICI ON SUPPRIME UNE FERME 
+       supprimerFerme(produit:any,idferme:any):Observable<any>{
+        return this.http.patch(`http://localhost:8080/ferme/etat/${idferme}`,produit)
       }
 }

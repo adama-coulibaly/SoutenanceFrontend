@@ -22,13 +22,12 @@
 
 <div class="containerFerme">
   <div class="ferme1" *ngFor="let fermes of lesFermes">
-      <ion-card>
+      <ion-card >
           <div style="height: 150px;">
             <img src="{{fermes.imageferme}}">
           </div>
           <ion-card-title>{{fermes.nomferme}}</ion-card-title>
           <ion-button [routerLink]="['ferme',fermes.idferme]">Voir plus</ion-button>
-          <!-- [routerLink]="['/bottom-bar/forum/detail-forum',themes.idtheme]" -->
       </ion-card>
   </div>
 </div>

@@ -41,6 +41,10 @@ export class ProfilPage implements OnInit {
   file: any;
   resultat: any;
   nonValide: any;
+
+  etats:boolean = false;
+  monEtat: boolean = false;
+
   fileChangm(event: any) {
     this.file = event.target.files[0]
     console.log(this.file)
@@ -52,9 +56,10 @@ export class ProfilPage implements OnInit {
     this.user = this.tokenStorage.getUser();
     // MAINTENANT ON PREND LES FERMES D'UN SEUL UTILISATEUR
     if(this.user != ""){
- this.fermeService.mesFermes(this.user.id).subscribe(data => {
+      this.monEtat = true
+      this.fermeService.mesFermes(this.user.id,this.monEtat).subscribe(data => {
       this.lesFermes = data;
-     // console.log("Je suis vraiment "+this.user.id)
+            console.log("Je suis vraiment Etat "+this.etats)
     });
     }
     
@@ -89,13 +94,6 @@ export class ProfilPage implements OnInit {
     this.user = this.tokenStorage.getUser();
 
     const {nomferme, activiteferme, adresseferme, taille, file} = this.form;
-
-    // console.log("Je suis le nomferme "+nomferme)
-    // console.log("Je suis le activite "+activiteferme)
-    // console.log("Je suis le adresse "+adresseferme),
-    // console.log("Je suis le taille "+taille),
-    // console.log("Je suis le file "+this.file)
-
     this.fermeService.ajouterFerme(this.user.id,nomferme,activiteferme,adresseferme,taille,this.file).subscribe(data=>{
       this.resultat = data
       if(this.resultat.status == true){
@@ -108,7 +106,7 @@ export class ProfilPage implements OnInit {
           timer: 2500
         })
         this.isModalOpen = false;
-    
+        this.reloderLesDonnes();
       }
       else{
         this.nonValide = this.resultat.message
@@ -117,8 +115,12 @@ export class ProfilPage implements OnInit {
 
     })
 
-  } refreshData() {
-    this.navCtrl.navigateRoot("/bottom-bar/profil");
-  }
+  } reloderLesDonnes() {
+    if(this.user != ""){
+      this.monEtat = true
+      this.fermeService.mesFermes(this.user.id,this.monEtat).subscribe(data => {
+      this.lesFermes = data;
+    });
+  }}
 
 }

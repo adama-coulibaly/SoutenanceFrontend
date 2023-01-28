@@ -14,7 +14,7 @@
       </div>
       <div class="icons">
         <ion-icon class="create" name="create-outline"></ion-icon>
-        <ion-icon class="delete" name="trash-outline"></ion-icon>
+        <ion-icon class="delete" name="trash-outline" style="cursor: pointer;" (click)="supprimerFerme(info.idferme)"></ion-icon>
       </div>
     </div>
   </div>
@@ -46,7 +46,7 @@
   <!--  =========================================  SEGMENTS ===========================  -->
 
   <div class="">
-    <div>
+   
       <ion-segment [(ngModel)]="pages">
         <ion-segment-button value="productions">
           <ion-label>Productions</ion-label>
@@ -56,7 +56,6 @@
         </ion-segment-button>
       </ion-segment>
 
-    </div>
 
     <div class="mesproduits contenues" style="overflow-y: scroll;display: grid;">
 
@@ -129,7 +128,7 @@
 
           <div class="containerFerme" style="background-color: #e0dfe2;" *ngIf="produitTotal != 0">
             <div *ngFor="let prod of produits">
-              <ion-card *ngIf="prod.etat == true" class="ferme1">
+              <ion-card *ngIf="etatsProds" class="ferme1">
                 <div class="cardeH" style="height: 150px;">
                   <img src="{{prod.phtoproduit}}" style="cursor: pointer;" (click)="produit(prod.idproduit)"
                     expand="block" (click)="setOpen(true)">

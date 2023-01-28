@@ -23,4 +23,9 @@ export class AccueilServiceService {
     lesProduitsParID(idcategoris:number):Observable<any>{
       return this.http.get(`http://localhost:8080/produit/listerParid/${idcategoris}`);
     }
+
+    //  AJOUTER UN PRODUIT AU PANIER
+    ajouterAuPanier(panier:any,produit:any,user:any):Observable<any>{
+      return this.http.post(`http://localhost:8080/panier/ajouter/${produit}/${user}`,panier)
+    }
 }
