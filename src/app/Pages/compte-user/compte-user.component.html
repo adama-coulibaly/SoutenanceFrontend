@@ -3,19 +3,126 @@
     <!-- <ion-avatar> -->
       <img src="../../../assets/icon/favicon.png" alt="" srcset="" width="40%" height="40%" style="border-radius: 100%;" *ngIf="!user.avatar">
 
-      <img src="{{user.avatar}}" alt="" srcset="" width="40%" height="40%" style="border-radius: 100%;" *ngIf="user.avatar">
+      <div class="monAvatar" *ngIf="utilisateur.avatar"><img src="{{utilisateur.avatar}}" alt="" srcset="" width="40%" height="40%" style="border-radius: 100%;" >   
+      <span><ion-icon name="create-outline" style="cursor: pointer;"></ion-icon></span>
+      </div>
+      <!-- <form  (ngSubmit)="updateAvatar()">
+        <ion-input type="file"  (change)="fileChangm($event)" name="file"  required></ion-input>
+      </form> -->
     <!-- </ion-avatar> -->
   </div>
   <div style="margin: 2%;">
-    <ion-title>{{user.nom}} {{user.prenom}}</ion-title>
-    <p style="font-size: 85%;">{{user.email}}</p>
-    <p><strong>Téléphone:</strong> {{user.username}}</p>
-    <p><strong>Adresse:</strong> {{user.adresse}}</p>
+    <ion-title>{{utilisateur.nom}} {{utilisateur.prenom}}</ion-title>
+    <p style="font-size: 85%;">{{utilisateur.email}}</p>
+    <p><strong>Téléphone:</strong> {{utilisateur.username}}</p>
+    <p><strong>Adresse:</strong> {{utilisateur.adresse}}</p>
   </div>
 
   <div class="mesIcones">
-      <div class="modifier"> <ion-icon name="create-outline"></ion-icon> Modifier</div>
+      <div class="modifier" expand="block" (click)="setOpen(true)" (click)=" modifier(utilisateur.id)"> <ion-icon name="create-outline"></ion-icon> Modifier</div>
       <div class="deconnexion" (click)="logout()"> <ion-icon name="log-out-outline"></ion-icon> Déconnexion</div>
   </div>
 
+
+
+  <!-- ======================================================== -->
+
+ <ion-modal id="example-modal" #modal trigger="ajouterferme" [isOpen]="isModalOpen">
+  <ng-template>
+    <div class="forms">
+      <h2>Modifier</h2>
+
+      <div *ngIf="nonValide" style="color: red; text-align: center;">
+        <p>{{nonValide}}</p>
+      </div>
+
+      <form *ngIf="!isSuccessful" name="form" (ngSubmit)="enregistrer(user.id)" #f="ngForm" novalidate>
+<!-- ======================================================  CHAMPS NOM ================================= -->
+        <ion-item >
+          <ion-label position="floating">Nom <span>*</span></ion-label>
+          <ion-input type="text" equired="true"  name="nom" required [(ngModel)]="form.nom" [(ngModel)]="nomM"  minlength="3" maxlength="20"
+            #nom="ngModel" ></ion-input>
+        </ion-item>
+
+        <!-- <div class="alerts "
+        role="alert"
+        *ngIf="nomferme.errors && f.submitted">
+        <div *ngIf="nomferme.errors">Le nom est obligatoire</div>
+      </div> -->
+
+<!-- ======================================================  CHAMPS PRENOM ================================= -->
+
+        <ion-item >
+          <ion-label position="floating">Prénom <span>*</span></ion-label>
+          <ion-input type="text"  name="prenom" required [(ngModel)]="form.prenom" [(ngModel)]="prenomM"  minlength="3" maxlength="50"
+          #prenom="ngModel" ></ion-input>
+        </ion-item>
+
+        <!-- <div class="alerts "
+        role="alert"
+        *ngIf="activiteferme.errors && f.submitted">
+        <div *ngIf="activiteferme.errors">Veuillez donner une activité !</div>
+      </div> -->
+<!-- ======================================================  CHAMPS ADRESSE ================================= -->
+
+        <ion-item >
+          <ion-label position="floating">Email <span>*</span></ion-label>
+          <ion-input type="email" name="email" required [(ngModel)]="form.email" [(ngModel)]="emailM" minlength="3" maxlength="50"
+          #email="ngModel" ></ion-input>
+        </ion-item>
+
+        <!-- <div class="alerts "
+        role="alert"
+        *ngIf="adresseferme.errors && f.submitted">
+        <div *ngIf="adresseferme.errors">Adresse incorrect !</div>
+      </div> -->
+<!-- ======================================================  CHAMPS TAILLE ================================= -->
+
+        <ion-item >
+          <ion-label position="floating">Adresse <span>*</span></ion-label>
+          <ion-input type="text" name="adresse" required [(ngModel)]="form.adresse" [(ngModel)]="adresseM"  minlength="3" maxlength="50"
+          #adresse="ngModel" placeholder="2 héctares" ></ion-input>
+        </ion-item>
+
+        <ion-item >
+          <ion-label position="floating">Téléphone <span>*</span></ion-label>
+          <ion-input type="text" name="username" required [(ngModel)]="form.username" [(ngModel)]="tel"  minlength="3" maxlength="50"
+          #username="ngModel" placeholder="70446711" ></ion-input>
+        </ion-item>
+
+        <ion-item >
+          <ion-label position="floating">Mot de passe <span>*</span></ion-label>
+          <ion-input type="password" name="password" required [(ngModel)]="form.password" [(ngModel)]="passwordU"   minlength="3" maxlength="50"
+          #password="ngModel"  ></ion-input>
+        </ion-item>
+
+        <!-- <div class="alerts "
+        role="alert"
+        *ngIf="taille.errors && f.submitted">
+        <div *ngIf="taille.errors">Veuillez donner une taille avec "héctares"</div>
+      </div> -->
+
+
+
+<!-- ======================================================  CHAMPS IMAGES ================================= -->
+
+        <!-- <div class="alerts "
+        role="alert"
+        *ngIf="nomferme.errors && f.submitted">
+        <div *ngIf="nomferme.errors">Veuillez selectionner une image !</div>
+      </div> -->
+
+
+
+        <div class="bottoms-boutons">
+          <div><ion-button type="submit">Créer</ion-button></div>
+          <div><ion-button class="annuler" (click)="setOpen(false)">annuler</ion-button></div>
+          
+          
+        </div>
+      </form>
+    </div>
+      
+  </ng-template>
+</ion-modal>
 </div>

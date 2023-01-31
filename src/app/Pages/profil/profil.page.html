@@ -1,14 +1,4 @@
 <ion-content>
-   <!-- ================================= LES BOUTTONS AJOUTER ET DECONNEXION -->
-<div class="boutons">
-  <div class="modifier">
-      <ion-button>Modifier</ion-button>
-  </div>
-  <div class="deconnexion">
-      <ion-button (click)=" logout()">Déconnexion</ion-button>
-  </div>
-</div>
-<div align="center" style="color: #04CF72;">________</div>
 <!-- ================================= LISTER LES FERMES -->
 <div class="listefermes">
   <div class="text">
@@ -46,8 +36,7 @@
         <p>{{nonValide}}</p>
       </div>
 
-      <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"
-      novalidate>
+      <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
 <!-- ======================================================  CHAMPS NOM ================================= -->
         <ion-item counter="true">
           <ion-label position="floating">Nom <span>*</span></ion-label>

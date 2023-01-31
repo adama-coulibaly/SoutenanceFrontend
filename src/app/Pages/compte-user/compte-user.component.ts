@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/Services/token-storage.service';
+import { UserService } from 'src/app/Services/user-service.service';
 
 @Component({
   selector: 'app-compte-user',
@@ -8,20 +10,138 @@ import { TokenStorageService } from 'src/app/Services/token-storage.service';
   styleUrls: ['./compte-user.component.scss'],
 })
 export class CompteUserComponent implements OnInit {
-  user: any;
 
-  constructor(private tokenStorage:TokenStorageService,private router:Router) { }
+nom:any
+prenom:any
+
+
+  user: any;
+  nonValide: any;
+  file: any;
+  formulaire!: FormGroup
+  isSuccessful = false;
+  // POUR FERMER LE MODAL 
+  isModalOpen = false;
+
+  form:any={
+    nom:'',
+    prenom:'',
+    email:'',
+    adresse:'',
+    username:'',
+    password:''
+  }
+
+  form2:any={
+    nom:'',
+    prenom:'',
+    email:'',
+    adresse:'',
+    username:'',
+    password:''
+  }
+
+  utilisateur: any;
+  nomM: any;
+  prenomM: any;
+  emailM: any;
+  adresseM: any;
+  tel: any;
+  passwordU: any;
+
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
+
+  
+  fileChangm(event: any) {
+    this.file = event.target.files[0]
+    console.log(this.file)
+    }
+  constructor(private tokenStorage:TokenStorageService,private router:Router,private userService:UserService) { }
 
   ngOnInit() {
     this.user = this.tokenStorage.getUser();
+    this.userService.getUnUser(this.user.id).subscribe(data=>{
+      this.utilisateur = data})
   }
 
 
     // ===============================================CETTE FONCTION PERMET DE DECONNECTER L'UTILISATEUR
     logout(): void {
-      // console.log("Je suis cliquer")
       this.tokenStorage.signOut();
           this.router.navigateByUrl('bottom-bar/accueil')
       window.location.reload();
     }
+
+    // ================================================ MODIFIER LE PROFIL AVATAR
+
+    updateAvatar(){
+        this.userService.updateAvatar(this.user.id,this.file).subscribe(data=>{})
+    }
+
+
+    modifier(iduser:any){
+ alert(iduser)
+      this.userService.getUnUser(iduser).subscribe(data=>{
+        this.utilisateur = data
+
+        this.nomM = this.utilisateur.nom
+        this.prenomM = this.utilisateur.prenom
+        this.emailM = this.utilisateur.email
+        this.adresseM = this.utilisateur.adresse
+        this.tel = this.utilisateur.username
+        this.passwordU = this.utilisateur.password
+       
+      })
+      
+    }
+
+    enregistrer(iduser:any){
+      this.userService.getUnUser(iduser).subscribe(data=>{
+        this.utilisateur = data })
+      alert("ID "+iduser)
+      this.form2.nom = this.form.nom
+      this.form2.prenom = this.form.prenom
+      this.form2.adresse = this.form.adresse
+      this.form2.email = this.form.email
+      this.form2.username = this.form.username
+      this.form2.password = this.form.password
+
+      if( this.form.nom == ""){
+        this.form2.nom = this.utilisateur.nom
+        this.setOpen(false)
+      }
+      else if(this.form.prenom == ""){
+        this.form2.prenom = this.utilisateur.prenom
+        this.setOpen(false)
+      }
+      else if(this.form.adresse == ""){
+        this.form2.adresse = this.utilisateur.adresse
+        this.setOpen(false)
+      }
+      else if(this.form.email == ""){
+        this.form2.email = this.utilisateur.email
+        this.setOpen(false)
+      }
+      else if(this.form.username == null){
+        this.form2.username = this.utilisateur.username
+        this.setOpen(false)
+      }
+      else if(this.form.password == ""){
+        this.form2.password = this.utilisateur.password
+        this.setOpen(false)
+      }
+      else{
+            this.userService.updateUsers(iduser,this.form2).subscribe(data=>{
+      if(data.status == true){
+          alert(data.message)
+          this.setOpen(false)
+      }
+     })
+      }
+
+ 
+    }
+
 }

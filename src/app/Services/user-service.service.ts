@@ -31,4 +31,18 @@ const API_URL = 'http://localhost:8080/';
   getUsers(): Observable<any> {
     return this.http.get(API_URL + 'utilisateurs', { responseType: 'text' });
   }
+
+  updateAvatar(iduser:any,file:any):Observable<any>{
+    return this.http.put<any>(`http://localhost:8080/api/auth/modifier/${iduser}`,file)
+  }
+
+  updateUsers(iduser:any,donne:any):Observable<any>{
+    return this.http.put<any>(`http://localhost:8080/api/auth/modifier/${iduser}`,donne)
+  }
+
+  getUnUser(iduser:any){
+      return this.http.get(`http://localhost:8080/api/auth/user/${iduser}`)
+  }
+
+  
 }
