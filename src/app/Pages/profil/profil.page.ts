@@ -99,7 +99,6 @@ export class ProfilPage implements OnInit {
       if(this.resultat.status == true){
         Swal.fire({
           heightAuto: false,
-          // position: 'top-end',
           icon: 'success',
           text: 'Ferme créée avec succès',
           showConfirmButton: false,

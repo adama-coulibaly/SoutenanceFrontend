@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DatePipe, Location } from "@angular/common";
 import { ThemeServiceService } from 'src/app/Services/theme-service.service';
 import { Theme } from 'src/app/Models/Teheme';
+import { TokenStorageService } from 'src/app/Services/token-storage.service';
 
 
 @Component({
@@ -14,6 +15,7 @@ export class ForumPage implements OnInit {
 
 tailleMinimum:any
   erreur: string | undefined;
+  user: any;
 
   customCounterFormatter(inputLength: number, maxLength: number) {
     return `${maxLength - inputLength} nombre de caractères requis`;
@@ -31,7 +33,7 @@ tailleMinimum:any
 
  filterTerm!: string;
 
-  constructor(private location: Location, private ThemesService:ThemeServiceService) {
+  constructor(private location: Location, private ThemesService:ThemeServiceService,private tokenStorage:TokenStorageService) {
 
     // this.maDate = this.datePipe.transform(this.maDate, 'dd/MM/yyyy');
    }
@@ -46,9 +48,11 @@ tailleMinimum:any
  
 
   ngOnInit() {
+    // ON RECUPERE L'UTILISATEUR CONNECTE
+    this.user = this.tokenStorage.getUser();
+    // ON LISTE TOUS LES TERMES
       this.ThemesService.toutLesThemes().subscribe(data=>{
         this.lesThemes = data;
-        // console.log("Voici mes theme: "+this.lesThemes.dateposte)
       });
     
   }
@@ -61,17 +65,21 @@ tailleMinimum:any
     }
     else{
       this.tailleMinimum = true
-      this.ThemesService.posterTheme(this.theme,1).subscribe(data=>{
+      this.ThemesService.posterTheme(this.theme,this.user.ide).subscribe(data=>{
       this.poster = data
     })
     window.location.reload()
 
     }
+
+   
     
   }
     
-
-  
+//  CETTE FUNCTION RECUPERE LES DONNEES UN FOIS
+  //  recharge(){
+      
+  //   }
  
 
 }

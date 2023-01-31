@@ -12,7 +12,12 @@
 </ion-header>
 
 <ion-content class="stylePanie">
-<div style="height: 430px; display: grid; overflow-y: scroll;" class="panierScroll">
+
+<div *ngIf="inc == 0" style="text-align: center;margin-top: 20px;">
+    <p>Vous n'avez pas de produit dans le panier !</p>
+</div>
+
+<div style="height: 430px; display: grid; overflow-y: scroll;" class="panierScroll" *ngIf="inc != 0">
 
 
   <div *ngFor="let prod of panierProd">
@@ -25,7 +30,7 @@
         </div>
 
         <div class="contenuImage">
-          <ion-badge> <ion-icon name="trash"></ion-icon> </ion-badge>
+          <ion-badge (click)="supprimer(prod.idpanier,prod.produits[0].idproduit)"> <ion-icon name="trash"></ion-icon> </ion-badge>
           <img src="{{prod.produits[0].phtoproduit}}" alt="" srcset="">
         </div>
       </div>

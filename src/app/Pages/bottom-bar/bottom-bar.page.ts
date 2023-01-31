@@ -4,6 +4,7 @@ import { AnimationController, ModalController, PopoverController } from '@ionic/
 import { PanierComponent } from 'src/app/panier/panier.component';
 import { PanierServiceService } from 'src/app/Services/panier-service.service';
 import { TokenStorageService } from 'src/app/Services/token-storage.service';
+import { ServigeGeneralService } from 'src/app/servige-general.service';
 import { CompteUserComponent } from '../compte-user/compte-user.component';
 
 
@@ -15,21 +16,28 @@ import { CompteUserComponent } from '../compte-user/compte-user.component';
 export class BottomBarPage implements OnInit {
   user: any;
   panierProd: any;
-  panierTotal =  0;
+  // public panierTotal =  0;
+  public panierTotal =  0;
+  myVal:any
+
   MontantTotal: any;
 
-  constructor(private modalCtrl: ModalController,private animationCtrl: AnimationController,private tokenStorage:TokenStorageService,private panierService:PanierServiceService,public popoverCtrl: PopoverController,private route:Router) { }
+  constructor(private modalCtrl: ModalController,private animationCtrl: AnimationController,private tokenStorage:TokenStorageService,private panierService:PanierServiceService,public popoverCtrl: PopoverController,private route:Router,public serveGe:ServigeGeneralService) { }
 
   ngOnInit() {
+
+    
+    this.serveGe.showValue$.subscribe(value => {
+      this.myVal = value
+    });
 
     this.user = this.tokenStorage.getUser();
     this.panierService.lesProduitsParFermes(this.user.id).subscribe(data=>{
       this.panierProd = data;
-
-
       for(let a of this.panierProd)
         this.panierTotal += a.quantite 
         // this.MontantTotal += a.totalproduit
+      this.serveGe.showValue.next(this.panierTotal);
     
     })
   }

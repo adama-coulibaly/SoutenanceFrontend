@@ -4,6 +4,10 @@
 .lesTitres p{
     font-weight: 600; text-align: center;
     color: #04CF72;
+    margin-top: 10px;
+}
+.first{
+    height: 150px;
 }
 //  LES IONS CARDS
 ion-card img{
@@ -95,8 +99,8 @@ transition: 400ms all ease-in-out;
     justify-content: center;
     margin: 2%;
 }
-.lienVoirPlus{
-    text-align: center;
+.voirPlus a{
+    margin: 10px auto;
 }
 
 // ======================================= EXPERTS

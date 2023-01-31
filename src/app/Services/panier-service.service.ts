@@ -15,4 +15,16 @@ export class PanierServiceService {
     lesProduitsParFermes(iduser:any):Observable<any>{
       return this.http.get(`http://localhost:8080/panier/panierParUser/${iduser}`);
     }
+
+
+     // ICI ON RECUPERE LES PRODUITS D'UN UTILISATEUR
+     totalQuantite(iduser:any):Observable<any>{
+      return this.http.get(`http://localhost:8080/panier/panierUserTotal/${iduser}`);
+    }
+
+
+        // ICI ON SUPRIME UN PRODUITS DU PANIER D'UN UTILISATEUR
+        supprimerProduit(panier:any,produit:any,user:any):Observable<any>{
+          return this.http.delete(`http://localhost:8080/panier/supprimer/${panier}/${produit}/${user}`);
+        }
 }
