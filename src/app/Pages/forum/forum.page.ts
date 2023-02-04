@@ -65,7 +65,7 @@ tailleMinimum:any
     }
     else{
       this.tailleMinimum = true
-      this.ThemesService.posterTheme(this.theme,this.user.ide).subscribe(data=>{
+      this.ThemesService.posterTheme(this.theme,this.user.id).subscribe(data=>{
       this.poster = data
     })
     window.location.reload()

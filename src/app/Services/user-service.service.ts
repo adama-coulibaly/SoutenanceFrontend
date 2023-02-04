@@ -8,6 +8,7 @@ const API_URL = 'http://localhost:8080/';
 @Injectable({
   providedIn: 'root'
 })export class UserService {
+  [x: string]: any;
   constructor(private http: HttpClient) { }
 
   getPublicContent(): Observable<any> {
@@ -33,7 +34,10 @@ const API_URL = 'http://localhost:8080/';
   }
 
   updateAvatar(iduser:any,file:any):Observable<any>{
-    return this.http.put<any>(`http://localhost:8080/api/auth/modifier/${iduser}`,file)
+    console.log("Service "+file)
+    let data =new FormData();
+    data.append("file",file)
+    return this.http.patch<any>(`http://localhost:8080/api/auth/modifierAvatar/${iduser}`,data)
   }
 
   updateUsers(iduser:any,donne:any):Observable<any>{

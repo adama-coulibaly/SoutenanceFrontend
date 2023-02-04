@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/Services/token-storage.service';
 import { UserService } from 'src/app/Services/user-service.service';
+import { ServigeGeneralService } from 'src/app/servige-general.service';
 
 @Component({
   selector: 'app-compte-user',
@@ -18,7 +19,9 @@ prenom:any
   user: any;
   nonValide: any;
   file: any;
+
   formulaire!: FormGroup
+
   isSuccessful = false;
   // POUR FERMER LE MODAL 
   isModalOpen = false;
@@ -54,18 +57,29 @@ prenom:any
   }
 
   
-  fileChangm(event: any) {
-    this.file = event.target.files[0]
-    console.log(this.file)
-    }
-  constructor(private tokenStorage:TokenStorageService,private router:Router,private userService:UserService) { }
+
+  constructor(private tokenStorage:TokenStorageService,private router:Router,private userService:UserService,private serveGe:ServigeGeneralService) { }
 
   ngOnInit() {
     this.user = this.tokenStorage.getUser();
+   this.loadUsers();
+  }
+  // ===============================================USERS DONNEES =========================
+  loadUsers(){
     this.userService.getUnUser(this.user.id).subscribe(data=>{
       this.utilisateur = data})
   }
 
+  fileChangm(event: any) {
+    this.file = event.target.files[0]
+    console.log(this.file)
+    this.userService.updateAvatar(this.user.id,this.file).subscribe(data=>{
+     this.user = this.tokenStorage.getUser();
+     this.serveGe.showImage.next(this.user.avatar); // CETTE METHODE PERMET DE FAIRE APPEL A NOTRE OBSERVABLE ICI   
+     this.loadUsers();
+ 
+    })
+    }
 
     // ===============================================CETTE FONCTION PERMET DE DECONNECTER L'UTILISATEUR
     logout(): void {
@@ -76,9 +90,10 @@ prenom:any
 
     // ================================================ MODIFIER LE PROFIL AVATAR
 
-    updateAvatar(){
-        this.userService.updateAvatar(this.user.id,this.file).subscribe(data=>{})
-    }
+    // updateAvatar(){
+    //     this.userService.updateAvatar(this.user.id,this.file).subscribe(data=>{})
+    //     alert("Teste")
+    // }
 
 
     modifier(iduser:any){
@@ -100,7 +115,6 @@ prenom:any
     enregistrer(iduser:any){
       this.userService.getUnUser(iduser).subscribe(data=>{
         this.utilisateur = data })
-      alert("ID "+iduser)
       this.form2.nom = this.form.nom
       this.form2.prenom = this.form.prenom
       this.form2.adresse = this.form.adresse
@@ -135,7 +149,6 @@ prenom:any
       else{
             this.userService.updateUsers(iduser,this.form2).subscribe(data=>{
       if(data.status == true){
-          alert(data.message)
           this.setOpen(false)
       }
      })

@@ -12,8 +12,8 @@ export class PanierServiceService {
 
 
     // ICI ON RECUPERE LES PRODUITS D'UN UTILISATEUR
-    lesProduitsParFermes(iduser:any):Observable<any>{
-      return this.http.get(`http://localhost:8080/panier/panierParUser/${iduser}`);
+    lesProduitsParFermes(iduser:any,etat:boolean):Observable<any>{
+      return this.http.get(`http://localhost:8080/panier/panierParUser/${iduser}/${etat}`);
     }
 
 
@@ -27,4 +27,9 @@ export class PanierServiceService {
         supprimerProduit(panier:any,produit:any,user:any):Observable<any>{
           return this.http.delete(`http://localhost:8080/panier/supprimer/${panier}/${produit}/${user}`);
         }
+    
+      // ICI ON COMMANDE UN PRODUITS
+      Commande(commande:any,iduser:any):Observable<any>{
+        return this.http.post(`http://localhost:8080/commande/ajouter/${iduser}`,commande)
+      }
 }

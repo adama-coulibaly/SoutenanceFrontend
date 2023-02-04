@@ -69,6 +69,11 @@ monTableau1 = []
   constructor(private serveGe:ServigeGeneralService,private panierService:PanierServiceService,private loadingCtrl:LoadingController,private tokenStorage: TokenStorageService,private router:Router, public navCtrl: NavController,private serviceAccueil:AccueilServiceService, private modalCtrl: ModalController,private animationCtrl: AnimationController,private serviceFormation:FormationServiceService) { }
   lesThemes:any;
 
+  // ==============================================
+  ionViewWillEnter() {
+    // window.location.reload();
+     }
+
   ngOnInit() {
     this.user = this.tokenStorage.getUser();
 // ===================================================== RECUPERATION DES PRODUITS
@@ -81,6 +86,9 @@ monTableau1 = []
 this.serviceFormation.deuxFormation().subscribe(data=>{
   this.lesFormation = data; 
 });
+
+this.serveGe.showImage.next(this.user.avatar); // CETTE METHODE PERMET DE FAIRE APPEL A NOTRE OBSERVABLE ICI   
+
     
   }
 

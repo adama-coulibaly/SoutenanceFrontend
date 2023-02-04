@@ -27,7 +27,7 @@ export class AuthService {
   }
 
 
-  registerO(nom:string,prenom:string,username:string,email:string,password:string,adresse:string): Observable<any> {
+  registerO(nom:string,prenom:string,username:string,email:string,password:string,adresse:string,idStatut:any): Observable<any> {
     const user = {
       "nom":nom,
       "prenom":prenom,
@@ -36,7 +36,12 @@ export class AuthService {
       "password":password,
       "adresse":adresse
     }
-    return this.http.post("http://localhost:8080/api/auth/signup",user);
+    return this.http.post(`http://localhost:8080/api/auth/signup/${idStatut}`,user);
+  }
+
+
+  lesStatus():Observable<any>{
+      return this.http.get("http://localhost:8080/api/auth/statusUser")
   }
 
 }

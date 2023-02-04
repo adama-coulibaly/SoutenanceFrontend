@@ -22,4 +22,8 @@ export class ThemeServiceService {
   posterTheme(theme:any,user_id:any):Observable<any>{
     return this.http.post(`http://localhost:8080/theme/ajouter/${user_id}`,theme);
   }
+
+  commenterTheme(commentaire:any,idtheme:any,iduser:any){
+    return this.http.post(`http://localhost:8080/commentaire/ajouter/${idtheme}/${iduser}`,commentaire)
+  }
 }

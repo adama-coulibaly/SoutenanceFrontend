@@ -12,7 +12,9 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { PanierComponent } from './panier/panier.component';
 import { FirebaseX } from '@awesome-cordova-plugins/firebase-x/ngx';
 import { CompteUserComponent } from './Pages/compte-user/compte-user.component';
-import { FormsModule } from '@angular/forms';
+import { FormGroup, FormsModule } from '@angular/forms';
+import { IonIntlTelInputModule } from 'ion-intl-tel-input';
+
 
 
 
@@ -20,8 +22,18 @@ import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [AppComponent,PanierComponent,CompteUserComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,FontAwesomeModule,HttpClientModule,Ng2SearchPipeModule,FormsModule],
+  declarations: [AppComponent,PanierComponent,CompteUserComponent,],
+  imports: [BrowserModule,
+     IonicModule.forRoot(),
+     AppRoutingModule,
+     FontAwesomeModule,
+     HttpClientModule,
+     Ng2SearchPipeModule,
+     FormsModule,
+     IonIntlTelInputModule,
+     
+
+    ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },InAppBrowser,FirebaseX],
   bootstrap: [AppComponent],
 })

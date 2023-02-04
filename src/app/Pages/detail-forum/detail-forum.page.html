@@ -1,38 +1,21 @@
-<!-- <ion-header>
-  <ion-toolbar>
-    <ion-back-button slot="start" defaultHref="forum"></ion-back-button>
-
-    <div slot="start">
-        <ion-title>
-          forum
-        </ion-title>
-    </div>
-
-    <div slot="end" class="lefts">
-      <ion-icon name="cart-outline"></ion-icon>
-      <ion-badge class="cart">5</ion-badge>
-      <ion-icon name="notifications"></ion-icon>
-      <ion-badge class="notif"> 50 </ion-badge>
-    </div>
-  </ion-toolbar>
-</ion-header> -->
-
-  
-
 <ion-content>
   <ion-toolbar style="margin-top: 60px;">
     <ion-back-button slot="start" defaultHref="" style="color: white;"></ion-back-button>
   <ion-title slot="end">Forum</ion-title>
   </ion-toolbar>
+
+
+
   <!-- / ================================== SECTION POUR QUESTION TITRE FIXE-->
   <div class="section1">
-    <ion-fab vertical="top" horizontal="end" slot="fixed" id="ajoutercommentaire" expand="block">
+     <ion-fab vertical="top" horizontal="end" slot="fixed"  (click)="setOpen(true)">
       <ion-fab-button>
         <ion-icon name="add"></ion-icon>
       </ion-fab-button>
     </ion-fab>
  <div class="titreForum title-text">
-  <p>{{titre}}</p>
+  <p *ngIf="lesCommentaires != '' " >{{titre}}</p>
+  <p *ngIf="lesCommentaires == '' " > Ce thème n'a pas de commentaires pour l'instant</p>
 
  </div> 
 </div>
@@ -70,14 +53,17 @@
 
     <!-- ======================================================== -->
 
-<ion-modal id="example-modal" #modal trigger="ajoutercommentaire">
+<ion-modal id="example-modal" #modal  [isOpen]="isModalOpen" backdrop-dismiss="false">
   <ng-template>
     <div class="forms">
-      <h2>Ajouter votre commentaire </h2>
-      <form>
+      <h2>Ajouter votre commentaire <span style="color: red; cursor: pointer;margin-left: 10px;" (click)="setOpen(false)">X</span> </h2>
+
+<span class="ion-text-center" *ngIf="erreurRetour" style="color: red; text-align: center;margin: 1%;">{{erreurRetour}}</span>
+
+      <form name="contact-form" (ngSubmit)="commenter()" >
         <ion-item counter="true">
           <ion-label position="floating">Réponse</ion-label>
-          <ion-input maxlength="500" minlength="10"></ion-input>
+          <ion-textarea maxlength="500" minlength="10" name="titretheme" [(ngModel)]="commentaire.descriptioncom"></ion-textarea>
         </ion-item>
         <div align="center"><button>Commenter</button></div>
       </form>

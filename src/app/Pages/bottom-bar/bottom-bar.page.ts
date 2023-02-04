@@ -19,6 +19,10 @@ export class BottomBarPage implements OnInit {
   // public panierTotal =  0;
   public panierTotal =  0;
   myVal:any
+  images:any
+  monStatus:any
+
+  
 
   MontantTotal: any;
 
@@ -31,12 +35,24 @@ export class BottomBarPage implements OnInit {
       this.myVal = value
     });
 
+    this.serveGe.showImage$.subscribe(value => {
+      this.images = value
+    });
+
     this.user = this.tokenStorage.getUser();
-    this.panierService.lesProduitsParFermes(this.user.id).subscribe(data=>{
+   if(this.user.id != null ){
+    console.log(this.user.statusUser.idstatus)
+    this.monStatus = this.user.statusUser.idstatus
+   }
+
+
+    this.serveGe.showImage.next(this.user.avatar); // ICI ON DONNE LE PROFIL DE L'UTILISATEUR
+
+    // ON LISTE LE CONTENU DES PANIERS D'UN UTILISATEUR
+    this.panierService.lesProduitsParFermes(this.user.id,true).subscribe(data=>{
       this.panierProd = data;
       for(let a of this.panierProd)
         this.panierTotal += a.quantite 
-        // this.MontantTotal += a.totalproduit
       this.serveGe.showValue.next(this.panierTotal);
     
     })

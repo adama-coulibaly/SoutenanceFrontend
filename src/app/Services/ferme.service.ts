@@ -19,7 +19,7 @@ export class FermeService {
   // =========================================== ICI ON AJOUTE UNE NOUVELLE FERME
 
   ajouterFerme(user:any, nomferme:string,activiteferme:string,adresseferme:string,taille:string,file:any):Observable<any>{
-   
+    console.log("Service Ferme "+file)
     let data =new FormData();
     data.append("user", user);
     data.append("nomferme",nomferme);

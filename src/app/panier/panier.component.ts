@@ -11,18 +11,25 @@ import { ServigeGeneralService } from '../servige-general.service';
   entryComponents: [PanierComponent]
 })
 export class PanierComponent implements OnInit {
+  form: any = {
+  Quantity:null
+  };
+
+
   panierProd: any;
   user: any;
   inc = 0;
   value = 0;
   MontantTotal=0
   valeur=0;
+  newValue = 0;
 
   constructor(private serveGe:ServigeGeneralService,private modalCtrl: ModalController, private panierService:PanierServiceService, private tokenStorage:TokenStorageService) { }
 
   ngOnInit() {
     this.user = this.tokenStorage.getUser();
-    this.panierService.lesProduitsParFermes(this.user.id).subscribe(data=>{
+    const etat = true
+    this.panierService.lesProduitsParFermes(this.user.id,etat).subscribe(data=>{
       this.panierProd = data;
       for(let a of this.panierProd){
         this.inc += a.quantite 
@@ -32,20 +39,9 @@ export class PanierComponent implements OnInit {
     })
 
   }  
-   increment() {
-    this.panierService.lesProduitsParFermes(this.user.id).subscribe(data=>{
-      this.panierProd = data;
 
-
-      for(let a of this.panierProd){
-        this.valeur = a.quantite;
-      }
-    })
-  
-  }
-
-  decrement() {
-    // valeur--;
+  mettreAjours(){
+    // alert('HHHHHHHHHHH '+this.form.Quantity)
   }
 
   // ================================== LA FONCTION POUR SUPPRIMER UN PRODUIT DU PANIER
@@ -74,7 +70,8 @@ export class PanierComponent implements OnInit {
 
   // =============================== RELODER OU RECHARGER LE CONTENU DE LA PAGE ========================
   recharger(){
-    this.panierService.lesProduitsParFermes(this.user.id).subscribe(data=>{
+    const etat = true
+    this.panierService.lesProduitsParFermes(this.user.id,etat).subscribe(data=>{
       this.panierProd = data;
 
 

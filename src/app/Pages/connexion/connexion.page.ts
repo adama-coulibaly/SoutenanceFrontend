@@ -26,7 +26,10 @@ export class ConnexionPage implements OnInit {
 Message!:String 
 
   ngOnInit() {
-    this.loadData();
+    // this.loadData();
+    // if(this.tokenStorage.getUser().id != null){
+    //   this.route.navigateByUrl("bottom-bar/accueil");
+    // }
   }
 
 //   ionViewWillEnter() {
@@ -48,8 +51,9 @@ Message!:String
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        if(this.isLoggedIn == true)
-           this.route.navigateByUrl("bottom-bar/accueil");
+        if(this.isLoggedIn == true){
+        this.route.navigateByUrl("bottom-bar/accueil");
+        }
         else{
           this.isLoginFailed = true;
         }

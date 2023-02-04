@@ -20,7 +20,7 @@
     <div class="profil">
       <!-- ===================================================SI UTILISATEUR EST CONNECTE============================== -->
       <ion-avatar style="cursor: pointer;" (click)="presentPopover($event)" *ngIf="user.avatar">
-        <img src="{{user.avatar}}" alt="" srcset="">
+        <img src="{{images}}" alt="" srcset="">
       </ion-avatar>
       <!-- ===================================================SI UTILISATEUR N'EST PAS CONNECTE============================== -->
 
@@ -57,7 +57,7 @@
       <ion-icon name="book"></ion-icon>
       <ion-label>Cours</ion-label>
     </ion-tab-button>
-    <ion-tab-button tab="profil">
+    <ion-tab-button tab="profil" *ngIf="monStatus == 1">
       <ion-icon name="albums"></ion-icon>
       <ion-label>Ferme</ion-label>
     </ion-tab-button>

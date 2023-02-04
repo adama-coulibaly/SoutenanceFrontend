@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Commentaires } from 'src/app/Models/Commentaire';
 import { DetailForumServicesService } from 'src/app/Services/detail-forum-services.service';
+import { ThemeServiceService } from 'src/app/Services/theme-service.service';
+import { TokenStorageService } from 'src/app/Services/token-storage.service';
 
 @Component({
   selector: 'app-detail-forum',
@@ -8,24 +11,70 @@ import { DetailForumServicesService } from 'src/app/Services/detail-forum-servic
   styleUrls: ['./detail-forum.page.scss'],
 })
 export class DetailForumPage implements OnInit {
+
+  isModalOpen = false;
+  erreurRetour: any;
+  com: any;
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
+
   Adama = [
     "adms", "mous","ali","jeans","bore"
   ];
-  constructor(private route:ActivatedRoute,private detailThemeService:DetailForumServicesService) { }
+  user: any;
+  id_theme: any;
+  constructor(private route:ActivatedRoute,private forum:ThemeServiceService, private detailThemeService:DetailForumServicesService,private tokenStorage:TokenStorageService ) { }
+  
+  commentaire:Commentaires = {
+    idcommentaire: undefined,
+    descriptioncom: undefined,
+    Date: undefined,
+    Theme: undefined,
+    User: undefined
+  }
+
 
   lesCommentaires:any
   titre:any
   ngOnInit() {
-      const id_theme = +this.route.snapshot.params["id_theme"];
-      this.detailThemeService.RegionsCommentaire(id_theme).subscribe(data=>{
-          this.lesCommentaires = data
-          for(let comm of this.lesCommentaires)
-            this.titre =  comm.theme.titretheme
-          
-            console.log("=============== "+this.titre)
-      })
+    // ===================================================================================
+    this.user = this.tokenStorage.getUser();
+    this.listerLesTheme()
   }
 
+
+  commenter(){
+        this.forum.commenterTheme(this.commentaire,this.id_theme,this.user.id).subscribe(data=>{
+          this.com = data
+          if(this.com.status == true){
+          this.listerLesTheme()
+         this.isModalOpen = false;
+         this.commentaire.descriptioncom = " "
+          }
+          else{
+            this.isModalOpen = true;
+            this.erreurRetour = this.com.message
+
+          }
+         
+        })
+
+    
+     
+
+  }
+  listerLesTheme(){
+     // ===================================================================================
+     this.id_theme = +this.route.snapshot.params["id_theme"];
+     this.detailThemeService.RegionsCommentaire(this.id_theme).subscribe(data=>{
+         this.lesCommentaires = data
+         for(let comm of this.lesCommentaires)
+           this.titre =  comm.theme.titretheme
+         
+           console.log("=============== "+this.titre)
+     })
+  }
 
 
 }

@@ -11,7 +11,7 @@
       <div class="annuler" style="position: absolute;top: 40px; right: 20px;"> <a routerLink="/connexion" style="color: red; font-weight: bold;text-decoration: none;">Annuler</a></div>
     </div>
 
-    <div *ngIf="erreur">
+    <div *ngIf="erreur" style="color: red; text-align: center;">
         <p>{{erreur}}</p>
     </div>
 
@@ -21,17 +21,20 @@
 
       <div class="section01" [hidden]="!isVisible">
 
-      
+      <div *ngIf="section1" class="ion-text-center" style="color: red;">
+            <span>{{section1}}</span>
+      </div>
+
         <ion-item>
           <ion-label color="primary" position="floating">Nom</ion-label>
           <ion-input autocorrect="on" autofocus="on" clearInput="true" clearOnEdit="true" color="primary"
             inputmode="text" placeholder="Entrer votre nom" required="true" name="nom" [(ngModel)]="form.nom"  minlength="3" maxlength="20"
             #nom="ngModel"></ion-input>
-            <ion-icon name="person-outline" slot="end"></ion-icon>
+            <ion-icon name="person-outline" slot="start"></ion-icon>
         </ion-item>
           <!-- EN CAS D'4NVOI SANS REMPLIR LE CHAMP DE USERNAME  -->
           <div
-          class="alert alert-danger col-md-6"
+          class="alertes"
           role="alert"
           *ngIf="nom.errors && f.submitted">
            Nom d'utilisateur est obligatoire !
@@ -42,32 +45,33 @@
           <ion-item>
           <ion-label color="primary" position="floating">Prénom</ion-label>
           <ion-input autocorrect="on"   clearOnEdit="true" color="primary"
-            inputmode="text" placeholder="Entre votre numero" required="true" name="prenom" [(ngModel)]="form.prenom"  minlength="3" maxlength="20"
+            inputmode="text" placeholder="Prénom" required="true" name="prenom" [(ngModel)]="form.prenom"  minlength="3" maxlength="20"
             #prenom="ngModel"></ion-input>
-            <ion-icon name="person"  slot="end"></ion-icon>
+            <ion-icon name="person"  slot="start"></ion-icon>
         </ion-item>
          <!-- EN CAS D'4NVOI SANS REMPLIR LE CHAMP DE USERNAME  -->
          <div
-         class="alert alert-danger col-md-6"
+         class="alertes"
          role="alert"
          *ngIf="prenom.errors && f.submitted">
          Prénom d'utilisateur est obligatoire !
        </div>
-
+ <!-- autocorrect="on" autofocus="on" clearInput="true" clearOnEdit="true" color="primary" 
+            inputmode="tel"  required="true" name="username" [(ngModel)]="form.username" 
+            #username="ngModel" -->
         <ion-item>
           <ion-label color="primary" position="floating">Téléphone</ion-label>
-          <ion-input autocorrect="on" autofocus="on" clearInput="true" clearOnEdit="true" color="primary"
-            inputmode="text" placeholder="Entre votre numero" required="true" name="username" [(ngModel)]="form.username"  minlength="3" maxlength="20"
-            #username="ngModel"></ion-input>
-            <ion-icon name="call-outline" slot="end"></ion-icon>       
+          <ion-intl-tel-input id="usernID" defaultCountryiso="ml" modalSearchPlaceholder="Rechercher ici" modalCloseText="fermer" modalTitle="Votre pays"
+          name="usernID"  #usernID="ngModel" [(ngModel)]="form.usernID"></ion-intl-tel-input >
+            <ion-icon name="call-outline" slot="start"></ion-icon>       
         </ion-item>
-         <!-- EN CAS D'4NVOI SANS REMPLIR LE CHAMP DE USERNAME  -->
-         <div
-         class="alert alert-danger col-md-6"
+        <!-- EN CAS D'4NVOI SANS REMPLIR LE CHAMP DE USERNAME  -->
+         <!-- <div
+         class="alertes"
          role="alert"
          *ngIf="username.errors && f.submitted">
          Numéro obligatoire !
-       </div>
+       </div> -->
 
 
         <ion-item>
@@ -75,11 +79,11 @@
           <ion-input autocorrect="on" autofocus="on" clearInput="true" clearOnEdit="true" color="primary"
             inputmode="email" placeholder="Entre votre mail" required="true" name="email" [(ngModel)]="form.email"  minlength="3" maxlength="45"
             #email="ngModel"></ion-input>
-            <ion-icon name="mail-outline" slot="end"></ion-icon>
+            <ion-icon name="mail-outline" slot="start"></ion-icon>
         </ion-item>
          <!-- EN CAS D'4NVOI SANS REMPLIR LE CHAMP DE USERNAME  -->
          <div
-         class="alert alert-danger col-md-6"
+         class="alertes"
          role="alert"
          *ngIf="email.errors && f.submitted">
           Nom d'utilisateur est obligatoire !
@@ -90,17 +94,25 @@
 
       <div class="section02" [hidden]="isVisible">
 
+        <ion-list>
+          <ion-item>
+            <ion-select placeholder="Quel est votre status ?" name="idstatus" [(ngModel)]="form.idstatus" #statuser="ngModel">
+              <ion-select-option *ngFor="let st of mesStatus " [value]="st.idstatus"  required="true" name="idstatus" 
+              >{{st.nomstatus}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
   
         <ion-item>
           <ion-label color="primary" position="floating">Adresse</ion-label>
           <ion-input autocorrect="on" autofocus="on" clearInput="true" clearOnEdit="true" color="primary"
             inputmode="text" placeholder="Entre votre nom" required="true" name="adresse" [(ngModel)]="form.adresse"  minlength="3" maxlength="20"
             #adresse="ngModel"></ion-input>
-            <ion-icon name="location-outline" slot="end"></ion-icon>
+            <ion-icon name="location-outline" slot="start"></ion-icon>
         </ion-item> 
          <!-- EN CAS D'4NVOI SANS REMPLIR LE CHAMP DE USERNAME  -->
          <div
-         class="alert alert-danger col-md-6"
+         class="alertes"
          role="alert"
          *ngIf="adresse.errors && f.submitted">
           Veuillez donner une adresse 
@@ -113,12 +125,12 @@
           <ion-input type="password" autocorrect="on" autofocus="on" clearInput="true" clearOnEdit="true" color="primary"
             inputmode="text" placeholder="Entre votre nom" required="true" name="passord" [(ngModel)]="form.password"  minlength="3" maxlength="20"
             #passord="ngModel"></ion-input>
-            <ion-icon name="bag-outline" slot="end"></ion-icon>
+            <ion-icon name="bag-outline" slot="start"></ion-icon>
            
         </ion-item>
          <!-- EN CAS D'4NVOI SANS REMPLIR LE CHAMP DE USERNAME  -->
          <div
-         class="alert alert-danger col-md-6"
+         class="alertes"
          role="alert"
          *ngIf="passord.errors && f.submitted">
           Mot de passe obligatoire
@@ -131,14 +143,14 @@
           <ion-input type="password" autocorrect="on" autofocus="on" clearInput="true" clearOnEdit="true" color="primary"
             inputmode="text" placeholder="Entre votre nom" required="true" name="pass2" [(ngModel)]="form.pass2"  minlength="3" maxlength="20"
             #pass2="ngModel"></ion-input>
-            <ion-icon name="bag-check-outline" slot="end"></ion-icon>
+            <ion-icon name="bag-check-outline" slot="start"></ion-icon>
         </ion-item>
          <!-- EN CAS D'4NVOI SANS REMPLIR LE CHAMP DE USERNAME  -->
          <div
-         class="alert alert-danger col-md-6"
+         class="alertes"
          role="alert"
          *ngIf="pass2.errors && f.submitted">
-          Veuillez donner un mot de passe !
+          Confirmer le mot de passe !
        </div>
 
       </div>

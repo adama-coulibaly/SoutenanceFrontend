@@ -17,13 +17,13 @@
           </div>
 
           <div class="sec">
-              <div class="nom"><strong>Nom:</strong> Coulibaly </div>
-              <div class="right prenom"><strong>Prénom:</strong> Adama </div>
+              <div class="nom"><strong>Nom:</strong> {{user.nom}} </div>
+              <div class="right prenom"><strong>Prénom:</strong> {{user.prenom}} </div>
           </div>
 
           <div class="sec">
-            <div class="nom"><strong>Tel:</strong> 70446711 </div>
-            <div class="right prenom"><strong>Adresse:</strong> Doumanzana </div>
+            <div class="nom"><strong>Tel:</strong> {{user.username}} </div>
+            <div class="right prenom"><strong>Adresse:</strong> {{user.adresse}} </div>
         </div>
 
           <div class="sec">
@@ -42,27 +42,70 @@
         </div>
 
         <div class="sec3">
-          <div><input type="radio" name="choix" id="livraison"> <ion-label for="livraison">  A la livraison</ion-label></div>
-          <div><input type="radio" name="choix" id="om"> <ion-label for="om">  Orange Money</ion-label></div>
-        </div>
-        <div class="sousSec3" style="margin: 5%;">
-          <div><input type="radio" name="choix" id="credit"> <ion-label for="credit">  Carte de crédit </ion-label></div>
+          <div><input type="radio" name="choix" id="livraison" checked> <ion-label for="livraison" (click)=" livraison()">  A la livraison</ion-label></div>
+          <div><input type="radio" name="choix" id="om"> <ion-label for="om" (click)=" orangeMoney()">  Orange Money</ion-label></div>
         </div>
 
       </ion-card>
   </div>
+
+  <div class="payerOMG" [hidden]="!isVisible">
+    <ion-card style="  border: 1px solid #dba308;">
+      <div class="payerOM">
+      <div class="maCarte2">
+      <div><ion-label ><strong>Numéro</strong></ion-label></div>
+      <div><ion-input type="text" placeholder="+22370667026" maxlength="12" minlength="12"></ion-input></div>
+    </div>
+
+    <div class="maCarte2">
+      <div><ion-label ><strong>Code secret</strong></ion-label></div>
+      <div><ion-input type="text" placeholder="****" maxlength="4" minlength="4"></ion-input></div>
+    </div>
+  </div>
+  <div class="ion-text-center"><button style="background: black;color: white;border: 1px solid ; padding: 4%; border-radius: 3px;margin: 2%;" (click)="Confirmer()">Confirmer</button></div>
+
+    </ion-card>
+
+</div>
+
+
 
   <div class="validerCommande">
     <ion-card class="maCarte">
      
       <div class="sec3">
         <div><ion-label ><strong>Total</strong></ion-label></div>
-        <div><ion-label><Strong>100.000 Fcfa</Strong> </ion-label></div>
+        <div><ion-label><Strong>{{MontantTotal}} Fcfa</Strong> </ion-label></div>
       </div>
       
       <div class="ion-text-center" style="margin: 2%;"><ion-button (click)="valider()">Passer la commande</ion-button></div>
       
       </ion-card>
 </div>
+
+
+<!-- ===========================================   PAYEMENT ORANGE MONEY  ===================================== -->
+
+  <!-- <ion-button expand="block" (click)="setOpen(true)">Open</ion-button>
+  <ion-modal [isOpen]="isModalOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Payement</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="setOpen(false)">Fermer</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni illum quidem recusandae ducimus quos
+          reprehenderit. Veniam, molestias quos, dolorum consequuntur nisi deserunt omnis id illo sit cum qui. Eaque,
+          dicta.
+        </p>
+      </ion-content>
+    </ng-template>
+  </ion-modal> -->
+
 
 </ion-content>

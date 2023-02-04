@@ -17,11 +17,17 @@ export class InscriptionPage implements OnInit {
     roles: "",
     password: "",
     adresse: "",
-    username: ""
+    username: "",
+    idstatus:""
   };
+
+
+usern = ''
+
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = 'A';
+  section1 = ''
 
   form2: any = {
     nom: "",
@@ -33,47 +39,73 @@ export class InscriptionPage implements OnInit {
     username: ""
   };
   success: any;
-// ====== LA VARIABLE POUR CACHER ET AFFICHER
+  // ====== LA VARIABLE POUR CACHER ET AFFICHER
   isVisible = true;
   erreur: any;
+  mesStatus: any;
+  valeurSelet : any
 
-  constructor(private authService: AuthService,private router:Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
 
   ngOnInit() {
+    this.authService.lesStatus().subscribe(data=>{
+      this.mesStatus = data
+    })
   }
 
   // ===================================================LA METHODE SUIVANTE
-  Suivant(){
-    this.isVisible = false
+  Suivant() {
+    const { nom, prenom, adresse, username, email, password } = this.form;
+
+    if (nom == "" || prenom == "" || username == " " || email == "") {
+      this.isVisible = true
+      this.section1 = "Veuillez remplir tous les champs"
+
+    }
+    else {
+      this.section1 = ""
+      this.isVisible = false
+    }
   }
-  Retour(){
+  Retour() {
     this.isVisible = true
   }
 
   onSubmit(): void {
-    // LA METHODE DE VERIFICATION DES MOTS DE PASSE N'EST PAS GERE D'ABORD
-    const { nom, prenom, adresse, username, email, password } = this.form;
 
-    this.authService.registerO(nom, prenom, username, email, password, adresse).subscribe(
-      data => {
-        this.success = data
-        if (this.success.status = true)
-         {
-          Swal.fire({
-            heightAuto: false,
-           // position: 'top-end',
-            icon: 'success',
-            text: 'Compte créer avec succès',
-            showConfirmButton: false,
-            timer: 2500
-              })
-              this.router.navigateByUrl('/connexion')
-         }
-        if(this.success.status = false) {
-          this.erreur = this.success.message
+  
+
+    // LA METHODE DE VERIFICATION DES MOTS DE PASSE N'EST PAS GERE D'ABORD
+    const { nom, prenom, adresse, usernID, email, password,idstatus } = this.form;
+   
+    
+    console.log("ID "+idstatus)
+
+    if (this.form.password == this.form.pass2) {
+      this.authService.registerO(nom, prenom, usernID.internationalNumber, email, password, adresse,idstatus).subscribe(
+        data => {
+          this.success = data
+          if (this.success.status == true) {
+            Swal.fire({
+              heightAuto: false,
+              // position: 'top-end',
+              icon: 'success',
+              text: 'Compte créer avec succès',
+              showConfirmButton: false,
+              timer: 2500
+            })
+            this.router.navigateByUrl('/connexion')
+          }
+          else{
+            this.erreur = this.success.message
+          }
         }
-      }
-    );
+      );
+    } else {
+      this.erreur = "Mot de passe incorrect !"
+    }
+
+
   }
 }

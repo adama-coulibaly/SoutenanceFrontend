@@ -94,7 +94,7 @@ export class ProduitsPage implements OnInit {
     loading.present();
   }
   loadData() { this.user = this.tokenStorage.getUser();
-    this.panierService.lesProduitsParFermes(this.user.id).subscribe(data=>{
+    this.panierService.lesProduitsParFermes(this.user.id,true).subscribe(data=>{
       this.panierProd = data;
       for(let a of this.panierProd)
         this.panierTotal += a.quantite 
