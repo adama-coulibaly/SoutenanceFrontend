@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { Commentaires } from 'src/app/Models/Commentaire';
 import { DetailForumServicesService } from 'src/app/Services/detail-forum-services.service';
 import { ThemeServiceService } from 'src/app/Services/theme-service.service';
@@ -24,7 +25,7 @@ export class DetailForumPage implements OnInit {
   ];
   user: any;
   id_theme: any;
-  constructor(private route:ActivatedRoute,private forum:ThemeServiceService, private detailThemeService:DetailForumServicesService,private tokenStorage:TokenStorageService ) { }
+  constructor(private alertController: AlertController,private route:ActivatedRoute,private forum:ThemeServiceService, private detailThemeService:DetailForumServicesService,private tokenStorage:TokenStorageService ) { }
   
   commentaire:Commentaires = {
     idcommentaire: undefined,
@@ -45,6 +46,10 @@ export class DetailForumPage implements OnInit {
 
 
   commenter(){
+    if(this.user.id == null){
+      this.presentAlert()
+    }
+    else{
         this.forum.commenterTheme(this.commentaire,this.id_theme,this.user.id).subscribe(data=>{
           this.com = data
           if(this.com.status == true){
@@ -59,7 +64,7 @@ export class DetailForumPage implements OnInit {
           }
          
         })
-
+      }
     
      
 
@@ -75,6 +80,22 @@ export class DetailForumPage implements OnInit {
            console.log("=============== "+this.titre)
      })
   }
+
+    //  CETTE METHODE EST APPELLEE UNE FOIS QUE L'UTILISATEURS ESSAI D'AJOUTER UN PRODUITS AU PANIER ET QU'IL N'EST PAS CONNECTE
+    async presentAlert() {
+      const alert = await this.alertController.create({
+        header: 'Connexion requise !',
+        // subHeader: 'Veuillez vous connecté pour pouvoir ajouter un produit au panier',
+        message: 'Veuillez vous connecté pour pouvoir ajouter un commentaire !',
+        buttons: ['OK'],
+      });
+  
+      await alert.present();
+    }
+
+    back(): void {
+      window.history.back()
+    }
 
 
 }

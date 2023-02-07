@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLinkActive } from '@angular/router';
 import { AlertController, AnimationController, NavController } from '@ionic/angular';
 import { Ferme } from 'src/app/Models/Ferme';
+import { Production } from 'src/app/Models/Production';
 import { Produits } from 'src/app/Models/Produits';
 import { FermeService } from 'src/app/Services/ferme.service';
 import Swal from 'sweetalert2';
@@ -14,6 +15,9 @@ import Swal from 'sweetalert2';
 export class FermePage implements OnInit  {
   info: any;
   production: any;
+  isSuccessful = false;
+  nonValide: any;
+
 
   pages = 'productions'
   produits: any;
@@ -22,6 +26,19 @@ export class FermePage implements OnInit  {
   bien: any;
   bien1: any;
   etat: any;
+
+  form:any={
+    dateentrer: '',
+    datesortie: '',
+    quantite: '',
+    idtype:''
+  }
+
+  form2:any = {
+      status:''
+  }
+
+
 
   product:Produits={
     idproduit: undefined,
@@ -47,10 +64,26 @@ ferme:Ferme={
   User: undefined
 }
 
+productions:Production = {
+  idproduction: undefined,
+  dateentrer: undefined,
+  datesortie: undefined,
+  quantite: undefined,
+  etat: undefined,
+  ferme: undefined,
+  Typeproduction: undefined,
+  Status: undefined
+}
+
   taille: any;
   produitTotal: any;
   etatsProds: boolean = false;
   monEtat: boolean = false;
+  idferme: any;
+  mesTypes: any;
+  erreursProduction: any;
+  mesStatus: any;
+  mesFIltres: any;
 
 
   constructor(private redirection:Router, private route:ActivatedRoute,private fermeService: FermeService,private animationCtrl: AnimationController,public navCtrl: NavController) { }
@@ -58,26 +91,36 @@ ferme:Ferme={
 
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
+
+  }
+  setOpen2(isOpen2: boolean) {
+    this.isModalOpen2 = isOpen2;
   }
   isModalOpen = false;
+  isModalOpen2 = false;
+
+
 
   ngOnInit() {
 
+    this.reloadProduction();
+    this.lesEnumerations();
+
+    // LES TYPES DE PRODUCTIONS ICI
+    this.fermeService.lesTypesdeProduction().subscribe(data=>{
+      this.mesTypes = data
+    })
+
     // RECUPERATION DES INFORMATION D'UNE FERME
-    const idferme = +this.route.snapshot.params["idferme"];
-    this.fermeService.infoFermes(idferme).subscribe(data=>{
+    this.idferme = +this.route.snapshot.params["idferme"];
+    this.fermeService.infoFermes(this.idferme).subscribe(data=>{
       this.info = data;
     });
 
-    // RECUPERATION DES PRODUCTIONS D'UNE FERME
-    this.fermeService.lesProductions(idferme).subscribe(data=>{
-      this.production = data;
-      this.taille = this.production.length
-    });
 
     // RECUPERATION DES PRODUITS PAR FERMES ET ETATS
     this.monEtat = true
-    this.fermeService.lesProduitsParFermesEtat(idferme,this.monEtat).subscribe(data=>{
+    this.fermeService.lesProduitsParFermesEtat(this.idferme,this.monEtat).subscribe(data=>{
       this.produits = data;
       for(let etatsProd of this.produits)
       if(etatsProd.etat == true)
@@ -178,6 +221,31 @@ supprimerFerme(idferme:any){
 
 }
 
+// ===============================================   INSERTION DES PRODUCTIONS
+onSubmit(){
+this.productions.dateentrer = this.form.dateentrer
+this.productions.datesortie = this.form.datesortie
+this.productions.quantite = this.form.quantite
+
+this.fermeService.ajouterProduction(this.productions,this.form.idtype,this.idferme).subscribe(data=>{
+  if(data.status == true){
+    Swal.fire({
+      heightAuto: false,
+      icon: 'success',
+      text: 'Production ajoutée avec succes !',
+      showConfirmButton: false,
+      timer: 2500
+    })
+    this.viderChamps();
+    this.isModalOpen2 = false;
+    this.reloadProduction();
+  }
+  else{
+    this.erreursProduction = data.message
+  }
+})
+
+}
 
 reloadPage(){
   // RECUPERATION DES INFORMATION D'UNE FERME
@@ -187,8 +255,47 @@ reloadPage(){
     this.produits = data;});
 }
 
-
-
+reloadProduction(){
   
+    // RECUPERATION DES PRODUCTIONS D'UNE FERME
+    const idferme = +this.route.snapshot.params["idferme"];
+    this.fermeService.lesProductions(idferme).subscribe(data=>{
+      this.mesFIltres = data;
+      this.taille = this.production.length
+    });
+
+   
+}
+
+ viderChamps(){
+      this.form.dateentrer = ""
+      this.form.datesortie = ""
+      this.form.quantite = ""
+      this.form.idtype = " "
+    }
+// =========================================================================== ENUM 
+  lesEnumerations(){
+    this.fermeService.enumStatus().subscribe(data=>{
+      this.mesStatus = data
+    })
+  }
+//============================================================================ 
+
+faireUnFiltre(){
+
+if(this.form2.status == "tous"){
+
+  this.reloadProduction();
+
+}
+else{
+
+  this.fermeService.fitrerProduction(this.form2.status,this.idferme).subscribe(data=>{
+    this.mesFIltres = data
+  })
+}
+
+}
+
 
 }

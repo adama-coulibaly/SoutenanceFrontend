@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingController, ModalController, NavController } from '@ionic/angular';
+import { AlertController, LoadingController, ModalController, NavController } from '@ionic/angular';
 import { PanierComponent } from 'src/app/panier/panier.component';
 import { AccueilServiceService } from 'src/app/Services/accueil-service.service';
 import { ThemeServiceService } from 'src/app/Services/theme-service.service';
@@ -66,7 +66,7 @@ monTableau1 = []
       autoplay:true
     }
 
-  constructor(private serveGe:ServigeGeneralService,private panierService:PanierServiceService,private loadingCtrl:LoadingController,private tokenStorage: TokenStorageService,private router:Router, public navCtrl: NavController,private serviceAccueil:AccueilServiceService, private modalCtrl: ModalController,private animationCtrl: AnimationController,private serviceFormation:FormationServiceService) { }
+  constructor(private alertController: AlertController,private serveGe:ServigeGeneralService,private panierService:PanierServiceService,private loadingCtrl:LoadingController,private tokenStorage: TokenStorageService,private router:Router, public navCtrl: NavController,private serviceAccueil:AccueilServiceService, private modalCtrl: ModalController,private animationCtrl: AnimationController,private serviceFormation:FormationServiceService) { }
   lesThemes:any;
 
   // ==============================================
@@ -130,14 +130,21 @@ uneFormation(idformation:any){
   // ICI ON AJOUTE UN PRODUITS DANS LE PANIER
 
   ajouterPaner(idproduit:number){
-    this.serviceAccueil.ajouterAuPanier(this.panier,idproduit,this.user.id).subscribe(data=>{
-      this.addPanier = data
-      this.loadAddToCard();
-      if(this.addPanier.status == true){
-        this.showLoading()
-      }
-     
-    })
+
+    if(this.user.id == null){
+      this.presentAlert()
+    }
+    else{
+
+      this.serviceAccueil.ajouterAuPanier(this.panier,idproduit,this.user.id).subscribe(data=>{
+        this.addPanier = data
+        this.loadAddToCard();
+        if(this.addPanier.status == true){
+          this.showLoading()
+        }
+       
+      })
+    }
   }
 
   async showLoading() {
@@ -157,5 +164,17 @@ uneFormation(idformation:any){
     })
    }
    
+
+  //  CETTE METHODE EST APPELLEE UNE FOIS QUE L'UTILISATEURS ESSAI D'AJOUTER UN PRODUITS AU PANIER ET QU'IL N'EST PAS CONNECTE
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Connexion requise !',
+      // subHeader: 'Veuillez vous connecté pour pouvoir ajouter un produit au panier',
+      message: 'Veuillez vous connecté pour pouvoir ajouter un produit au panier !',
+      buttons: ['OK'],
+    });
+
+    await alert.present();
+  }
 
 }

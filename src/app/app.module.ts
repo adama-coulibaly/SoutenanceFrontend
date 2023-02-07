@@ -14,6 +14,7 @@ import { FirebaseX } from '@awesome-cordova-plugins/firebase-x/ngx';
 import { CompteUserComponent } from './Pages/compte-user/compte-user.component';
 import { FormGroup, FormsModule } from '@angular/forms';
 import { IonIntlTelInputModule } from 'ion-intl-tel-input';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 
 
@@ -31,7 +32,7 @@ import { IonIntlTelInputModule } from 'ion-intl-tel-input';
      Ng2SearchPipeModule,
      FormsModule,
      IonIntlTelInputModule,
-     
+   
 
     ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },InAppBrowser,FirebaseX],

@@ -70,4 +70,28 @@ export class FermeService {
        supprimerFerme(produit:any,idferme:any):Observable<any>{
         return this.http.patch(`http://localhost:8080/ferme/etat/${idferme}`,produit)
       }
+
+      // RECUPERATION DES TYPE DE PRODUCTION
+
+      lesTypesdeProduction():Observable<any>{
+        return this.http.get("http://localhost:8080/typeproduction/liste")
+      }
+
+
+      // ======================== AJOUTER UNE PRODUCTION
+
+      ajouterProduction(production:any,idtype:any,idferme:any):Observable<any>{
+        return this.http.post(`http://localhost:8080/production/ajouter/${idtype}/${idferme}`,production)
+      }
+
+      //================================================ FILTRAGE DES PRODUCTIONS
+
+      fitrerProduction(status:any,id_ferme:any):Observable<any>{
+        return this.http.get(`http://localhost:8080/production/lesProdsParStatus/${status}/${id_ferme}`)
+      }
+
+      // =============================================== LES ENUM
+      enumStatus():Observable<any>{
+        return this.http.get("http://localhost:8080/production/enum");
+      }
 }

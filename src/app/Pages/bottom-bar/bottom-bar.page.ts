@@ -6,6 +6,8 @@ import { PanierServiceService } from 'src/app/Services/panier-service.service';
 import { TokenStorageService } from 'src/app/Services/token-storage.service';
 import { ServigeGeneralService } from 'src/app/servige-general.service';
 import { CompteUserComponent } from '../compte-user/compte-user.component';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -14,6 +16,7 @@ import { CompteUserComponent } from '../compte-user/compte-user.component';
   styleUrls: ['./bottom-bar.page.scss'],
 })
 export class BottomBarPage implements OnInit {
+  [x: string]: any;
   user: any;
   panierProd: any;
   // public panierTotal =  0;
@@ -26,7 +29,7 @@ export class BottomBarPage implements OnInit {
 
   MontantTotal: any;
 
-  constructor(private modalCtrl: ModalController,private animationCtrl: AnimationController,private tokenStorage:TokenStorageService,private panierService:PanierServiceService,public popoverCtrl: PopoverController,private route:Router,public serveGe:ServigeGeneralService) { }
+  constructor(private http:HttpClient, private modalCtrl: ModalController,private animationCtrl: AnimationController,private tokenStorage:TokenStorageService,private panierService:PanierServiceService,public popoverCtrl: PopoverController,private route:Router,public serveGe:ServigeGeneralService) { }
 
   ngOnInit() {
 
@@ -89,4 +92,9 @@ redirection(){
     });
     modal.present();
   }
+
+  // =======================================================
+
+
+
 }

@@ -3,6 +3,7 @@ import { DatePipe, Location } from "@angular/common";
 import { ThemeServiceService } from 'src/app/Services/theme-service.service';
 import { Theme } from 'src/app/Models/Teheme';
 import { TokenStorageService } from 'src/app/Services/token-storage.service';
+import { AlertController } from '@ionic/angular';
 
 
 @Component({
@@ -33,7 +34,7 @@ tailleMinimum:any
 
  filterTerm!: string;
 
-  constructor(private location: Location, private ThemesService:ThemeServiceService,private tokenStorage:TokenStorageService) {
+  constructor(private alertController: AlertController,private location: Location, private ThemesService:ThemeServiceService,private tokenStorage:TokenStorageService) {
 
     // this.maDate = this.datePipe.transform(this.maDate, 'dd/MM/yyyy');
    }
@@ -58,6 +59,14 @@ tailleMinimum:any
   }
   // La methode pour pouvoir ajouter une Thème
   ajouter(){
+
+
+    if(this.user.id == null){
+      this.presentAlert()
+    }
+    else{
+
+
     this.theme.titretheme
     if(this.theme.titretheme.length < 25){
       this.erreur = "Taille minimum 25 caractères !"
@@ -75,11 +84,18 @@ tailleMinimum:any
    
     
   }
+}
     
-//  CETTE FUNCTION RECUPERE LES DONNEES UN FOIS
-  //  recharge(){
-      
-  //   }
- 
+  //  CETTE METHODE EST APPELLEE UNE FOIS QUE L'UTILISATEURS ESSAI D'AJOUTER UN PRODUITS AU PANIER ET QU'IL N'EST PAS CONNECTE
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Connexion requise !',
+      // subHeader: 'Veuillez vous connecté pour pouvoir ajouter un produit au panier',
+      message: 'Veuillez vous connecté pour pouvoir poster un thème !',
+      buttons: ['OK'],
+    });
+
+    await alert.present();
+  }
 
 }

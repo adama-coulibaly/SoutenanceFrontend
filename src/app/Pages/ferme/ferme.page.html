@@ -14,7 +14,8 @@
       </div>
       <div class="icons">
         <ion-icon class="create" name="create-outline"></ion-icon>
-        <ion-icon class="delete" name="trash-outline" style="cursor: pointer;" (click)="supprimerFerme(info.idferme)"></ion-icon>
+        <ion-icon class="delete" name="trash-outline" style="cursor: pointer;"
+          (click)="supprimerFerme(info.idferme)"></ion-icon>
       </div>
     </div>
   </div>
@@ -25,12 +26,12 @@
       <div class="description">
         <div class="inline">
           <div><span>Activité:</span></div>
-          <div><span>{{info.activiteferme}}</span></div>
+          <div><span>{{info.datesortie}}</span></div>
         </div>
 
         <div class="inline">
           <div><span>Adresse:</span></div>
-          <div><span>{{info.adresseferme}}</span></div>
+          <div><span>{{info.quantite}}</span></div>
         </div>
 
         <div class="inline">
@@ -46,15 +47,15 @@
   <!--  =========================================  SEGMENTS ===========================  -->
 
   <div class="">
-   
-      <ion-segment [(ngModel)]="pages">
-        <ion-segment-button value="productions">
-          <ion-label>Productions</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="produits">
-          <ion-label>produits</ion-label>
-        </ion-segment-button>
-      </ion-segment>
+
+    <ion-segment [(ngModel)]="pages">
+      <ion-segment-button value="productions">
+        <ion-label>Productions</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="produits">
+        <ion-label>produits</ion-label>
+      </ion-segment-button>
+    </ion-segment>
 
 
     <div class="mesproduits contenues" style="overflow-y: scroll;display: grid;">
@@ -63,11 +64,32 @@
 
         <ion-list *ngSwitchCase="'productions'" style="background-color: #e0dfe2;">
           <!-- ============================================================================================================ -->
-          <div style="display: flex;justify-content: flex-end;"> <ion-button fill="outline" style="margin-right: 10px;">
-              <ion-icon name="add-circle-outline" style="margin-right: 5px;"> </ion-icon> production</ion-button></div>
+
+
+
+        
+            <div>
+              <ion-item>
+                <ion-select placeholder="Toute les productions" name="idstatus" [(ngModel)]="form2.status"
+                  #statuser="ngModel" (ionChange)="faireUnFiltre()">
+                  <ion-select-option value="tous" checked>Toute les productions</ion-select-option>
+                  <ion-select-option *ngFor="let st of mesStatus " [value]="st" required="true"
+                    name="idstatus">{{st}}</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </div>
+            <div style="display: flex; justify-content: flex-end; margin: 2%;"> <ion-button expand="block" (click)="setOpen2(true)"
+                fill="outline"  >
+                
+                <ion-icon name="add-circle-outline"> </ion-icon> production</ion-button>
+            </div>
+        
+
+
+
           <!-- <div class="titreInterim"><ion-title>Mes productions</ion-title></div> -->
           <div class="productions" style="background-color: #e0dfe2;" *ngIf="taille != 0 ">
-            <ion-card *ngFor="let product of production">
+            <ion-card *ngFor="let product of mesFIltres">
               <div class="titreProduction">
                 <div class="nomTitre">
                   <p>{{product.typeproduction.nomtype}}</p>
@@ -212,8 +234,115 @@
       </ion-content>
     </ng-template>
   </ion-modal>
-<!-- ============================================================================== -->
+  <!-- ============================================================================== -->
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- ======================================================== -->
+
+  <ion-modal id="example-modal" #modal trigger="ajouterferme" [isOpen]="isModalOpen2" backdrop-dismiss="false">
+    <ng-template>
+      <div class="forms">
+        <div>
+
+          <h4>Ajouter une production</h4>
+        </div>
+
+
+        <div *ngIf="erreursProduction" style="color: red; text-align: center;">
+          <p>{{erreursProduction}}</p>
+        </div>
+
+        <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+
+
+
+          <ion-list>
+            <ion-item>
+              <ion-select placeholder="Choisissez un type de production" name="idtype" [(ngModel)]="form.idtype"
+                #idtype="ngModel">
+                <ion-select-option *ngFor="let st of mesTypes " [value]="st.idtype" required="true"
+                  name="idtype">{{st.nomtype}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+
+
+          <!-- ======================================================  CHAMPS NOM ================================= -->
+          <ion-item>
+            <ion-label position="floating">Date d'entrée <span>*</span></ion-label>
+            <ion-input type="date" equired="true" required name="dateentrer" [(ngModel)]="form.dateentrer" minlength="3"
+              #dateentrer="ngModel"></ion-input>
+          </ion-item>
+
+          <div class="alerts " role="alert" *ngIf="dateentrer.errors && f.submitted">
+            <div *ngIf="dateentrer.errors">Veuillez une date correcte !</div>
+          </div>
+
+          <!-- ======================================================  CHAMPS PRENOM ================================= -->
+
+          <ion-item counter="true">
+            <ion-label position="floating">Date de sortie <span>*</span></ion-label>
+            <ion-input type="date" name="datesortie" required [(ngModel)]="form.datesortie" minlength="3"
+              #datesortie="ngModel"></ion-input>
+          </ion-item>
+
+          <div class="alerts " role="alert" *ngIf="datesortie.errors && f.submitted">
+            <div *ngIf="datesortie.errors">Veuillez une date correcte !</div>
+          </div>
+          <!-- ======================================================  CHAMPS ADRESSE ================================= -->
+
+          <ion-item counter="true">
+            <ion-label position="floating">Quantité <span>*</span></ion-label>
+            <ion-input type="number" name="quantite" required [(ngModel)]="form.quantite" min="0" maxlength="50"
+              #quantite="ngModel"></ion-input>
+          </ion-item>
+
+          <div class="alerts " role="alert" *ngIf="quantite.errors && f.submitted">
+            <div *ngIf="quantite.errors">Quantité obligatoire !</div>
+          </div>
+          <!-- ======================================================  CHAMPS TAILLE ================================= -->
+
+
+
+
+
+
+          <div class="bottoms-boutons">
+            <div><ion-button type="submit">Créer</ion-button></div>
+            <div><ion-button class="annuler" (click)="setOpen2(false)">annuler</ion-button></div>
+
+
+          </div>
+        </form>
+      </div>
+
+    </ng-template>
+  </ion-modal>
 
 
 </ion-content>

@@ -35,6 +35,7 @@
     "@ionic-native/core": "^5.36.0",
     "@ionic-native/firebase": "^5.36.0",
     "@ionic-native/firebase-messaging": "^4.20.0",
+    "@ionic-native/geolocation": "^5.36.0",
     "@ionic-native/in-app-browser": "^5.36.0",
     "@ionic/angular": "^6.1.9",
     "@stomp/stompjs": "^6.1.2",

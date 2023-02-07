@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { Panier } from 'src/app/Models/panier';
 import { AccueilServiceService } from 'src/app/Services/accueil-service.service';
 import { PanierServiceService } from 'src/app/Services/panier-service.service';
@@ -43,7 +43,7 @@ export class ProduitsPage implements OnInit {
 
   poulets: string = "poulet"; // default button
   unProd: any;
-  constructor(private serviceAccueil: AccueilServiceService,private tokenStorage: TokenStorageService,private loadingCtrl:LoadingController,private route:Router,private panierService:PanierServiceService,private bo:BottomBarPage,private serveGe:ServigeGeneralService) { }
+  constructor(private alertController: AlertController,private serviceAccueil: AccueilServiceService,private tokenStorage: TokenStorageService,private loadingCtrl:LoadingController,private route:Router,private panierService:PanierServiceService,private bo:BottomBarPage,private serveGe:ServigeGeneralService) { }
 
   ngOnInit() {
     //  ICI ON RECUPERER L'UTILISATEUR CONNECTE
@@ -74,6 +74,10 @@ export class ProduitsPage implements OnInit {
   // ==================================== AJOUT D'UN PRODUIT AU PANIER ==========================
 
   ajouterPaner(idproduit:number){
+    if(this.user.id == null){
+      this.presentAlert()
+    }
+    else{
     this.serviceAccueil.ajouterAuPanier(this.panier,idproduit,this.user.id).subscribe(data=>{
       this.addPanier = data
       this.loadAddToCard();
@@ -81,7 +85,7 @@ export class ProduitsPage implements OnInit {
         this.showLoading()
       }
      
-    })
+    })}
   }
 
   async showLoading() {
@@ -112,4 +116,17 @@ export class ProduitsPage implements OnInit {
       this.serveGe.showValue.next(this.panierProd[0]); // CETTE METHODE PERMET DE FAIRE APPEL A NOTRE OBSERVABLE ICI   
     })
    }
+
+
+     //  CETTE METHODE EST APPELLEE UNE FOIS QUE L'UTILISATEURS ESSAI D'AJOUTER UN PRODUITS AU PANIER ET QU'IL N'EST PAS CONNECTE
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Connexion requise !',
+      // subHeader: 'Veuillez vous connecté pour pouvoir ajouter un produit au panier',
+      message: 'Veuillez vous connecté pour pouvoir ajouter un produit au panier !',
+      buttons: ['OK'],
+    });
+
+    await alert.present();
+  }
 }
