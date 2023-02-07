@@ -12,6 +12,7 @@ import { TokenStorageService } from 'src/app/Services/token-storage.service';
 import { Panier } from 'src/app/Models/panier';
 import { PanierServiceService } from 'src/app/Services/panier-service.service';
 import { ServigeGeneralService } from 'src/app/servige-general.service';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -66,14 +67,22 @@ monTableau1 = []
       autoplay:true
     }
 
-  constructor(private alertController: AlertController,private serveGe:ServigeGeneralService,private panierService:PanierServiceService,private loadingCtrl:LoadingController,private tokenStorage: TokenStorageService,private router:Router, public navCtrl: NavController,private serviceAccueil:AccueilServiceService, private modalCtrl: ModalController,private animationCtrl: AnimationController,private serviceFormation:FormationServiceService) { }
+  constructor(
+    private alertController: AlertController,
+    private serveGe:ServigeGeneralService,
+    private panierService:PanierServiceService,
+    private loadingCtrl:LoadingController,
+    private tokenStorage: TokenStorageService,
+    private router:Router, public navCtrl: NavController,
+    private serviceAccueil:AccueilServiceService, 
+    private modalCtrl: ModalController,
+    private animationCtrl: AnimationController,
+    private serviceFormation:FormationServiceService,
+    private http: HttpClient) { }
   lesThemes:any;
 
   // ==============================================
-  ionViewWillEnter() {
-    // window.location.reload();
-     }
-
+  
   ngOnInit() {
     this.user = this.tokenStorage.getUser();
 // ===================================================== RECUPERATION DES PRODUITS

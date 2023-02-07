@@ -3,7 +3,7 @@
   <ion-slides [options]="options">
     <ion-slide class="first">
       <ion-card>
-        <img src="../../../assets/slides/Rectangle 87.png" alt="" srcset="">
+        <img src="../../../assets/img/poulailler-poulets-locaux.jpg" alt="" srcset="">
 
       </ion-card>
   </ion-slide>
@@ -40,7 +40,15 @@
               poulets de chairs necessite un grand sacrifice de temps et veilles aux entretiens.
             </p>
 
-           <div class="buttonMesfermes"> <ion-button routerLink="/bottom-bar/profil">Mes fermes</ion-button></div>
+           <div style="display: flex; justify-content: space-around;">
+            <div class="buttonMesfermes" *ngIf="user.id != null && user.statusUser.idstatus == 1"> 
+              <ion-button routerLink="/bottom-bar/profil">Mes fermes</ion-button>
+              <!-- *ngIf="user.id != null && user.statusUser.idstatus == 1" -->
+            </div>
+            <div class="buttonMesfermes"> 
+              <ion-button>Conseils</ion-button>
+            </div>
+           </div>
         </ion-card-content>
     </ion-card>
 </div>

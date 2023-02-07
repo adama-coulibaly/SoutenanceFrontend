@@ -65,6 +65,7 @@ export class PanierComponent implements OnInit {
       if(this.addPanier.status == true){
        this.showLoading()
        this.loadDataToPanier();
+       this.recharger()
       }
      
     })
@@ -114,7 +115,7 @@ export class PanierComponent implements OnInit {
       for(let a of this.panierProd){
         this.inc += a.quantite 
         this.valeur = a.quantite
-        this.MontantTotal += a.totalproduit
+        this.MontantTotal = a.totalproduit
       }
     })
   }

@@ -25,7 +25,7 @@
       <!-- =========================== TEXT DESC ET IMAGES ============================= -->
       <div class="prodPanier">
         <div class="contenuDesc">
-          <p>{{prod.produits[0].nomproduit}}</p>
+          <p><strong>{{prod.produits[0].nomproduit}}</strong></p>
           <p>{{prod.produits[0].prix}} Fcfa</p>
         </div>
 
@@ -36,24 +36,19 @@
       </div>
 
       <!-- ================================= increment et total =================================================== -->
-      <div style="display: flex;flex-direction: row;align-items: center;justify-content: space-around;">
-          <div> 
-            <div style="display: grid;grid-template-columns: auto auto auto;">
-            <form #myForm="ngForm">
-              <input  type="number"   [(ngModel)]="prod.quantite"  name="myNumber" ngModel required #myNumberInput="ngModel"  min="0" style="width: 60px;">
-              <ion-col size="2" class="ion-align-items-center">
-                <ion-button type="submit" [disabled]="!myForm.valid" (click)="mettreAjours(myForm,prod.produits[0].idproduit)">
+                <form #myForm="ngForm" style="display: flex; flex-direction: row;align-items: center;justify-content: space-around;width: 90%;">
+                <div>
+                  <input  type="number"   [(ngModel)]="prod.quantite"  name="myNumber" ngModel required #myNumberInput="ngModel"  min="0" style="text-align: center; width: 60px;border: 1px solid #04CF72;border-radius: 5px 5px;">
+                </div>
+                <div>
+                  <ion-button type="submit" [disabled]="!myForm.valid" (click)="mettreAjours(myForm,prod.produits[0].idproduit)">
                     <ion-icon name="refresh" slot="icon-only" ></ion-icon>
                 </ion-button>
-              </ion-col>
+                </div>
+              <div>
+                <strong>{{prod.totalproduit}} Fcfa</strong>
+              </div>
            </form>
-          </div>
-        </div>
-
-        <div>
-          <p><strong>{{prod.totalproduit}} Fcfa</strong></p>
-        </div>
-      </div>
     </ion-card>
   </div>
 
