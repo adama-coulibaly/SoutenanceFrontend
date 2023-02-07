@@ -36,22 +36,17 @@
       </div>
 
       <!-- ================================= increment et total =================================================== -->
-      <div style="display: flex;flex-direction: row;align-items: center;">
-          <div> <div style="display: grid;grid-template-columns: auto auto auto;">
-            <form name="form" (ngSubmit)="f.form.valid && mettreAjours()" #f="ngForm">
-
-              <input  type="number"   value="{{prod.quantite}}" [(ngModel)]="form.Quantity"   min="0" style="width: 60px;">
+      <div style="display: flex;flex-direction: row;align-items: center;justify-content: space-around;">
+          <div> 
+            <div style="display: grid;grid-template-columns: auto auto auto;">
+            <form #myForm="ngForm">
+              <input  type="number"   [(ngModel)]="prod.quantite"  name="myNumber" ngModel required #myNumberInput="ngModel"  min="0" style="width: 60px;">
               <ion-col size="2" class="ion-align-items-center">
-                <ion-button type="submit"  >
-                    <ion-icon name="add-circle" slot="icon-only" ></ion-icon>
+                <ion-button type="submit" [disabled]="!myForm.valid" (click)="mettreAjours(myForm,prod.produits[0].idproduit)">
+                    <ion-icon name="refresh" slot="icon-only" ></ion-icon>
                 </ion-button>
               </ion-col>
            </form>
-            <!-- <ion-col size="2" class="ion-align-items-center">
-              <ion-button fill="clear" (click)="decrement()">
-                  <ion-icon name="remove-circle" slot="icon-only"></ion-icon>
-              </ion-button>
-            </ion-col> -->
           </div>
         </div>
 
@@ -71,9 +66,6 @@
       <ion-title>{{MontantTotal}} Fcfa</ion-title>
     </div>
   </div>
-
-<div class="ion-text-center" ><ion-icon name="reload-circle-outline" style="font-size: 50px;color:#04CF72;"></ion-icon></div>
-
   <div class="ion-text-center"><ion-button routerLink="/bottom-bar/produits/valider-commende" (click)="closeModal()">Passer au payement</ion-button></div>
 </div>
   

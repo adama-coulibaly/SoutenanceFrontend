@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { IonInput, LoadingController, ModalController } from '@ionic/angular';
+import { Panier } from '../Models/panier';
+import { AccueilServiceService } from '../Services/accueil-service.service';
 import { PanierServiceService } from '../Services/panier-service.service';
 import { TokenStorageService } from '../Services/token-storage.service';
 import { ServigeGeneralService } from '../servige-general.service';
@@ -12,8 +15,16 @@ import { ServigeGeneralService } from '../servige-general.service';
 })
 export class PanierComponent implements OnInit {
   form: any = {
-  Quantity:null
+  Quantity:"",
+  nomm:""
   };
+  panier:Panier ={
+    idpanier: undefined,
+    quantite: undefined,
+    totalproduit: undefined,
+    User: undefined,
+    Produit: undefined
+  }
 
 
   panierProd: any;
@@ -23,11 +34,17 @@ export class PanierComponent implements OnInit {
   MontantTotal=0
   valeur=0;
   newValue = 0;
+  addPanier: any;
 
-  constructor(private serveGe:ServigeGeneralService,private modalCtrl: ModalController, private panierService:PanierServiceService, private tokenStorage:TokenStorageService) { }
+  constructor(private loadingCtrl:LoadingController,private serveGe:ServigeGeneralService,private modalCtrl: ModalController, private panierService:PanierServiceService, private tokenStorage:TokenStorageService,private serviceAccueil:AccueilServiceService) { }
 
   ngOnInit() {
     this.user = this.tokenStorage.getUser();
+    this.loadDataToPanier();
+
+
+  }
+  loadDataToPanier(){
     const etat = true
     this.panierService.lesProduitsParFermes(this.user.id,etat).subscribe(data=>{
       this.panierProd = data;
@@ -37,11 +54,30 @@ export class PanierComponent implements OnInit {
         this.MontantTotal += a.totalproduit
       }
     })
+  }
+// ==================================================  METTRE A JOURS LE PANIER
+  mettreAjours(form: NgForm,idproduit:any){
+    this.panier.quantite = form.value.myNumber;
 
-  }  
+    this.serviceAccueil.ajouterAuPanierS(this.panier,idproduit,this.user.id).subscribe(data=>{
+      this.addPanier = data
+      this.loadAddToCard();
+      if(this.addPanier.status == true){
+       this.showLoading()
+       this.loadDataToPanier();
+      }
+     
+    })
 
-  mettreAjours(){
-    // alert('HHHHHHHHHHH '+this.form.Quantity)
+  }
+  async showLoading() {
+    const loading = await this.loadingCtrl.create({
+      message: 'En cours...',
+      duration: 1000,
+      spinner: 'circles',
+    });
+
+    loading.present();
   }
 
   // ================================== LA FONCTION POUR SUPPRIMER UN PRODUIT DU PANIER

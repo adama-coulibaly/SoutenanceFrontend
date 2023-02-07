@@ -28,5 +28,10 @@ export class AccueilServiceService {
     ajouterAuPanier(panier:any,produit:any,user:any):Observable<any>{
       return this.http.post(`http://localhost:8080/panier/ajouter/${produit}/${user}`,panier)
     }
+
+     //  AJOUTER UN PRODUIT AU PANIER
+     ajouterAuPanierS(panier:any,produit:any,user:any):Observable<any>{
+      return this.http.post(`http://localhost:8080/panier/modifierquantite/${produit}/${user}`,panier)
+    }
     
 }
