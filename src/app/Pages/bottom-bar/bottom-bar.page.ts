@@ -8,6 +8,7 @@ import { ServigeGeneralService } from 'src/app/servige-general.service';
 import { CompteUserComponent } from '../compte-user/compte-user.component';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { HttpClient } from '@angular/common/http';
+import { NotificationComponent } from '../notification/notification.component';
 
 
 @Component({
@@ -69,6 +70,19 @@ export class BottomBarPage implements OnInit {
     });
     return await popover.present();
   }
+
+
+    // =======================================================Popopup de profile 
+    async presentPopoverNotification(ev: any) {
+      const popover = await this.popoverCtrl.create({
+        component: NotificationComponent,
+        event: ev,
+        translucent: true
+      });
+      return await popover.present();
+    }
+
+
 
 
   customPopoverOptions = {

@@ -41,10 +41,12 @@
             <div style="display: flex; align-items: center;margin: 5%;"> <ion-icon name="cash" style="color:#04CF72; font-size: 30px; margin-right: 10px;"></ion-icon> Choisir un mode de payement</div>
         </div>
 
+       <form name="contact-form" (ngSubmit)="valider()">
         <div class="sec3">
-          <div><input type="radio" name="choix" id="livraison" checked> <ion-label for="livraison" (click)=" livraison()">  A la livraison</ion-label></div>
-          <div><input type="radio" name="choix" id="om"> <ion-label for="om" (click)=" orangeMoney()">  Orange Money</ion-label></div>
+          <div><input type="radio" name="choix" id="livraison" checked value="A la livraison" [(ngModel)]="commande.modepayement"> <ion-label for="livraison" (click)=" livraison()">  A la livraison</ion-label></div>
+          <div><input type="radio" name="choix" id="om" value=" Orange Money" [(ngModel)]="commande.modepayement"> <ion-label for="om" (click)=" orangeMoney()">  Orange Money</ion-label></div>
         </div>
+       </form>
 
       </ion-card>
   </div>
@@ -78,8 +80,9 @@
         <div><ion-label><Strong>{{MontantTotal}} Fcfa</Strong> </ion-label></div>
       </div>
       
-      <div class="ion-text-center" style="margin: 2%;"><ion-button (click)="valider()">Passer la commande</ion-button></div>
-      
+      <div class="ion-text-center" style="margin: 2%;" *ngIf="MontantTotal == 0"><ion-button disabled="disabled" (click)="valider()">Passer la commande</ion-button></div>
+      <div class="ion-text-center" style="margin: 2%;" *ngIf="MontantTotal != 0"><ion-button (click)="valider()">Passer la commande</ion-button></div>
+
       </ion-card>
 </div>
 

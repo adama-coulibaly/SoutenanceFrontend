@@ -30,6 +30,7 @@ export class PanierServiceService {
     
       // ICI ON COMMANDE UN PRODUITS
       Commande(commande:any,iduser:any):Observable<any>{
+        console.log("rrr "+commande.modepayement)
         return this.http.post(`http://localhost:8080/commande/ajouter/${iduser}`,commande)
       }
 }

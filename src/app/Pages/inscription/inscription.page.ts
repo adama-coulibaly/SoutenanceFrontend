@@ -73,9 +73,6 @@ usern = ''
   }
 
   onSubmit(): void {
-
-  
-
     // LA METHODE DE VERIFICATION DES MOTS DE PASSE N'EST PAS GERE D'ABORD
     const { nom, prenom, adresse, usernID, email, password,idstatus } = this.form;
    

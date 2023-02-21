@@ -1,0 +1,250 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{unProd.typeproduction.nomtype}}
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+
+  <div>
+    <ion-segment [(ngModel)]="pages">
+      <ion-segment-button value="entretiens">
+        <ion-label>Entretiens</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="mortalite">
+        <ion-label>Mortalités</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+<ion-content>
+
+<div [ngSwitch]="pages">
+
+  <ion-list *ngSwitchCase="'entretiens'" style="  background: #efecee;">
+    <div class="lesBoutons">
+      <div class="supprimer"> <ion-button fill="outline" (click)="supprimerEntretien2()"> <ion-icon name="trash-outline" ></ion-icon> Supprimer</ion-button></div>
+      <div class="ajouter"> <ion-button fill="outline"  expand="block" (click)="setOpen(true)"> <ion-icon name="add-circle-outline"></ion-icon> Ajouter</ion-button> </div>
+    </div>
+
+    <div style="text-align: center; margin:20px auto;font-weight: bold;" *ngIf="mesEntretiens.length == 0">
+      <p>Vous n'avez pas d'entretien !</p>
+  </div>
+    
+    <div class="textButton" *ngIf="mesEntretiens.length != 0">
+      <!-- <div class="text">Les entretiens</div> -->
+      <div class="recherche"> <input type="text" placeholder="Recherche..." [(ngModel)]="filterTerm"> </div>
+     </div>
+    
+    
+
+   
+
+    <div class="cardes" *ngIf="mesEntretiens.length != 0">
+      <ion-card class="carde" *ngFor="let entretiens of mesEntretiens.slice().reverse() | filter: filterTerm ">
+      <div class="case">
+          <form name="form" (ngSubmit)="supprimerEntretien2()"> <input type="checkbox" name="entretiens+{{+entretiens.identretien}}" [value]="entretiens" [(ngModel)]="entretiens.isChecked" #entretiens="ngModel" ></form>
+      </div>
+      <div class="date">{{entretiens.dateentretien | date: 'dd/MM/yy'}}</div>
+      <div class="titreEent">{{entretiens.typeentretien}}</div>
+      <div class="heures">{{entretiens.heuresentretien}}<span>Unique</span> </div>
+      </ion-card>
+    </div>
+
+  </ion-list>
+
+
+
+  <!-- ============================================================= -->
+  <ion-list *ngSwitchCase="'mortalite'" style="  background: #efecee;">
+    
+    <div class="lesBoutons">
+      <div class="supprimer"> <ion-button fill="outline"><ion-icon name="trash-outline"></ion-icon> Supprimer</ion-button></div>
+      <div class="ajouter"> <ion-button fill="outline" (click)="setOpen2(true)"> <ion-icon name="add-circle-outline"></ion-icon> Ajouter</ion-button> </div>
+    </div>
+
+    <div style="text-align: center; margin:20px auto;font-weight: bold;" *ngIf="mesMortalite.length == 0">
+      <p>Vous n'avez pas de mortalité !</p>
+  </div>
+    
+    <div class="textButton" *ngIf="mesMortalite.length != 0">
+      <!-- <div class="text">Les mortalités</div> -->
+      Total:  {{totalMortalite}}
+      <div class="recherche"> <input type="text" placeholder="Recherche..." [(ngModel)]="filterTerm2"> </div>
+      <!-- <div class="recherche"> <ion-searchbar placeholder="Recherche..." [(ngModel)]="filterTerm2"></ion-searchbar> </div> -->
+
+    </div>
+    
+    
+    <div class="cardes" *ngIf="mesMortalite.length != 0">
+      <ion-card class="carde" *ngFor="let mortalite of mesMortalite.slice().reverse() | filter: filterTerm2">
+        <div class="case"><input type="checkbox"></div>
+      <div class="date">{{mortalite.date | date: 'dd/MM/yy'}}</div>
+      <div class="titreEent">{{mortalite.causedeces}}</div>
+      <div class="heures">{{mortalite.nombredeces}}</div>
+      </ion-card>
+    </div>
+  </ion-list>
+
+</div>
+
+<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+
+<!-- ::::::::::::::::::::::::::::::::::::::::::::::MODAL AJOUTER ENTRETIEN -->
+<ion-modal id="example-modal" #modal trigger="ajouterentretien" [isOpen]="isModalOpen" backdrop-dismiss="false">
+  <ng-template>
+    <div class="forms">
+      <h2>Ajouter un nouveau entretien </h2>
+
+      <!-- <div *ngIf="messageError" style="color: red; text-align: center;">
+        <p>{{messageError}}</p>
+      </div> -->
+
+      <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+<!-- ======================================================  CHAMPS NOM ================================= -->
+        <ion-item counter="true">
+          <ion-label position="floating">Description <span>*</span></ion-label>
+          <ion-input type="text" equired="true" required name="typeentretien" [(ngModel)]="form.typeentretien"  minlength="3" maxlength="50"
+            #typeentretien="ngModel" ></ion-input>
+        </ion-item>
+
+        <div class="alerts "
+        role="alert"
+        *ngIf="typeentretien.errors && f.submitted">
+        <div *ngIf="typeentretien.errors">La description est obligatoire</div>
+      </div>
+
+<!-- ======================================================  CHAMPS PRENOM ================================= -->
+
+        <ion-item counter="true">
+          <ion-label position="floating">Date d'entretien <span>*</span></ion-label>
+          <ion-input type="date"  name="dateentretien" required [(ngModel)]="form.dateentretien"  minlength="3" maxlength="50"
+          #dateentretien="ngModel" ></ion-input>
+        </ion-item>
+
+        <div class="alerts "
+        role="alert"
+        *ngIf="dateentretien.errors && f.submitted">
+        <div *ngIf="dateentretien.errors">Veuillez donner une date !</div>
+      </div>
+<!-- ======================================================  CHAMPS ADRESSE ================================= -->
+
+        <ion-item counter="true">
+          <ion-label position="floating">Heure d'entretien <span>*</span></ion-label>
+          <ion-input type="time" name="heuresentretien" required [(ngModel)]="form.heuresentretien"  minlength="3" maxlength="50"
+          #heuresentretien="ngModel" ></ion-input>
+        </ion-item>
+
+        <div class="alerts "
+        role="alert"
+        *ngIf="heuresentretien.errors && f.submitted">
+        <div *ngIf="heuresentretien.errors">Heure incorrecte !</div>
+      </div>
+
+<!-- ======================================================  CHAMPS IMAGES ================================= -->
+
+      
+
+
+        <div class="bottoms-boutons">
+          
+          <div><ion-button class="annuler" (click)="setOpen(false)">annuler</ion-button></div>
+          <div><ion-button type="submit">Créer</ion-button></div>
+          
+          
+        </div>
+      </form>
+    </div>
+      
+  </ng-template>
+</ion-modal>
+
+
+
+
+
+
+<!-- ::::::::::::::::::::::::::::::::::::::::::::::MODAL AJOUTER MORTALITE -->
+<ion-modal id="example-modal" #modal trigger="ajoutermortalite" [isOpen]="isModalOpen2" backdrop-dismiss="false">
+  <ng-template>
+    <div class="forms">
+      <h2>Ajouter une nouvelle mortalité </h2>
+
+      <!-- <div *ngIf="messageError" style="color: red; text-align: center;">
+        <p>{{messageError}}</p>
+      </div> -->
+
+      <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && ajouterMortalite()" #f="ngForm" novalidate>
+<!-- ======================================================  CHAMPS NOM ================================= -->
+        <ion-item counter="true">
+          <ion-label position="floating">Cause de décès <span>*</span></ion-label>
+          <ion-input type="text" equired="true" required name="causedeces" [(ngModel)]="form4.causedeces"  minlength="3" maxlength="50"
+            #causedeces="ngModel" ></ion-input>
+        </ion-item>
+
+        <div class="alerts "
+        role="alert"
+        *ngIf="causedeces.errors && f.submitted">
+        <div *ngIf="causedeces.errors">La cause est obligatoire</div>
+      </div>
+
+<!-- ======================================================  CHAMPS PRENOM ================================= -->
+
+        <ion-item counter="true">
+          <ion-label position="floating">Date d'entretien <span>*</span></ion-label>
+          <ion-input type="date"  name="date" required [(ngModel)]="form4.date"  minlength="3" maxlength="50"
+          #date="ngModel" ></ion-input>
+        </ion-item>
+
+        <div class="alerts "
+        role="alert"
+        *ngIf="date.errors && f.submitted">
+        <div *ngIf="date.errors">Veuillez donner une date !</div>
+      </div>
+<!-- ======================================================  CHAMPS ADRESSE ================================= -->
+
+        <ion-item counter="true">
+          <ion-label position="floating">Heure d'entretien <span>*</span></ion-label>
+          <ion-input type="number" name="nombredeces" required [(ngModel)]="form4.nombredeces"  min="1"     #nombredeces="ngModel" ></ion-input>
+        </ion-item>
+
+        <div class="alerts "
+        role="alert"
+        *ngIf="nombredeces.errors && f.submitted">
+        <div *ngIf="nombredeces.errors">Nombre incorrecte !</div>
+      </div>
+
+<!-- ======================================================  CHAMPS IMAGES ================================= -->
+
+      
+
+
+        <div class="bottoms-boutons">
+          
+          <div><ion-button class="annuler" (click)="setOpen2(false)">annuler</ion-button></div>
+          <div><ion-button type="submit">Créer</ion-button></div>
+          
+          
+        </div>
+      </form>
+    </div>
+      
+  </ng-template>
+</ion-modal>
+
+</ion-content>
+<ion-footer >
+  <div  class="ion-text-center" style="margin: 15px auto;"> 
+    <span *ngIf="unProd.status == 'AVENIR' ">Cette production est : à venir</span>
+    <span *ngIf="unProd.status == 'ENCOURS' ">Cette production est : en cours</span>
+    <span *ngIf="unProd.status == 'TERMINER' ">Cette production est : terminée</span>
+
+  </div>
+</ion-footer>

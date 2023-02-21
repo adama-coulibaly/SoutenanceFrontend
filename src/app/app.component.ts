@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FirebaseX } from '@awesome-cordova-plugins/firebase-x/ngx';
 import { initialize } from '@ionic/core';
 
 @Component({
@@ -9,7 +8,7 @@ import { initialize } from '@ionic/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(public router:Router,private firebaseX:FirebaseX) {
+  constructor(public router:Router) {
     //  this.initializeApp();
   }
 

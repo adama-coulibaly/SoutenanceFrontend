@@ -24,4 +24,7 @@ export class FormationServiceService {
   lesFormationsParId(idformation:any):Observable<any>{
     return this.http.get(`http://localhost:8080/formation/listerId/${idformation}`);
   }
+
+
+
 }

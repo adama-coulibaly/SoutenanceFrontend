@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+     Information
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+    
+    <ion-card>
+       <div style="display: flex;justify-content: space-around;align-items: center; padding: 2%;">
+        <div class="dateDuJours">
+          <p>{{location}}</p>
+         <p> {{ajourdhui| date: 'dd/MM/yy'}} à {{time}}</p>
+      </div>
+
+      <div class="temperature">
+        <ion-fab-button style="margin: 2%; width: 90px;height: 90px;">
+            {{temp}} °C
+        </ion-fab-button>
+      </div>
+       </div>
+
+    </ion-card>
+
+ 
+    <ion-slides pager="true" [options]="options">
+        <ion-slide *ngFor="let info of informations">
+          <ion-card>
+            <img src="{{info.imagee}}" alt="" srcset=""  width="100%">
+            <ion-card-title>{{info.Mois}}</ion-card-title>
+            <ion-card-content>
+              {{info.description}}
+            </ion-card-content>
+          </ion-card>
+        </ion-slide>
+    </ion-slides>
+
+</ion-content>

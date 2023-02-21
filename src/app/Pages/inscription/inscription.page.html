@@ -75,7 +75,7 @@
 
 
         <ion-item>
-          <ion-label color="primary" position="floating">Eemail</ion-label>
+          <ion-label color="primary" position="floating">Email</ion-label>
           <ion-input autocorrect="on" autofocus="on" clearInput="true" clearOnEdit="true" color="primary"
             inputmode="email" placeholder="Entre votre mail" required="true" name="email" [(ngModel)]="form.email"  minlength="3" maxlength="45"
             #email="ngModel"></ion-input>
@@ -86,7 +86,7 @@
          class="alertes"
          role="alert"
          *ngIf="email.errors && f.submitted">
-          Nom d'utilisateur est obligatoire !
+         Email est obligatoire !
        </div>
 
       </div>

@@ -7,4 +7,5 @@ export class Commande {
     status: any
     Panier : any
     User : any
+    modepayement:any
 }

@@ -104,20 +104,18 @@ transition: 400ms all ease-in-out;
 }
 
 // ======================================= EXPERTS
-.containeurExperts{
-    padding: 2%;
-}
 .expert{
-    display: flex;
-    flex-direction: row;
+    height: 180px;
+    display: grid;
+    // flex-direction: row;
+    grid-template-columns: auto auto;
 }
 .img-left img{
-width: 400px;
-height: 100px;
-padding: 2%;
+margin: 10px auto;
 }
 .text-right{
-    padding: 2%;
+    font-size: 20px;
+    margin-left: 5%;
 }
 
 

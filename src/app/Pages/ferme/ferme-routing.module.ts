@@ -8,10 +8,7 @@ const routes: Routes = [
     path: '',
     component: FermePage
   },
-  {
-    path: 'detail-production',
-    loadChildren: () => import('../../Pages/detail-production/detail-production.module').then( m => m.DetailProductionPageModule)
-  },
+
 ];
 
 @NgModule({

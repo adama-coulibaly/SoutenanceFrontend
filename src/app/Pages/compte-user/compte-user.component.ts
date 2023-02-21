@@ -74,7 +74,9 @@ prenom:any
     this.file = event.target.files[0]
     console.log(this.file)
     this.userService.updateAvatar(this.user.id,this.file).subscribe(data=>{
+
      this.user = this.tokenStorage.getUser();
+     
      this.serveGe.showImage.next(this.user.avatar); // CETTE METHODE PERMET DE FAIRE APPEL A NOTRE OBSERVABLE ICI   
      this.loadUsers();
  
@@ -97,7 +99,6 @@ prenom:any
 
 
     modifier(iduser:any){
- alert(iduser)
       this.userService.getUnUser(iduser).subscribe(data=>{
         this.utilisateur = data
 

@@ -19,9 +19,9 @@ export class ProduitsPage implements OnInit {
   lesOutils: any;
   lesAliments: any;
 
-  aliments = 3
+  aliments = 1
   outils = 2
-  poulet = 1
+  poulet = 3
 
   isModalOpen = false;
   user: any;

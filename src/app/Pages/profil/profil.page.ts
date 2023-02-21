@@ -94,6 +94,7 @@ export class ProfilPage implements OnInit {
     this.user = this.tokenStorage.getUser();
 
     const {nomferme, activiteferme, adresseferme, taille, file} = this.form;
+    
     this.fermeService.ajouterFerme(this.user.id,nomferme,activiteferme,adresseferme,taille,this.file).subscribe(data=>{
       this.resultat = data
       if(this.resultat.status == true){

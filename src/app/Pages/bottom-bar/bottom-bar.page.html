@@ -1,34 +1,50 @@
 <!-- MON MENU -->
 <ion-header>
   <ion-toolbar>
-    <div slot="start" class="retourB">
-    
-      <!-- <ion-back-button slot="start"></ion-back-button> -->
-      <img slot="start" src="../../../assets/img/logo2.png" alt="" srcset="" width="20%">
+    <div class="Princ">
+      <div slot="start" class="retourB">
+
+        <!-- <ion-back-button slot="start"></ion-back-button> -->
+        <img slot="start" src="../../../assets/img/logo2.png" alt="" srcset="" width="15%">
         <!-- <ion-title>Accueil</ion-title> -->
+      </div>
+  
+      <div slot="end" class="lefts">
+        <div style="display: flex; justify-content: space-between;margin-right: 5%;">
+          <div> <ion-buttons slot="" id="open-custom-dialog1" expand="block" style="margin-left: -2% !important;"
+              (click)="openModal()">
+              <ion-icon slot="icon-only" name="cart-outline"></ion-icon>
+              <ion-fab-button color="danger"
+                style="--height: 20px !important; position: absolute; right: 3px; top: -8px;"><span style="font-size: 10px;">{{myVal}}</span></ion-fab-button>
+            </ion-buttons>
+          </div>
+  
+          <div>
+            <ion-buttons slot="" id="open-custom-dialog1" expand="block" style="margin-left: -2% !important;"
+              (click)="presentPopoverNotification($event)">
+              <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
+              <ion-fab-button color="danger"
+                style="--height: 20px !important; position: absolute; right: 4.5px; top: -8px;"><span style="font-size: 10px;">10</span></ion-fab-button>
+            </ion-buttons>
+          </div>
+        </div>
+        
+        <div>
+          <!-- ===================================================SI UTILISATEUR EST CONNECTE============================== -->
+          <ion-avatar style="cursor: pointer;" (click)="presentPopover($event)" *ngIf="user.avatar">
+            <img src="{{images}}" alt="" srcset="">
+          </ion-avatar>
+          <!-- ===================================================SI UTILISATEUR N'EST PAS CONNECTE============================== -->
+  
+          <ion-avatar style="cursor: pointer;" *ngIf="!user.avatar">
+            <img src="../../../assets/img/avatar.jpg" (click)="redirection()" alt="" srcset="">
+          </ion-avatar>
+        </div>
+  
+      </div>
+  
     </div>
 
-    <div slot="end" class="lefts">
-      <ion-icon name="cart-outline" (click)="openModal()"></ion-icon>
-      <ion-fab-button class="cart" color="danger">{{myVal}}</ion-fab-button>
-
-      <!-- <ion-badge ></ion-badge> -->
-      <ion-icon name="notifications-outline"></ion-icon>
-      <ion-fab-button class="notif" color="danger">5</ion-fab-button>
-    </div>
-
-    <div class="profil">
-      <!-- ===================================================SI UTILISATEUR EST CONNECTE============================== -->
-      <ion-avatar style="cursor: pointer;" (click)="presentPopover($event)" *ngIf="user.avatar">
-        <img src="{{images}}" alt="" srcset="">
-      </ion-avatar>
-      <!-- ===================================================SI UTILISATEUR N'EST PAS CONNECTE============================== -->
-
-      <ion-avatar style="cursor: pointer;"  *ngIf="!user.avatar">
-        <img src="../../../assets/img/avatar.jpg" (click)="redirection()" alt="" srcset="">
-      </ion-avatar>
-    </div>
-   
   </ion-toolbar>
 </ion-header>
 
@@ -37,15 +53,15 @@
 <ion-tabs>
   <!-- Tab bar -->
   <ion-tab-bar slot="bottom">
-    
+
     <ion-tab-button tab="accueil">
       <ion-icon name="home"></ion-icon>
       <ion-label>Accueil</ion-label>
     </ion-tab-button>
 
     <ion-tab-button tab="forum">
-    <ion-icon name="chatbubble-ellipses"></ion-icon>
-    <ion-label>Forum</ion-label>
+      <ion-icon name="chatbubble-ellipses"></ion-icon>
+      <ion-label>Forum</ion-label>
     </ion-tab-button>
 
 

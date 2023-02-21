@@ -61,7 +61,9 @@
       <ion-title>{{MontantTotal}} Fcfa</ion-title>
     </div>
   </div>
-  <div class="ion-text-center"><ion-button routerLink="/bottom-bar/produits/valider-commende" (click)="closeModal()">Passer au payement</ion-button></div>
+  <div  *ngIf="inc == 0"  class="ion-text-center"><ion-button disabled="disabled" routerLink="/bottom-bar/produits/valider-commende" (click)="closeModal()">Passer au payement</ion-button></div>
+
+  <div  *ngIf="inc != 0"  class="ion-text-center"><ion-button routerLink="/bottom-bar/produits/valider-commende" (click)="closeModal()">Passer au payement</ion-button></div>
 </div>
   
 </ion-content>

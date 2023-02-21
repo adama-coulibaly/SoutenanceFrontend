@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLinkActive } from '@angular/router';
-import { AlertController, AnimationController, NavController } from '@ionic/angular';
+import { AlertController, AnimationController, ModalController, NavController } from '@ionic/angular';
+import { DetailProductionComponent } from 'src/app/detail-production/detail-production.component';
 import { Ferme } from 'src/app/Models/Ferme';
 import { Production } from 'src/app/Models/Production';
 import { Produits } from 'src/app/Models/Produits';
@@ -84,27 +85,52 @@ productions:Production = {
   erreursProduction: any;
   mesStatus: any;
   mesFIltres: any;
+  mesHisto: any;
+  mesEntretiens: any;
+  mesCategories: any;
+  file: any;
 
 
-  constructor(private redirection:Router, private route:ActivatedRoute,private fermeService: FermeService,private animationCtrl: AnimationController,public navCtrl: NavController) { }
+  constructor(
+    private redirection:Router, 
+    private route:ActivatedRoute,
+    private fermeService: FermeService,
+    private animationCtrl: AnimationController,
+    public navCtrl: NavController,
+    private modalCtrl: ModalController,) { }
 
 
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
-
   }
   setOpen2(isOpen2: boolean) {
     this.isModalOpen2 = isOpen2;
   }
+  setOpen3(isOpen2: boolean) {
+    this.isModalOpen3 = isOpen2;
+  }
+
+
+
   isModalOpen = false;
   isModalOpen2 = false;
+  isModalOpen3 = false;
 
-
+  fileChangm(event: any) {
+    this.file = event.target.files[0]
+    console.log(this.file)
+    }
+  maListe = [
+    1,2,3,4,5,6,7,8,9,0
+  ]
 
   ngOnInit() {
 
     this.reloadProduction();
     this.lesEnumerations();
+    this.categorie();
+    this.reloadPeoduits();
+    this.Historique();
 
     // LES TYPES DE PRODUCTIONS ICI
     this.fermeService.lesTypesdeProduction().subscribe(data=>{
@@ -118,16 +144,7 @@ productions:Production = {
     });
 
 
-    // RECUPERATION DES PRODUITS PAR FERMES ET ETATS
-    this.monEtat = true
-    this.fermeService.lesProduitsParFermesEtat(this.idferme,this.monEtat).subscribe(data=>{
-      this.produits = data;
-      for(let etatsProd of this.produits)
-      if(etatsProd.etat == true)
-          this.etatsProds = etatsProd.etat
-  
-      this.produitTotal = this.produits.length
-    });
+
 
     // RECUPERER LES PRODUITS PAR LEURS ID
   }
@@ -143,6 +160,18 @@ productions:Production = {
 
     })
   };
+
+    // ========================== ICI ON RECUPERE LES CATEGORIES DE PROD
+
+    categorie(){
+      this.fermeService.categories().subscribe(data=>{
+        this.mesCategories = data;
+        // if(this.monProduit.etat == true){
+        //     this.bien = this.monProduit
+        // }
+  
+      })
+    };
 
 // ========================================================== ICI ON SUPRIME UN PRODUITS ==========================================================
 supprimerProd(idproduit:any){
@@ -247,6 +276,37 @@ this.fermeService.ajouterProduction(this.productions,this.form.idtype,this.idfer
 
 }
 
+
+// ===============================================   INSERTION DES PRODUCTIONS
+ajouterProduits(){
+this.idferme = +this.route.snapshot.params["idferme"];
+
+  this.fermeService.ajouterProduits(this.idferme,this.form.descriptionproduit,this.form.nomproduit,this.form.reference,this.form.prix,this.form.quantiteVente,this.form.idcategorie,this.file).subscribe(data=>{
+    if(data.status == true){
+      Swal.fire({
+        heightAuto: false,
+        icon: 'success',
+        text: 'Produit ajoutée avec succes !',
+        showConfirmButton: false,
+        timer: 2500
+      })
+      this.viderChamps();
+      this.isModalOpen3 = false;
+      this.reloadPeoduits();    }
+    else{
+      Swal.fire({
+        heightAuto: false,
+        icon: 'warning',
+        text: data.message,
+        showConfirmButton: false,
+        timer: 2500
+      })
+      // this.erreursProduction = data.message
+    }
+  })
+  
+  }
+
 reloadPage(){
   // RECUPERATION DES INFORMATION D'UNE FERME
   const idferme = +this.route.snapshot.params["idferme"];
@@ -295,6 +355,76 @@ else{
   })
 }
 
+}
+
+// ======================================================== HISTORIQUE DES VENTES PAR FERMES
+
+Historique(){
+  this.idferme = +this.route.snapshot.params["idferme"];
+  this.fermeService.historiqueDesVentesParFermes(this.idferme).subscribe(data =>{
+    this.mesHisto = data
+  })
+}
+
+supprimerHistorique(idHistorique:any){
+
+  Swal.fire({
+    heightAuto: false,
+    text: "Quant vous supprimer il est impossible de l'avoir ! \n Voulez-vous supprimer ?",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#04CF72',
+    cancelButtonText: 'Annuler',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Supprimer'
+  }).then((result) => {
+    if (result.isConfirmed) {
+ this.fermeService.supprimerHisto(idHistorique).subscribe(data=>{
+    if(data.status == true){
+      Swal.fire({
+        heightAuto: false,
+        icon: 'success',
+        text: 'Historique supprimer!',
+        showConfirmButton: false,
+        timer: 2000,
+      })
+      this.Historique();
+    }
+  })
+
+    }})
+
+
+ 
+
+}
+
+async openModal(idproduction:any) {
+  const myEnterAnimation = await this.animationCtrl.create('myEnter')
+    .duration(400)
+  .fromTo('transform', 'translateX(100%)', 'translateX(0)');
+  
+  const modal = await this.modalCtrl.create({
+    component: DetailProductionComponent,
+    componentProps:{data : idproduction}
+    // enterAnimation: myEnterAnimation
+  });
+  modal.present();
+}
+
+
+reloadPeoduits(){
+      // RECUPERATION DES PRODUITS PAR FERMES ET ETATS
+      const idferme = +this.route.snapshot.params["idferme"];
+      this.monEtat = true
+      this.fermeService.lesProduitsParFermesEtat(idferme,this.monEtat).subscribe(data=>{
+        this.produits = data;
+        for(let etatsProd of this.produits)
+        if(etatsProd.etat == true)
+            this.etatsProds = etatsProd.etat
+    
+        this.produitTotal = this.produits.length
+      });
 }
 
 

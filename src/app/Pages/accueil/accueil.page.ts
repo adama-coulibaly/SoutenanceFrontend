@@ -13,6 +13,9 @@ import { Panier } from 'src/app/Models/panier';
 import { PanierServiceService } from 'src/app/Services/panier-service.service';
 import { ServigeGeneralService } from 'src/app/servige-general.service';
 import { HttpClient } from '@angular/common/http';
+import { async } from 'rxjs/internal/scheduler/async';
+import { InfosComponent } from 'src/app/infos/infos.component';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 
 @Component({
@@ -35,7 +38,7 @@ monTableau1 = []
   lesproduits: any;
   lesFormation: any;
   uneformation: any;
-  iab: any;
+ 
   isModalOpen = false;
   ouvrir=false
   unProd: any;
@@ -43,6 +46,7 @@ monTableau1 = []
   addPanier: any;
   user: any;
   panierProd: any;
+  temperatureCelsius: number | undefined;
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
   }
@@ -73,30 +77,32 @@ monTableau1 = []
     private panierService:PanierServiceService,
     private loadingCtrl:LoadingController,
     private tokenStorage: TokenStorageService,
-    private router:Router, public navCtrl: NavController,
+    public navCtrl: NavController,
     private serviceAccueil:AccueilServiceService, 
     private modalCtrl: ModalController,
     private animationCtrl: AnimationController,
     private serviceFormation:FormationServiceService,
-    private http: HttpClient) { }
+    private iab: InAppBrowser    
+    ) { }
   lesThemes:any;
 
   // ==============================================
   
   ngOnInit() {
     this.user = this.tokenStorage.getUser();
+    this.temperatUreActuelle()
+
 // ===================================================== RECUPERATION DES PRODUITS
      this.serviceAccueil.lesProduits().subscribe(data=>{
       this.lesproduits = data
      });
 
 // ===================================================== RECUPERATION DES FORMATIONS
-
 this.serviceFormation.deuxFormation().subscribe(data=>{
   this.lesFormation = data; 
 });
-
-this.serveGe.showImage.next(this.user.avatar); // CETTE METHODE PERMET DE FAIRE APPEL A NOTRE OBSERVABLE ICI   
+// CETTE METHODE PERMET DE FAIRE APPEL A NOTRE OBSERVABLE ICI
+this.serveGe.showImage.next(this.user.avatar);    
 
     
   }
@@ -186,4 +192,41 @@ uneFormation(idformation:any){
     await alert.present();
   }
 
+  // ====================================================== LA TEMPERATURE ACTUELLE
+
+  temperatUreActuelle(){
+      // Obtenir la position de l'utilisateur
+navigator.geolocation.getCurrentPosition(position => {
+  const lat = position.coords.latitude;
+  const lng = position.coords.longitude;
+  
+  // Utiliser l'API de météo pour récupérer les informations météorologiques
+  fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=763e352d9be1cbeff46ab10fc68c5d6b
+  `)
+    .then(response => response.json())
+    .then(data => {
+      const temperature = data.main.temp;
+      this.temperatureCelsius = temperature - 273.15;
+      console.log(`La température actuelle est de ${this.temperatureCelsius}°C.`);
+    });
+});
+  }
+
+
+  // ==================================
+
+  async openModal() {
+    const myEnterAnimation = await this.animationCtrl.create('myEnter')
+      .duration(400)
+    .fromTo('transform', 'translateX(100%)', 'translateX(0)');
+    
+    const modal = await this.modalCtrl.create({
+      component: InfosComponent,
+      // enterAnimation: myEnterAnimation
+    });
+    modal.present();
+  }
+
 }
+
+

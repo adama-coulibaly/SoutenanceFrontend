@@ -36,7 +36,13 @@ export class PanierComponent implements OnInit {
   newValue = 0;
   addPanier: any;
 
-  constructor(private loadingCtrl:LoadingController,private serveGe:ServigeGeneralService,private modalCtrl: ModalController, private panierService:PanierServiceService, private tokenStorage:TokenStorageService,private serviceAccueil:AccueilServiceService) { }
+  constructor(
+    private loadingCtrl:LoadingController,
+    private serveGe:ServigeGeneralService,
+    private modalCtrl: ModalController, 
+    private panierService:PanierServiceService, 
+    private tokenStorage:TokenStorageService,
+    private serviceAccueil:AccueilServiceService) { }
 
   ngOnInit() {
     this.user = this.tokenStorage.getUser();

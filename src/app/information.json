@@ -1,0 +1,45 @@
+[
+    {
+        "id":1,
+        "imagee":"assets/img/images (6).jpg",
+        "Mois":"Poussins",
+        "description":" idéalement, il leur faut une température de 37° la première semaine, et vous descendrez de 3° par semaine pour atteindre 18° en semaine 6."
+    },
+    {
+        "id":2, 
+        "imagee":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLL98PUmpWXjhzbmT0Ye0iM9o3jYzhDH0DMPwGQi4-b2mvz1eFahGKqS2w3P_i6rXs5YQ&usqp=CAU",
+        "Mois":"Pondeuses",
+        "description":" La température corporelle normale chez la poule se situe autour de 41°C et toute élévation de celle-ci est à éviter. Le plumage épais des volailles les rend vulnérables face à la chaleur et elles en souffrent tout particulièrement."
+    },
+    {
+        "id":3,
+        "imagee":"https://www.lavoixdupaysan.net/wp-content/uploads/2021/01/Poules-pondeuses_poulets-de-chair_La-Voix-Du-Paysan.jpg",
+        "Mois":"Mars",
+        "description":"La température : en fin de bande, une température de 30 à 31°C l'après-midi est supportable si tous les autres paramètres d'ambiance sont respectés et que la nuit, les conditions sont favorables."
+    }
+    
+    ,{
+        "id":5,
+        "imagee":"http://cersa-togo.org/public/images/actualite/cersa-16032017102143-intro.jpg",
+        "Mois":"Mai",
+        "description":"Les températures comprises entre 10 et 24 degrés C sont optimales pour les poules. Toute température supérieure, surtout si elle est associée à un taux d’humidité élevé, commence à causer du stress à leur organisme"
+    },
+    {
+        "id":7,
+        "imagee":"https://www.educoul.com/wp-content/uploads/2020/11/poulet-chair.jpg",
+        "Mois":"Le nid des oiseaux",
+        "description":"Le nid de vos poussins doit être très bien entretenu et maintenu au sec. Veillez à changer la litière 2 fois par semaine et à ventiler régulièrement l'espace (attention au courant d'air)."
+    }
+    ,{
+        "id":8,
+        "imagee":"https://www.la-ferm-hyeres.fr/img/photos/04.jpg",
+        "Mois":"Espace",
+        "description":"Les poules aiment la tranquillité pour pondre, aussi, on privilégiera un endroit calme et sombre, sans lumière excessive. Il doit être facile d'accès pour le nettoyer facilement. Si vous construisez votre poulailler, pensez-y avant de définir l'emplacement définitif du pondoir ou nichoir."
+    }
+    ,{
+        "id":9,
+        "imagee":"https://www.la-ferm-hyeres.fr/img/photos/06.jpg",
+        "Mois":"Septembre",
+        "description":"Pour grandir (et survivre), les poussins ont un besoin constant de chaleur, notamment les premières semaines. La température doit être de 37 °C les premiers jours, avant d'être diminuée progressivement chaque semaine jusqu'à atteindre 20 °C (au bout de 1 mois environ)."
+    }
+]

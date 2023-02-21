@@ -1,57 +1,61 @@
 ion-tab-bar{
 height: 12%;
 }
-
-ion-tab-bar ion-icon{
-    font-size: 25px;
+ion-fab-button{
+    height: 20px;
+    width: 20px;
+    padding: 1%;
+    size: 5px;
 }
+// ion-tab-bar ion-icon{
+//     font-size: 25px;
+// }
 
 
 ion-toolbar{
     --background:#04CF72;
-      // padding: 5%;
 }
+ion-toolbar .Princ{
+    display: flex;
+    margin: 2%;
+}
+
+
 ion-title{
     color: white;
 }
 // ========================
 
-.retourB{
- display: flex;
- align-items: center;
-}
-.retourB img{
-    margin-left: 5%  ;
-}
-
 // ========================================================= HEADER ICONES
 .lefts{
-    margin-right: 60px;
+   
     display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
-.profil ion-avatar{
+ion-avatar{
     // size: 10px;
     height: 40px;
     width: 40px;
-    margin-left: 90px
+    // margin-left: 90px
 }
 .lefts ion-icon{
     color: white;
     font-size: 30px;
     cursor: pointer !important;
     padding:0;
-    margin-right: 15px;
+    // margin-right: 15px;
 }
 
 .lefts .cart{
-    position: absolute;
+    // position: absolute;
 // POUR ECRAN DE TELEPHONE REEL
-    // right: 31%;
+    // right: 34.5%;
     // top: 10%;
 
 // POUR ECRAN DE LAB
-    right: 38.6%;
-    top: 9%;
+    // right: 38.6%;
+    // top: 9%;
 
     color: white; 
     height: 15px; 
@@ -61,14 +65,14 @@ ion-title{
 }
 
 .lefts .notif{
-    position: absolute;
+    // position: absolute;
 // POUR ECRAN DE TELEPHONE REEL
-    // right: 19.8%;
+    // right: 23%;
     // top: 10%;
 
 // POUR ECRAN DE LAB
-    right: 25.7%;
-   top: 9%;
+//     right: 25.7%;
+//    top: 9%;
 
     border-radius: 100%;
     height: 15px; 

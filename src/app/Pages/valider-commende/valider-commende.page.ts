@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Commande } from 'src/app/Models/Commande';
 import { PanierServiceService } from 'src/app/Services/panier-service.service';
 import { TokenStorageService } from 'src/app/Services/token-storage.service';
@@ -29,7 +30,8 @@ export class ValiderCommendePage implements OnInit {
     montanttotal: undefined,
     status: undefined,
     Panier: undefined,
-    User: undefined
+    User: undefined,
+    modepayement: undefined
   }
 
 
@@ -38,7 +40,11 @@ export class ValiderCommendePage implements OnInit {
   inc = 0;
   MontantTotal = 0;
 
-  constructor(private panierService: PanierServiceService, private tokenStorage: TokenStorageService,public serveGe:ServigeGeneralService) { }
+  constructor(
+    private panierService: PanierServiceService, 
+    private tokenStorage: TokenStorageService,
+    public serveGe:ServigeGeneralService,
+    private route:Router) { }
 
   ngOnInit() {
 
@@ -67,22 +73,41 @@ export class ValiderCommendePage implements OnInit {
     Swal.fire({
       heightAuto: false,
       icon: 'success',
-      text: 'Payement effectué avec succcès ! \n Montant: ' + this.MontantTotal,
+      text: 'Payement effectué avec succcès ! \n Montant: Un mail vous à été envoyé' + this.MontantTotal,
+      
       showConfirmButton: false,
-      timer: 2500
+      timer: 5000
     })
     this.livraison();
   }
 
   valider() {
     this.panierService.Commande(this.commande, this.user.id).subscribe(data => {
+    if(data.status == true){
       Swal.fire({
         heightAuto: false,
         icon: 'success',
         text: 'Votre commande à été envoyée !',
         showConfirmButton: false,
-        timer: 3500
+        timer: 3000,
       })
+
+      setTimeout(this.reloderPage,2000); 
+    }
+    else{
+      Swal.fire({
+        heightAuto: false,
+        icon: 'warning',
+        text: data.message,
+        showConfirmButton: false,
+        timer: 2000,
+      })
+    }
+    
     })
-  }
+}
+
+    reloderPage(){
+      location.reload()
+    }
 }
