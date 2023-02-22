@@ -13,7 +13,7 @@
         <p>{{info.nomferme}}</p>
       </div>
       <div class="icons">
-        <ion-icon class="create" name="create-outline" style="cursor: pointer;"></ion-icon>
+        <ion-icon class="create" name="create-outline" style="cursor: pointer;" id="open-modal" expand="block"></ion-icon>
         <ion-icon class="delete" name="trash-outline" style="cursor: pointer;"
           (click)="supprimerFerme(info.idferme)"></ion-icon>
       </div>
@@ -517,6 +517,36 @@
 
     </ng-template>
   </ion-modal>
+
+
+
+
+
+
+
+
+  <ion-modal class="modalModifier" [keepContentsMounted]="true" trigger="open-modal" #modal>
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="modal.dismiss()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-title>Modifier</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        This content was mounted as soon as the modal was created.
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+
+
+
+
+
+
 
 
 </ion-content>

@@ -325,3 +325,12 @@ ion-item span{color: red;}
 ion-avatar{
   --size: 200px;
 }
+
+.modalModifier{
+  // --height: 50%;
+  width: 100%;
+  --border-radius: 5px;
+  margin: 10px auto;
+  --box-shadow: 1px 1px 6px #04CF72;
+  background: #7271713a;
+}
