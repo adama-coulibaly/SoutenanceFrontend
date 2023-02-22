@@ -1,13 +1,14 @@
 <ion-content>
-  <ion-toolbar style="margin-top: 60px;">
+  <!-- <ion-toolbar style="margin-top: 60px;">
     <ion-back-button slot="start" defaultHref="" style="color: white;"  (click)="back()"></ion-back-button>
   <ion-title slot="end">Forum</ion-title>
-  </ion-toolbar>
+  </ion-toolbar> -->
 
 
 
   <!-- / ================================== SECTION POUR QUESTION TITRE FIXE-->
   <div class="section1">
+    <ion-back-button slot="start" defaultHref="" (click)="retour()"></ion-back-button>
      <ion-fab vertical="top" horizontal="end" slot="fixed"  (click)="setOpen(true)">
       <ion-fab-button>
         <ion-icon name="add"></ion-icon>
@@ -16,13 +17,12 @@
  <div class="titreForum title-text">
   <p *ngIf="lesCommentaires != '' " >{{titre}}</p>
   <p *ngIf="lesCommentaires == '' " > Ce thème n'a pas de commentaires pour l'instant</p>
-
  </div> 
 </div>
 
   <!-- ================================================ SECTION FORUM QUESTIONS OR THEMES -->
   <div class="sectionTheme">
-    <div class="contenu" *ngFor="let commentaire of lesCommentaires.slice().reverse()">
+    <div class="contenu" *ngFor="let commentaire of lesCommentaires">
         <div class="imgEtTheme">
             <div class="images">
             <ion-avatar>

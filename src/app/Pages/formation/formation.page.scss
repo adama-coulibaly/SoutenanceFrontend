@@ -1,5 +1,17 @@
 .principale{
-  margin-top: 25%;
+  margin-top: 20%;
+}
+.first {
+  height: 170px;
+  width: 100%;
+}
+
+.first img {
+  width: 100%;
+  object-fit: fill;
+  max-width: 100%;
+  max-height: 100%;
+
 }
 .produits{
     display: grid;

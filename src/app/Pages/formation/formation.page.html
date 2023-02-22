@@ -6,27 +6,33 @@
 
 <ion-content>
   <!-- ============================================================================= -->
-  <div class="principale">
+  <div class="principale" >
     <ion-slides [options]="options">
+      <ion-slide class="first" *ngFor="let formation of lesFormation">
+        <ion-card >
+          <img src="{{formation.photoformation}}" alt="" srcset="">
   
-      <ion-slide>
+        </ion-card>
+    </ion-slide>
+  
+      <!-- <ion-slide class="first">
           <ion-card>
             <img src="../../../assets/img/fermier.jpg" alt="" srcset="">
   
           </ion-card>
       </ion-slide>
   
-      <ion-slide>
+      <ion-slide class="first">
         <ion-card>
           <img src="../../../assets/img/fermier (2).jpg" alt="" srcset="">
         </ion-card>
-    </ion-slide>
+    </ion-slide> -->
   
-    <ion-slide>
+    <!-- <ion-slide >
       <ion-card>
         <img src="../../../assets/img/tenier lespoules.jpg" alt="" srcset="">
            </ion-card>
-  </ion-slide>
+  </ion-slide> -->
   
     </ion-slides>
    </div>

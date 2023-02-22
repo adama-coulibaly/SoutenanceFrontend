@@ -43,7 +43,9 @@ export class DetailForumPage implements OnInit {
     this.user = this.tokenStorage.getUser();
     this.listerLesTheme()
   }
-
+  retour(){
+    window.history.back()
+  }
 
   commenter(){
     if(this.user.id == null){

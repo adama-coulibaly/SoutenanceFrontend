@@ -1,119 +1,142 @@
-.principale{
+.principale {
     margin-top: 25%;
 }
-.lesTitres p{
-    font-weight: 600; text-align: center;
+
+.lesTitres p {
+    font-weight: 600;
+    text-align: center;
     color: #04CF72;
     margin-top: 10px;
 }
-.first{
-    height: 150px;
+
+.first {
+    height: 170px;
 }
+
+.first img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
 //  LES IONS CARDS
-ion-card img{
-    object-fit: cover;
-    width: 100%;
-    transform: scale(1.1, 1.1) rotate(1deg);
-    transition: 600ms all ease-in-out;
+// ion-card img{
+//     object-fit: cover;
+//     width: 100%;
+//     transform: scale(1.1, 1.1) rotate(1deg);
+//     transition: 600ms all ease-in-out;
+// }
+.swiper-slide-active {
+    transform: scale(1.05, 1.05);
 }
-.swiper-slide-active{
-transform: scale(1.05, 1.05);
-}
-.swiper-slide{
-transition: 400ms all ease-in-out;
+
+.swiper-slide {
+    transition: 400ms all ease-in-out;
 }
 
 
 // BOUTON MES FERMES
 
-.buttonMesfermes{
+.buttonMesfermes {
     text-align: center;
 }
-.buttonMesfermes ion-button{
+
+.buttonMesfermes ion-button {
     text-align: center;
     margin: 1%;
 }
 
 //  LES PRODUITS DES FERMES CAROUSSELS
-.containerSlides ion-card-content h3{
+.containerSlides ion-card-content h3 {
     font-size: 10px;
     font-weight: bold;
 }
-.containerSlides ion-card-content p{
-    font-size: 14px; 
+
+.containerSlides ion-card-content p {
+    font-size: 14px;
 
 }
-.containerSlides ion-card ion-button{
+
+.containerSlides ion-card ion-button {
     font-size: 8px;
     width: 100%;
 }
-.containerSlides ion-card ion-button ion-icon{
+
+.containerSlides ion-card ion-button ion-icon {
     font-size: 200px;
 }
 
 // ======================================= LES PRODUIITS
-.produits1 ion-card{
+.produits1 ion-card {
     text-align: center;
     width: 100%;
 }
 
-.produits1 ion-card img{
-      width: 100%;
-      height: 100%;
-      object-fit: fill;
-      padding-bottom: 5%;
+.produits1 ion-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    padding-bottom: 5%;
 
 }
-.produits1 ion-card-title{
+
+.produits1 ion-card-title {
     font-weight: bold;
     font-size: 10px;
 }
-.boutonpanier button{
+
+.boutonpanier button {
     background: #04CF72;
     color: white;
     width: 100%;
     padding: 5%;
     margin-top: 1px;
 }
+
 // =======================================LES FORMATIONS
-.formation1{
+.formation1 {
     text-align: center;
     width: 50%;
 }
 
-.formation1 img{
-      width: 50%;
-      padding: 5%;
+.formation1 img {
+    width: 50%;
+    padding: 5%;
 }
-.formation1 ion-card-title{
+
+.formation1 ion-card-title {
     font-weight: bold;
     font-size: 10px;
 }
-.formation1 ion-button{
+
+.formation1 ion-button {
     font-size: 10px;
     padding: 1px;
 }
-.containerFormation{
+
+.containerFormation {
     display: flex;
     flex-direction: row;
     justify-content: center;
     margin: 2%;
 }
-.voirPlus a{
+
+.voirPlus a {
     margin: 10px auto;
 }
 
 // ======================================= EXPERTS
-.expert{
+.expert {
     height: 180px;
     display: grid;
     // flex-direction: row;
     grid-template-columns: auto auto;
 }
-.img-left img{
-margin: 10px auto;
+
+.img-left img {
+    margin: 10px auto;
 }
-.text-right{
+
+.text-right {
     font-size: 20px;
     margin-left: 5%;
 }
@@ -122,79 +145,86 @@ margin: 10px auto;
 
 
 
+.principale {
+    margin-top: 20%;
+}
 
+.produits {
+    display: grid;
+    grid-template-columns: auto auto;
+}
 
-.principale{
-    margin-top: 25%;
-  }
-  .produits{
-      display: grid;
-      grid-template-columns: auto auto;
-    }
-  ion-card .card{
-      border: 1px solid #04CF72;
-  }
-  ion-card ion-avatar{
-      text-align: center;
-      margin: 5px auto;
-  }
-  ion-card-title{
-      font-weight: 600;
-      text-align: center;
-      font-size: 12px;
-      margin: 5%;
-      cursor: pointer;
-  }
-  
-  .boutonpaniers{
-      margin: 3px auto;
-      padding: 5%;
-  }
-   .boutonpaniers ion-button{
-      color: white;
-      border-radius: 15px;
-      width: 95%;
-  }
-  
-  // =============================================================== MODAL
-  ion-modal {
-      --height: 50%;
-      width: 90%;
-      --border-radius: 5px;
-      margin: 5px auto;
-      --box-shadow: 1px 1px 6px #04CF72;
-    }
-    ion-modal p{
-      font-size: 15px;
-    }
-    ion-modal h5{
-      padding: 2%;
-      text-align: center;
-    }
-  
-    ion-modal::part(backdrop) {
-      background: rgba(209, 213, 219);
-      opacity: 1;
-    }
-      
-    ion-modal ion-toolbar {
-      --background: #04CF72;
-      --color: white;
-    }
-  .cont{
-      background: white;
-      border: 2px solid #04CF72;
-    }
-  
-    .modalProduits{
-      padding: 10px;
-    }
-  .sec1{
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-  }
-    .sp{
-      color: red;
-    }
-  
+ion-card .card {
+    border: 1px solid #04CF72;
+}
+
+ion-card ion-avatar {
+    text-align: center;
+    margin: 5px auto;
+}
+
+ion-card-title {
+    font-weight: 600;
+    text-align: center;
+    font-size: 12px;
+    margin: 5%;
+    cursor: pointer;
+}
+
+.boutonpaniers {
+    margin: 3px auto;
+    padding: 5%;
+}
+
+.boutonpaniers ion-button {
+    color: white;
+    border-radius: 15px;
+    width: 95%;
+}
+
+// =============================================================== MODAL
+ion-modal {
+    --height: 50%;
+    width: 90%;
+    --border-radius: 5px;
+    margin: 5px auto;
+    --box-shadow: 1px 1px 6px #04CF72;
+}
+
+ion-modal p {
+    font-size: 15px;
+}
+
+ion-modal h5 {
+    padding: 2%;
+    text-align: center;
+}
+
+ion-modal::part(backdrop) {
+    background: rgba(209, 213, 219);
+    opacity: 1;
+}
+
+ion-modal ion-toolbar {
+    --background: #04CF72;
+    --color: white;
+}
+
+.cont {
+    background: white;
+    border: 2px solid #04CF72;
+}
+
+.modalProduits {
+    padding: 10px;
+}
+
+.sec1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.sp {
+    color: red;
+}

@@ -56,9 +56,11 @@
 
 <div>
   <div class="first" style="display: flex; flex-direction: row;margin-top: 10px; justify-content: space-around;">
-    <div><ion-title>Total</ion-title></div>
+    <!-- <div><ion-title>Total</ion-title></div> -->
+    <div>Total</div>
+
     <div>
-      <ion-title>{{MontantTotal}} Fcfa</ion-title>
+     {{MontantTotal}} Fcfa
     </div>
   </div>
   <div  *ngIf="inc == 0"  class="ion-text-center"><ion-button disabled="disabled" routerLink="/bottom-bar/produits/valider-commende" (click)="closeModal()">Passer au payement</ion-button></div>

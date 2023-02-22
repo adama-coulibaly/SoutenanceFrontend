@@ -51,8 +51,10 @@ Message!:String
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        if(this.isLoggedIn == true){
+        if(this.isLoggedIn == true){  
+          
         this.route.navigateByUrl("bottom-bar/accueil");
+      
         }
         else{
           this.isLoginFailed = true;
