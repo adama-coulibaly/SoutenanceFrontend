@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/Services/token-storage.service';
 import { UserService } from 'src/app/Services/user-service.service';
 import { ServigeGeneralService } from 'src/app/servige-general.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-compte-user',
@@ -73,13 +74,26 @@ prenom:any
   fileChangm(event: any) {
     this.file = event.target.files[0]
     console.log(this.file)
-    this.userService.updateAvatar(this.user.id,this.file).subscribe(data=>{
+    this.userService.updateAvatar(this.user.id,this.file).subscribe({
+      next:data=>{
 
-     this.user = this.tokenStorage.getUser();
-     
-     this.serveGe.showImage.next(this.user.avatar); // CETTE METHODE PERMET DE FAIRE APPEL A NOTRE OBSERVABLE ICI   
-     this.loadUsers();
- 
+        this.user = this.tokenStorage.getUser();
+        
+        this.serveGe.showImage.next(this.user.avatar); // CETTE METHODE PERMET DE FAIRE APPEL A NOTRE OBSERVABLE ICI   
+        this.loadUsers();
+    
+       },
+       error:err=> {
+        Swal.fire({
+          heightAuto: false,
+          text: 'Veuillez choisir une image avec une taille maximum de 10 Mo',
+          icon: 'warning',
+          showCancelButton: false,
+          confirmButtonColor: '#04CF72',
+          confirmButtonText: 'OK',
+          reverseButtons: true
+        })
+       }
     })
     }
 

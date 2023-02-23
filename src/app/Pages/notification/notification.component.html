@@ -1,33 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Notification
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
-  <ion-title class="ion-text-center">Notification</ion-title>
-  <div class="mesNotifs">
-    <ion-accordion-group>
-      <ion-accordion value="first">
-        <ion-item slot="header">
-          <ion-label>Une nouvelle formation</ion-label>
-        </ion-item>
-        <div class="ion-padding" slot="content">
-          Une formation vient d'etres ajouter vous pouvez la trouvée dans la section des formations du plateforme.
 
 
-        </div>
-      </ion-accordion>
-      <ion-accordion value="second">
-        <ion-item slot="header">
-          <ion-label>Second Accordion</ion-label>
-        </ion-item>
-        <div class="ion-padding" slot="content">
-          Second Content
-        </div>
-      </ion-accordion>
-      <ion-accordion value="third">
-        <ion-item slot="header">
-          <ion-label>Third Accordion</ion-label>
-        </ion-item>
-        <div class="ion-padding" slot="content">
-          Third Content
-        </div>
-      </ion-accordion>
-    </ion-accordion-group>
+  <div>
+    <ion-segment [(ngModel)]="pages">
+      <ion-segment-button value="nonlue">
+        <ion-label>Non lue</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="lue">
+        <ion-label>déja lue</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+
+
+
+  <div class="mesNotifs" [ngSwitch]="pages">
+    <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::: NOTIFICATION NON LUE:::::::::::::::::::::::::::::::: -->
+    <ion-list *ngSwitchCase="'nonlue'" style="  background: #efecee;">
+      <div class="uneNotif">
+        <ion-card *ngFor="let notification of notif.slice().reverse()" style="padding: 2%;">
+          <h5>{{notification.titrenotification}}</h5>
+          <p>{{notification.messagenotification}}</p>
+          <span *ngIf="notification.lire == false" style="display: flex;justify-content: flex-end;"><ion-badge
+              style="cursor: pointer;" (click)="lireNotig(notification.idnotif)">Marquer comme lue</ion-badge></span>
+          <span *ngIf="notification.lire == true" style="display: flex;justify-content: flex-end;"><ion-badge
+              style="background-color: red;">déja lu</ion-badge></span>
+        </ion-card>
+      </div>
+    </ion-list>
+    <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::: NOTIFICATION  LUE:::::::::::::::::::::::::::::::: -->
+    <ion-list *ngSwitchCase="'lue'" style="  background: #efecee;">
+      <div class="uneNotif">
+        <ion-card *ngFor="let notification of notifLu" style="padding: 2%;">
+          <h5>{{notification.titrenotification}}</h5>
+          <p>{{notification.messagenotification}}</p>
+          <span *ngIf="notification.lire == false" style="display: flex;justify-content: flex-end;"><ion-badge
+              style="cursor: pointer;" (click)="lireNotig(notification.idnotif)">Marquer comme lue</ion-badge></span>
+          <span *ngIf="notification.lire == true" style="display: flex;justify-content: flex-end;"><ion-badge
+              style="background-color: red;">déja lu</ion-badge></span>
+        </ion-card>
+      </div>
+    </ion-list>
+
   </div>
 </ion-content>

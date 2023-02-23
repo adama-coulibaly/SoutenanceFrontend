@@ -1,6 +1,9 @@
 ion-toolbar{
     --background: #04CF72;
-    color: white;
+    --color: white;
+}
+ion-toolbar ion-button{
+    --color: white;
 }
 .pied{
     height: 80px; background: #04CF72;

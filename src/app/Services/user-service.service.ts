@@ -48,6 +48,15 @@ const API_URL = 'http://localhost:8080/';
       return this.http.get(`http://localhost:8080/api/auth/user/${iduser}`)
   }
 
+// :::::::::::::::::::::::::::::::::::::::::::::::::::::: LES NOTIFICATION D'UN UTILISATEUR
+  getUnUserNotification(iduser:any,lire:any){
+    return this.http.get(`http://localhost:8080/api/auth/userNotification/${iduser}/${lire}`)
+}
+
+//:::::::::::::::::::::::::::::::::::::::::::::::::::::::: LIRE UNE NOTIFICATION
+  lireNotification(notificationUser: any, idnotificationUser: any): Observable<any> {
+    return this.http.patch(`http://localhost:8080/api/auth/lire/${idnotificationUser}`, notificationUser)
+  }
   
 
   

@@ -1,6 +1,9 @@
 ion-toolbar{
-    --background: #04CF72;
-    color: white;
+  --background: #04CF72;
+  --color: white;
+}
+ion-toolbar ion-button{
+  --color: white;
 }
 .lesBoutons{
     display: flex;

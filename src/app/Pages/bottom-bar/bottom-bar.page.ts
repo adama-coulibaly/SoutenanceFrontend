@@ -9,6 +9,8 @@ import { CompteUserComponent } from '../compte-user/compte-user.component';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { HttpClient } from '@angular/common/http';
 import { NotificationComponent } from '../notification/notification.component';
+import { UserService } from 'src/app/Services/user-service.service';
+
 
 
 @Component({
@@ -16,6 +18,7 @@ import { NotificationComponent } from '../notification/notification.component';
   templateUrl: './bottom-bar.page.html',
   styleUrls: ['./bottom-bar.page.scss'],
 })
+
 export class BottomBarPage implements OnInit {
   [x: string]: any;
   user: any;
@@ -25,12 +28,12 @@ export class BottomBarPage implements OnInit {
   myVal:any
   images:any
   monStatus:any
-
-  
+  notif:any
+  taille = 0;
 
   MontantTotal: any;
 
-  constructor(private http:HttpClient, private modalCtrl: ModalController,private animationCtrl: AnimationController,private tokenStorage:TokenStorageService,private panierService:PanierServiceService,public popoverCtrl: PopoverController,private route:Router,public serveGe:ServigeGeneralService) { }
+  constructor(private userService:UserService,private http:HttpClient, private modalCtrl: ModalController,private animationCtrl: AnimationController,private tokenStorage:TokenStorageService,private panierService:PanierServiceService,public popoverCtrl: PopoverController,private route:Router,public serveGe:ServigeGeneralService) { }
 
   ngOnInit() {
 
@@ -47,6 +50,7 @@ export class BottomBarPage implements OnInit {
    if(this.user.id != null ){
     console.log(this.user.statusUser.idstatus)
     this.monStatus = this.user.statusUser.idstatus
+    this.notificationUser()
    }
 
 
@@ -73,14 +77,21 @@ export class BottomBarPage implements OnInit {
 
 
     // =======================================================Popopup de profile 
-    async presentPopoverNotification(ev: any) {
-      const popover = await this.popoverCtrl.create({
-        component: NotificationComponent,
-        event: ev,
-        translucent: true
-      });
-      return await popover.present();
-    }
+    // async presentPopoverNotification(ev: any) {
+    //   const popover = await this.popoverCtrl.create({
+    //     component: NotificationComponent,
+    //     event: ev,
+    //     cssClass: 'custom-popover',
+    //     mode: 'ios',
+    //     backdropDismiss: true,
+    //     animated: true,
+    //     keyboardClose: true,
+    //     showBackdrop: true,
+    //     height: '200px',
+    //     width: '300px'
+    //   });
+    //   return await popover.present();
+    // }
 
 
 
@@ -107,8 +118,26 @@ redirection(){
     modal.present();
   }
 
+
+
+  async modalNotification() {
+    const myEnterAnimation = await this.animationCtrl.create('myEnter')
+      .duration(400)
+    .fromTo('transform', 'translateX(100%)', 'translateX(0)');
+    
+    const modal = await this.modalCtrl.create({
+      component: NotificationComponent,
+      // enterAnimation: myEnterAnimation
+    });
+    modal.present();
+  }
   // =======================================================
 
-
+  notificationUser(){
+    this.userService.getUnUserNotification(this.user.id,false).subscribe(data=>{
+      this.notif = data
+      this.taille  = this.notif.length
+    })
+  }
 
 }

@@ -1,7 +1,10 @@
 ion-toolbar{
     --background: #04CF72;
-    color: white;
-}
+    --color: white;
+  }
+  ion-toolbar ion-button{
+    --color: white;
+  }
 .pied{
     height: 80px; background: #04CF72;
 }
@@ -33,4 +36,8 @@ ion-badge ion-icon{
     color: red;
     font-size: 25px;
    
+}
+ion-card img{
+    height: 200px;
+    width: 100%;
 }

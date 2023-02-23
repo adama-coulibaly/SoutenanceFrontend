@@ -21,10 +21,10 @@
   
           <div>
             <ion-buttons slot="" id="open-custom-dialog1" expand="block" style="margin-left: -2% !important;"
-              (click)="presentPopoverNotification($event)">
+              (click)="modalNotification()">
               <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
               <ion-fab-button color="danger"
-                style="--height: 20px !important; position: absolute; right: 4.5px; top: -8px;"><span style="font-size: 10px;">10</span></ion-fab-button>
+                style="--height: 20px !important; position: absolute; right: 4.5px; top: -8px;"><span style="font-size: 10px;">{{taille}}</span></ion-fab-button>
             </ion-buttons>
           </div>
         </div>
