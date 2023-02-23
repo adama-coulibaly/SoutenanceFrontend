@@ -5,8 +5,18 @@
 </ion-header> -->
 
 <ion-content>
+
+
   <!-- ============================================================================= -->
   <div class="principale" >
+    
+    <!-- <ion-card *ngFor="let formation of lesFormation">
+      <ion-title>Titre</ion-title>
+      <button (click)="lireVideo()">Cliquer</button>
+  </ion-card>
+  <button class="btn btn-success" (click)="lireVideo()">Cliquer 2</button> -->
+
+
     <ion-slides [options]="options">
       <ion-slide class="first" *ngFor="let formation of lesFormation">
         <ion-card >
@@ -14,6 +24,8 @@
   
         </ion-card>
     </ion-slide>
+
+    
   
       <!-- <ion-slide class="first">
           <ion-card>

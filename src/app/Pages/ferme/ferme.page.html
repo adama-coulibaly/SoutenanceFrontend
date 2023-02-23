@@ -1,42 +1,48 @@
 <ion-content>
   <ion-toolbar class="tools">
     <div class="menu2">
-      <div><ion-back-button slot="start" defaultHref="home" style="color: white;"></ion-back-button></div>
-      <div> <ion-title slot="end">Ferme</ion-title></div>
+      <div><ion-back-button slot="start" defaultHref="" (click)=" retour()" style="color: white;"></ion-back-button></div>
+      <div class="titre">
+        <p>{{nomdeferme}}</p>
+      </div>
+      <div class="icons">
+        <ion-icon class="delete" name="trash" style="cursor: pointer;"
+          (click)="supprimerFerme(info.idferme)"></ion-icon>
+      </div>
     </div>
 
   </ion-toolbar>
 
   <div class="principale">
     <div class="section1">
-      <div class="titre">
-        <p>{{info.nomferme}}</p>
-      </div>
-      <div class="icons">
-        <ion-icon class="create" name="create-outline" style="cursor: pointer;" id="open-modal" expand="block"></ion-icon>
-        <ion-icon class="delete" name="trash-outline" style="cursor: pointer;"
+      <!-- <div class="titre">
+        <p>{{nomdeferme}}</p>
+      </div> -->
+      <!-- <div class="icons"> -->
+        <!-- <ion-icon class="create" name="create-outline" style="cursor: pointer;" id="open-modal" expand="block"></ion-icon> -->
+        <!-- <ion-icon class="delete" name="trash-outline" style="cursor: pointer;"
           (click)="supprimerFerme(info.idferme)"></ion-icon>
-      </div>
+      </div> -->
     </div>
   </div>
   <!--  -->
   <div class="card">
     <ion-card class="ion-text-center">
-      <img src="{{info.imageferme}}" alt="">
+      <img src="{{photoferme}}" alt="">
       <div class="description">
         <div class="inline">
           <div><span>Activité:</span></div>
-          <div><span>{{info.activiteferme}}</span></div>
+          <div><span>{{activite}}</span></div>
         </div>
 
         <div class="inline">
           <div><span>Adresse:</span></div>
-          <div><span>{{info.adresseferme}}</span></div>
+          <div><span>{{adresse}}</span></div>
         </div>
 
         <div class="inline">
           <div><span>Tailles : </span></div>
-          <div><span> {{info.taille}}</span></div>
+          <div><span> {{tailles}}</span></div>
         </div>
 
       </div>
@@ -184,7 +190,7 @@
 
         <ion-list *ngSwitchCase="'ventes'"
           style="margin: 2%; background-color: #e0dfe2; border-left: 2px solid white; border-right: 2px solid #fff; border-bottom: 4px solid #fff; border-top: 4px solid #FFF; border-radius: 12px;">
-          <ion-title class="ion-text-center">Historique des ventes {{mesHisto.length}}</ion-title>
+          <ion-title class="ion-text-center">Historique des ventes {{nombreH}}</ion-title>
           <ion-card style="padding: 3%;" *ngFor="let historique of mesHisto.slice().reverse()">
             <div style="display: flex;justify-content: space-between;">
               <div> <strong>le {{historique.datevente | date: 'dd/MM/yy, à HH:mm'}}</strong></div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { YoutubeVideoPlayer } from '@awesome-cordova-plugins/youtube-video-player/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { FormationServiceService } from 'src/app/Services/formation-service.service';
 import Swal from 'sweetalert2';
@@ -26,9 +27,10 @@ export class FormationPage implements OnInit {
     autoplay:true
   }
 
-  constructor(private serviceFormation:FormationServiceService,private router:Router,private iab: InAppBrowser) { }
+  constructor(private youtube: YoutubeVideoPlayer,private serviceFormation:FormationServiceService,private router:Router,private iab: InAppBrowser) { }
 
   ngOnInit() {
+    // this.youtube.openVideo('https://www.youtube.com/watch?v=VJPNkhdhJzA');
 
     this.serviceFormation.mesFormations().subscribe(data=>{
       this.lesFormation = data;
@@ -61,6 +63,12 @@ uneFormation(idformation:any){
       }
     })
     
+  }
+
+
+
+  lireVideo(){
+    this.youtube.openVideo('https://www.youtube.com/watch?v=VJPNkhdhJzA');
   }
 
 }

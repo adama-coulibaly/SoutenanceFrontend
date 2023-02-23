@@ -89,6 +89,12 @@ productions:Production = {
   mesEntretiens: any;
   mesCategories: any;
   file: any;
+  nomdeferme: any;
+  photoferme: any;
+  activite: any;
+  adresse: any;
+  tailles: any;
+  nombreH=0;
 
 
   constructor(
@@ -141,12 +147,18 @@ productions:Production = {
     this.idferme = +this.route.snapshot.params["idferme"];
     this.fermeService.infoFermes(this.idferme).subscribe(data=>{
       this.info = data;
+
+      this.nomdeferme = this.info.nomferme
+      this.photoferme = this.info.imageferme
+      this.activite = this.info.activiteferme
+      this.adresse = this.info.adresseferme
+      this.tailles = this.info.taille
     });
-
-
-
-
     // RECUPERER LES PRODUITS PAR LEURS ID
+  }
+
+  retour(){
+    window.history.back()
   }
   
   // ========================== ICI ON RECUPERE LES PRODUITS PAR ID
@@ -363,6 +375,8 @@ Historique(){
   this.idferme = +this.route.snapshot.params["idferme"];
   this.fermeService.historiqueDesVentesParFermes(this.idferme).subscribe(data =>{
     this.mesHisto = data
+
+    this.nombreH = this.mesHisto.length
   })
 }
 

@@ -17,6 +17,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { InfosComponent } from './infos/infos.component';
 import { NotificationComponent } from './Pages/notification/notification.component';
 import { DetailProductionComponent } from './detail-production/detail-production.component';
+import { YoutubeVideoPlayer } from '@awesome-cordova-plugins/youtube-video-player/ngx';
 
 
 
@@ -34,10 +35,11 @@ import { DetailProductionComponent } from './detail-production/detail-production
      Ng2SearchPipeModule,
      FormsModule,
      IonIntlTelInputModule,
+    
    
 
     ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },InAppBrowser],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },InAppBrowser,YoutubeVideoPlayer],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

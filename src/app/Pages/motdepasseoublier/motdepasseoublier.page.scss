@@ -19,3 +19,7 @@ ion-toolbar{
     font-weight: 700;
     font-size: 25px;
 }
+
+  ion-toolbar ion-back-button{
+    --color: white;
+  }
