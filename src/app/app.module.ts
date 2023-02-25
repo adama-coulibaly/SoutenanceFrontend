@@ -18,6 +18,10 @@ import { InfosComponent } from './infos/infos.component';
 import { NotificationComponent } from './Pages/notification/notification.component';
 import { DetailProductionComponent } from './detail-production/detail-production.component';
 import { YoutubeVideoPlayer } from '@awesome-cordova-plugins/youtube-video-player/ngx';
+import { SplashScreenPageModule } from './splash-screen/splash-screen.module';
+import { SplashScreen } from '@capacitor/splash-screen';
+import { SplashScreenPage } from './splash-screen/splash-screen.page';
+import { SplashScreenPageRoutingModule } from './splash-screen/splash-screen-routing.module';
 
 
 
@@ -35,6 +39,7 @@ import { YoutubeVideoPlayer } from '@awesome-cordova-plugins/youtube-video-playe
      Ng2SearchPipeModule,
      FormsModule,
      IonIntlTelInputModule,
+     SplashScreenPageModule
     
    
 
