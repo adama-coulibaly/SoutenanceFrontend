@@ -1,5 +1,18 @@
-<div class=" ion-text-center">
-  <div class=" ion-text-center" style="margin: 10px auto;align-items: center;">
+  <ion-toolbar>
+    <ion-title>
+      Profil
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+
+
+<div class=" ion-text-center principale">
+  <!-- <div class=" ion-text-center" style="align-items: center;"> -->
     <!-- <ion-avatar> -->
     <img src="../../../assets/icon/favicon.png" alt="" srcset="" width="40%" height="40%" style="border-radius: 100%;"
       *ngIf="!user.avatar">
@@ -19,9 +32,9 @@
         <ion-input type="file"  (change)="fileChangm($event)" name="file"  required></ion-input>
       </form> -->
     <!-- </ion-avatar> -->
-  </div>
+  <!-- </div> -->
   <div style="margin: 2%;">
-    <ion-title>{{utilisateur.nom}} {{utilisateur.prenom}}</ion-title>
+    <p><strong>{{utilisateur.nom}} {{utilisateur.prenom}}</strong></p>
     <p style="font-size: 85%;">{{utilisateur.email}}</p>
     <p><strong>Téléphone:</strong> {{utilisateur.username}}</p>
     <p><strong>Adresse:</strong> {{utilisateur.adresse}}</p>

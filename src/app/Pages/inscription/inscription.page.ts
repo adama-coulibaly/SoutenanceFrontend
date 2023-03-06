@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/app/Services/login-services.service';
 import Swal from 'sweetalert2';
 
@@ -45,7 +46,7 @@ usern = ''
   mesStatus: any;
   valeurSelet : any
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router,private loadinctrl:LoadingController) { }
 
 
   ngOnInit() {
@@ -71,8 +72,19 @@ usern = ''
   Retour() {
     this.isVisible = true
   }
+  async showLoading() {
+    const loading = await this.loadinctrl.create({
+      message: 'En cours...',
+      duration: 3000,
+      spinner: 'circles',
+    });
 
+    loading.present();
+  }
   onSubmit(): void {
+
+this.showLoading();
+    
     // LA METHODE DE VERIFICATION DES MOTS DE PASSE N'EST PAS GERE D'ABORD
     const { nom, prenom, adresse, usernID, email, password,idstatus } = this.form;
    
@@ -90,12 +102,19 @@ usern = ''
               icon: 'success',
               text: 'Compte créer avec succès',
               showConfirmButton: false,
-              timer: 2500
+              timer: 3000
             })
             this.router.navigateByUrl('/connexion')
           }
           else{
-            this.erreur = this.success.message
+            Swal.fire({
+              heightAuto: false,
+              // position: 'top-end',
+              icon: 'warning',
+              text: data.message,
+              showConfirmButton: false,
+              timer: 2500
+            })
           }
         }
       );

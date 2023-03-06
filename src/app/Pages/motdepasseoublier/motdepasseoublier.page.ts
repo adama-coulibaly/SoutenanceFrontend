@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 import { MotDePasseOublierService } from 'src/app/Services/mot-de-passe-oublier.service';
 
 @Component({
@@ -25,7 +26,7 @@ export class MotdepasseoublierPage implements OnInit {
 
   resultat:any
 
-  constructor(private motDEpasse:MotDePasseOublierService,private router:Router) { }
+  constructor(private motDEpasse:MotDePasseOublierService,private router:Router,private loadinctrl:LoadingController) { }
 
   ngOnInit() {
   }
@@ -33,7 +34,17 @@ export class MotdepasseoublierPage implements OnInit {
   isVisible = true;
 
 // ==================================================== ICI POUR RENVOYER LE MAIL 
+async showLoading() {
+  const loading = await this.loadinctrl.create({
+    message: 'En cours...',
+    duration: 3000,
+    spinner: 'circles',
+  });
+
+  loading.present();
+}
   onSubmit(): void {
+    this.showLoading();
     this.motDEpasse.verierEmail(this.form.email).subscribe(data=>{
      this.resultat = data
      if(this.resultat.status == true){

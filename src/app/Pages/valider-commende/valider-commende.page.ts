@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 import { Commande } from 'src/app/Models/Commande';
 import { PanierServiceService } from 'src/app/Services/panier-service.service';
 import { TokenStorageService } from 'src/app/Services/token-storage.service';
@@ -44,7 +45,8 @@ export class ValiderCommendePage implements OnInit {
     private panierService: PanierServiceService, 
     private tokenStorage: TokenStorageService,
     public serveGe:ServigeGeneralService,
-    private route:Router) { }
+    private route:Router,
+    private loadinctrl:LoadingController) { }
 
   ngOnInit() {
 
@@ -81,8 +83,10 @@ export class ValiderCommendePage implements OnInit {
     this.livraison();
   }
 
-  valider() {
+  valider() { 
+    this.showLoading()
     this.panierService.Commande(this.commande, this.user.id).subscribe(data => {
+     
     if(data.status == true){
       Swal.fire({
         heightAuto: false,
@@ -109,5 +113,16 @@ export class ValiderCommendePage implements OnInit {
 
     reloderPage(){
       location.reload()
+    }
+
+
+    async showLoading() {
+      const loading = await this.loadinctrl.create({
+        message: 'En cours...',
+        duration: 3000,
+        spinner: 'circles',
+      });
+  
+      loading.present();
     }
 }

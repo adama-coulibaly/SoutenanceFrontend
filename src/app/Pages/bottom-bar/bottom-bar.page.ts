@@ -66,14 +66,14 @@ export class BottomBarPage implements OnInit {
     })
   }
   // =======================================================Popopup de profile 
-  async presentPopover(ev: any) {
-    const popover = await this.popoverCtrl.create({
-      component: CompteUserComponent,
-      event: ev,
-      translucent: true
-    });
-    return await popover.present();
-  }
+  // async presentPopover(ev: any) {
+  //   const popover = await this.popoverCtrl.create({
+  //     component: CompteUserComponent,
+  //     event: ev,
+  //     translucent: true
+  //   });
+  //   return await popover.present();
+  // }
 
 
     // =======================================================Popopup de profile 
@@ -127,6 +127,18 @@ redirection(){
     
     const modal = await this.modalCtrl.create({
       component: NotificationComponent,
+      // enterAnimation: myEnterAnimation
+    });
+    modal.present();
+  }
+
+  async presentPopover() {
+    const myEnterAnimation = await this.animationCtrl.create('myEnter')
+      .duration(400)
+    .fromTo('transform', 'translateX(100%)', 'translateX(0)');
+    
+    const modal = await this.modalCtrl.create({
+      component: CompteUserComponent,
       // enterAnimation: myEnterAnimation
     });
     modal.present();

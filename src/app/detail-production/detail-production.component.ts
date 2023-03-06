@@ -16,29 +16,30 @@ export class DetailProductionComponent implements OnInit {
   item: any;
   selectedItems: any;
   filterTerm!: any
-
+  
   filterTerm2!: any
   mesMortalite: any;
   totalMortalite = 0;
   mortalite: any;
   unProd: any;
-
+  nbreEntretien: any;
+  
   constructor(private modalCtrl: ModalController, private fermeService: FermeService, private navParams: NavParams,) {
     //ici je recuperere ces données dans envoyer au modal()  
     this.idRecuperer = this.navParams.get('data');
   }
-
+  
   isModalOpen = false;
   isModalOpen2 = false;
-
+  
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
   }
-
+  
   setOpen2(isOpen: boolean) {
     this.isModalOpen2 = isOpen;
   }
-
+  
   form: any = {
     typeentretien: '',
     dateentretien: '',
@@ -59,24 +60,80 @@ export class DetailProductionComponent implements OnInit {
     date: '',
     nombredeces: '',
   }
-
+  
   nonValide: any;
   isSuccessful = false;
   isSignUpFailed = false;
-
-
-
-
+  
+  
+  
+  
   pages: String = "entretiens";
-
+  
   ngOnInit() {
     this.getEntretienParProd();
     this.getMortaliteParProd()
     this.getProduction(this.idRecuperer)
-
+    
   }
+  
+  supprimerEntretien2(identretien:any) {
+    Swal.fire({
+      heightAuto: false,
+      text: "Voulez-vous supprimer cet entretien ?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#04CF72',
+      cancelButtonText: 'Annuler',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Supprimer'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.fermeService.SupprimerEntrertien(identretien).subscribe(data=>{
+      if(data.status == true){
+        Swal.fire({
+          heightAuto: false,
+          icon: 'success',
+          text: 'Entretien supprimer !',
+          showConfirmButton: false,
+          timer: 2000,
+        })
+          this.getEntretienParProd();
+        
+      }
+    })
+  
+      }})  
+    }
 
-
+    supprimerMortaliter(identretien:any) {
+      Swal.fire({
+        heightAuto: false,
+        text: "Voulez-vous supprimer cette mortalité ?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#04CF72',
+        cancelButtonText: 'Annuler',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Supprimer'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.fermeService.SupprimerMoratlite(identretien).subscribe(data=>{
+        if(data.status == true){
+          Swal.fire({
+            heightAuto: false,
+            icon: 'success',
+            text: 'Mortalité supprimer !',
+            showConfirmButton: false,
+            timer: 2000,
+          })
+            this.getMortaliteParProd();
+          
+        }
+      })
+    
+        }})  
+      }
   closeModal() {
     this.modalCtrl.dismiss();
   }
@@ -144,16 +201,13 @@ export class DetailProductionComponent implements OnInit {
 
   // ====================================== SUPPRESSION ICI DES ENTRETIENS
 
-  supprimerEntretien2() {
-
-
-    // alert("je suis le test "+ JSON.stringify(donnes))
-  }
+ 
 
   // ====================================== RECUPERATION DES ENTRETIENS D'UNE PRODUCTION
   getEntretienParProd() {
     this.fermeService.recupererEntretienParProd(this.idRecuperer).subscribe(data => {
       this.mesEntretiens = data
+      this.nbreEntretien = this.mesEntretiens.length
     })
   }
 
@@ -161,9 +215,10 @@ export class DetailProductionComponent implements OnInit {
   getMortaliteParProd() {
     this.fermeService.recupererMortaliteParProd(this.idRecuperer).subscribe(data => {
       this.mesMortalite = data
-      for (let T of this.mesMortalite) {
-        this.totalMortalite += T.nombredeces
-      }
+      this.totalMortalite = this.mesMortalite.length
+      // for (let T of this.mesMortalite) {
+      //   this.totalMortalite += T.nombredeces
+      // }
     })
   }
 

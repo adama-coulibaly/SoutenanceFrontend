@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 import { TokenStorageService } from 'src/app/Services/token-storage.service';
 import { UserService } from 'src/app/Services/user-service.service';
 import { ServigeGeneralService } from 'src/app/servige-general.service';
@@ -36,6 +37,8 @@ prenom:any
     password:''
   }
 
+  
+
   form2:any={
     nom:'',
     prenom:'',
@@ -59,8 +62,11 @@ prenom:any
 
   
 
-  constructor(private tokenStorage:TokenStorageService,private router:Router,private userService:UserService,private serveGe:ServigeGeneralService) { }
+  constructor(private modalCtrl:ModalController, private tokenStorage:TokenStorageService,private router:Router,private userService:UserService,private serveGe:ServigeGeneralService) { }
 
+  closeModal() {
+    this.modalCtrl.dismiss();
+  }
   ngOnInit() {
     this.user = this.tokenStorage.getUser();
    this.loadUsers();
@@ -73,7 +79,7 @@ prenom:any
 
   fileChangm(event: any) {
     this.file = event.target.files[0]
-    console.log(this.file)
+    // console.log(this.file)
     this.userService.updateAvatar(this.user.id,this.file).subscribe({
       next:data=>{
 
@@ -101,7 +107,7 @@ prenom:any
     logout(): void {
       this.tokenStorage.signOut();
           this.router.navigateByUrl('bottom-bar/accueil')
-      window.location.reload();
+      location.reload();
     }
 
     // ================================================ MODIFIER LE PROFIL AVATAR

@@ -190,7 +190,7 @@
 
         <ion-list *ngSwitchCase="'ventes'"
           style="margin: 2%; background-color: #e0dfe2; border-left: 2px solid white; border-right: 2px solid #fff; border-bottom: 4px solid #fff; border-top: 4px solid #FFF; border-radius: 12px;">
-          <ion-title class="ion-text-center">Historique des ventes {{nombreH}}</ion-title>
+          <p class="ion-text-center">Historique des ventes {{nombreH}}</p>
           <ion-card style="padding: 3%;" *ngFor="let historique of mesHisto.slice().reverse()">
             <div style="display: flex;justify-content: space-between;">
               <div> <strong>le {{historique.datevente | date: 'dd/MM/yy, à HH:mm'}}</strong></div>

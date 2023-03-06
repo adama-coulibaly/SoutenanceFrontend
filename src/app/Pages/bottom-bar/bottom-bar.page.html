@@ -31,7 +31,7 @@
         
         <div>
           <!-- ===================================================SI UTILISATEUR EST CONNECTE============================== -->
-          <ion-avatar style="cursor: pointer;" (click)="presentPopover($event)" *ngIf="user.avatar">
+          <ion-avatar style="cursor: pointer;" (click)="presentPopover()" *ngIf="user.avatar">
             <img src="{{images}}" alt="" srcset="">
           </ion-avatar>
           <!-- ===================================================SI UTILISATEUR N'EST PAS CONNECTE============================== -->
@@ -71,7 +71,7 @@
     </ion-tab-button>
     <ion-tab-button tab="formation">
       <ion-icon name="book"></ion-icon>
-      <ion-label>Cours</ion-label>
+      <ion-label>Formation</ion-label>
     </ion-tab-button>
     <ion-tab-button tab="profil" *ngIf="monStatus == 1">
       <ion-icon name="albums"></ion-icon>

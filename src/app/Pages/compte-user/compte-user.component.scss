@@ -1,3 +1,10 @@
+ion-toolbar{
+  --background: #04CF72;
+  --color: white;
+}
+ion-toolbar ion-button{
+  --color: white;
+}
 .mesIcones{
     display: flex;
     flex-direction: row;
@@ -5,6 +12,19 @@
     margin: 2%;
     align-items: center;
 }
+
+.principale{
+  position: absolute;
+  top: 55px;
+}
+
+
+
+// ion-modal .ion-page:not(ion-nav .ion-page) {
+//   position: relative !important;
+//   contain: layout style !important;
+//   // height: 100%;
+// }
 .modifier{
     display: flex;
     border: 1px solid #04CF72;
@@ -28,7 +48,7 @@
 }
 .monAvatar span{
     position: absolute;
-    top: 25%;
+    // top: 25%;
     right: 20%;
 }
 

@@ -19,9 +19,6 @@ export class AppComponent implements OnInit{
     SplashScreen.show({
       autoHide: true,
       showDuration: 5000,
-      // spinnerStyle: 'ios' // Remplace spinnerColor
-      // Remplace backgroundColor
-      // splashFullScreen: true
     });
 
 
@@ -33,7 +30,7 @@ export class AppComponent implements OnInit{
     }
     else{
       this.router.navigateByUrl("connexion")
-  
+     
     }
 
    
@@ -43,9 +40,9 @@ export class AppComponent implements OnInit{
     SplashScreen.hide();
   }
 
-  // initializeApp(){
-  //   this.router.navigateByUrl("splash-screen")
-  // }
+  initializeApp(){
+    this.router.navigateByUrl("splash-screen")
+  }
 
 
 }

@@ -147,6 +147,14 @@ ajouterEntretien(entretien:any,idproduction:any){
   recupererEntretienParProd(idproduction:any): Observable<any> {
     return this.http.get(`http://localhost:8080/entretien/listeParProduction/${idproduction}`);
   }
+   // =================================================== RECUPERATION DES ENTRETIENS D'UNE PRODUCTION
+   SupprimerEntrertien(idNtretien:any): Observable<any> {
+    return this.http.delete(`http://localhost:8080/entretien/supprimer/${idNtretien}`);
+  }
+
+  SupprimerMoratlite(idNtretien:any): Observable<any> {
+    return this.http.delete(`http://localhost:8080/mortalite/supprimer/${idNtretien}`);
+  }
 
     // =================================================== RECUPERATION DES ENTRETIENS D'UNE PRODUCTION
     recupererMortaliteParProd(idproduction:any): Observable<any> {
