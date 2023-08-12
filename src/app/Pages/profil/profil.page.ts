@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { Ferme } from 'src/app/Models/Ferme';
@@ -51,6 +51,7 @@ export class ProfilPage implements OnInit {
     }
   constructor(private tokenStorage: TokenStorageService, private fermeService: FermeService, private router:Router,public navCtrl: NavController) { }
 
+
   ngOnInit() {
     //  ICI ON RECUPERER L'UTILISATEUR CONNECTE
     this.user = this.tokenStorage.getUser();
@@ -59,8 +60,7 @@ export class ProfilPage implements OnInit {
       this.monEtat = true
       this.fermeService.mesFermes(this.user.id,this.monEtat).subscribe(data => {
       this.lesFermes = data;
-            console.log("Je suis vraiment Etat "+this.etats)
-    });
+        });
     }
     
    

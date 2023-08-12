@@ -19,9 +19,6 @@ import { NotificationComponent } from './Pages/notification/notification.compone
 import { DetailProductionComponent } from './detail-production/detail-production.component';
 import { YoutubeVideoPlayer } from '@awesome-cordova-plugins/youtube-video-player/ngx';
 import { SplashScreenPageModule } from './splash-screen/splash-screen.module';
-import { SplashScreen } from '@capacitor/splash-screen';
-import { SplashScreenPage } from './splash-screen/splash-screen.page';
-import { SplashScreenPageRoutingModule } from './splash-screen/splash-screen-routing.module';
 
 
 

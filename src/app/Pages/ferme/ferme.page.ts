@@ -145,6 +145,15 @@ productions:Production = {
 
     // RECUPERATION DES INFORMATION D'UNE FERME
     this.idferme = +this.route.snapshot.params["idferme"];
+   this.getAllFerme();
+    // RECUPERER LES PRODUITS PAR LEURS ID
+  }
+
+  retour(){
+    window.history.back()
+  }
+
+  getAllFerme(){
     this.fermeService.infoFermes(this.idferme).subscribe(data=>{
       this.info = data;
 
@@ -154,11 +163,6 @@ productions:Production = {
       this.adresse = this.info.adresseferme
       this.tailles = this.info.taille
     });
-    // RECUPERER LES PRODUITS PAR LEURS ID
-  }
-
-  retour(){
-    window.history.back()
   }
   
   // ========================== ICI ON RECUPERE LES PRODUITS PAR ID
@@ -256,7 +260,10 @@ supprimerFerme(idferme:any){
               confirmButtonText: 'OK',
               reverseButtons: true
             })
-            window.location.reload()
+            this.reloadPage()
+            this.retour()
+            
+//            window.location.reload()
     }
   })
 
