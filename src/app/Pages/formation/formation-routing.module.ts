@@ -7,8 +7,13 @@ const routes: Routes = [
   {
     path: '',
     component: FormationPage
-  }
+  },
+  {
+    path: 'detail-formation/:id',
+    loadChildren: () => import('../detail-formation/detail-formation-routing.module').then(m => m.DetailFormationPageRoutingModule)
+  },
 ];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

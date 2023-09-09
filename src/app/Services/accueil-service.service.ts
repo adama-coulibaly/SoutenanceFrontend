@@ -15,7 +15,8 @@ export class AccueilServiceService {
   }
 
     // Recuperation de toute les Produits par categories
-    lesProduitsParCategories(idcategoris:number):Observable<any>{
+    lesProduitsParCategories(idcategoris:any):Observable<any>{
+      console.log("http://localhost:8080/produit/listerParCategorie/"+idcategoris)
       return this.http.get(`http://localhost:8080/produit/listerParCategorie/${idcategoris}`);
     }
   

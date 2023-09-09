@@ -4,14 +4,14 @@
   </ion-toolbar>
   <div padding>
     <ion-segment [(ngModel)]="poulets">
-      <ion-segment-button value="poulet">
+      <ion-segment-button value="Poulet">
         poulets
       </ion-segment-button>
-      <ion-segment-button value="outils">
+      <ion-segment-button value="Outils">
         Outils
       </ion-segment-button>
 
-      <ion-segment-button value="aliment">
+      <ion-segment-button value="Aliment">
         aliment
       </ion-segment-button>
     </ion-segment>
@@ -25,12 +25,12 @@
 
   <div [ngSwitch]="poulets">
 
-    <ion-list *ngSwitchCase="'poulet'">  
+    <ion-list *ngSwitchCase="'Poulet'">  
       <div class="produits">
         <ion-card *ngFor="let prod of lesPoulets" >
          
            <!-- =============================================== ICI ON VERIFIE LA CATEGORIES DES PRODUITS  -->
-           <div *ngIf="prod.categorieProd.nomcategories == 'poulets' ">
+           <div *ngIf="prod.categorieProd.nomcategories == 'Poulet' ">
             <img src="{{prod.phtoproduit}}" alt="" (click)="unProduit(prod.idproduit)"  (click)="setOpen(true)">
 
             <ion-card-title (click)="unProduit(prod.idproduit)" (click)="setOpen(true)">{{prod.nomproduit.slice(0,10)}} . . .</ion-card-title>
@@ -53,11 +53,11 @@
       </div>
     </ion-list>
 
-    <ion-list *ngSwitchCase="'outils'">
+    <ion-list *ngSwitchCase="'Outils'">
       <div  class="produits">
         <ion-card *ngFor="let prod of lesOutils">
           <!-- =============================================== ICI ON VERIFIE LA CATEGORIES DES PRODUITS  -->
-          <div *ngIf="prod.categorieProd.nomcategories == 'outils' ">
+          <div *ngIf="prod.categorieProd.nomcategories == 'Outils' ">
             <img src="{{prod.phtoproduit}}" alt="" (click)="unProduit(prod.idproduit)" (click)="setOpen(true)">
 
             <ion-card-title (click)="unProduit(prod.idproduit)" (click)="setOpen(true)">{{prod.nomproduit.slice(0,10)}} . . .</ion-card-title>
@@ -78,7 +78,7 @@
       </div>
     </ion-list>
 
-    <ion-list *ngSwitchCase="'aliment'">
+    <ion-list *ngSwitchCase="'Aliment'">
       <div  class="produits">
         <ion-card *ngFor="let prod of lesAliments" >
           <!-- =============================================== ICI ON VERIFIE LA CATEGORIES DES PRODUITS  -->

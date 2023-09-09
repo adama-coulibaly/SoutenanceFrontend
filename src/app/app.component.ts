@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { initialize } from '@ionic/core';
 import { TokenStorageService } from './Services/token-storage.service';
 import { SplashScreen } from '@capacitor/splash-screen';
+import { NotificationsService } from './Services/notifications.service';
 
 @Component({
   selector: 'app-root',
@@ -11,11 +12,11 @@ import { SplashScreen } from '@capacitor/splash-screen';
 })
 export class AppComponent implements OnInit{
   user: any;
-  constructor(public router:Router,private tokenStorage:TokenStorageService) {
+  constructor(public router:Router,private tokenStorage:TokenStorageService,private notif:NotificationsService) {
     //  this.initializeApp();
   }
   ngOnInit(): void {
-
+    
     SplashScreen.show({
       autoHide: true,
       showDuration: 5000,

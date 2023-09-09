@@ -1,8 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Commentaire } from '../Models/models/commentaire';
-import { Regions } from '../Models/models/regions.model';
 
 
 const API_URL = 'http://localhost:8080/projet/odk/Regions/';
@@ -71,9 +69,10 @@ lesHABITANTS(id_Regions:any):Observable<any>{
 
 // ICI ON RECUPERE LES HABITANTS D'UNE REGION
 
-ModifierRegions(regions:Regions, id_Regions:any):Observable<any>{
+/*ModifierRegions(regions:Regions, id_Regions:any):Observable<any>{
   return this.http.get<any>(`http://localhost:8080/projet/odk/Regions/modifier/${id_Regions}`);
 }
+*/
 
 
 }

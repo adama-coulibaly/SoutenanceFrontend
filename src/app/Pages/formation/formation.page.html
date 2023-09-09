@@ -20,32 +20,10 @@
     <ion-slides [options]="options">
       <ion-slide class="first" *ngFor="let formation of lesFormation">
         <ion-card >
-          <img src="{{formation.photoformation}}" alt="" srcset="">
+          <img src="{{formation.photocategorie}}" alt="" srcset="">
   
         </ion-card>
     </ion-slide>
-
-    
-  
-      <!-- <ion-slide class="first">
-          <ion-card>
-            <img src="../../../assets/img/fermier.jpg" alt="" srcset="">
-  
-          </ion-card>
-      </ion-slide>
-  
-      <ion-slide class="first">
-        <ion-card>
-          <img src="../../../assets/img/fermier (2).jpg" alt="" srcset="">
-        </ion-card>
-    </ion-slide> -->
-  
-    <!-- <ion-slide >
-      <ion-card>
-        <img src="../../../assets/img/tenier lespoules.jpg" alt="" srcset="">
-           </ion-card>
-  </ion-slide> -->
-  
     </ion-slides>
    </div>
 
@@ -54,14 +32,16 @@
 
   <div class="produits">
     <ion-card *ngFor="let formation of lesFormation">
-      <ion-avatar class="ion-text-center" style="cursor: pointer;" (click)="uneFormation(formation.idformation)" expand="block"
+      <ion-avatar class="ion-text-center" style="cursor: pointer;" (click)="uneCategorieFormation(formation.id)" expand="block"
       (click)="setOpen(true)">
-        <img src="{{formation.photoformation}}" alt="">
+        <img src="{{formation.photocategorie}}" alt="">
       </ion-avatar>
-      <ion-card-title (click)="uneFormation(formation.idformation)" (click)="setOpen(true)">{{formation.titreformation.slice(0,25)}} ...</ion-card-title>
+      <ion-card-title (click)="uneCategorieFormation(formation.id)" (click)="setOpen(true)">{{formation.titreCategorie.slice(0,25)}} ...</ion-card-title>
       
       <div class="boutonpanier d-flex justify-content-center">
-         <ion-button (click)="visiter(formation.urlformation)">Commencer</ion-button>
+         <ion-button [routerLink]="['/bottom-bar/formation/detail-formation',formation.id]">Commencer</ion-button>
+        <!-- <ion-button [routerLink]="['/bottom-bar/forum/detail-forum',themes.idtheme]" (click)="visiter(formation.urlformation)">Commencer</ion-button>
+-->
       </div>
     </ion-card>
   </div>
@@ -82,18 +62,18 @@
         </ion-toolbar>
       </ion-header>
       <ion-content class="cont">
-        <h5>{{uneformation.titreformation}}</h5>
-        <div align="center"><img src="{{uneformation.photoformation}}" alt="" srcset="" width="50%"
+        <h5>{{uneformation.titreCategorie}}</h5>
+        <div align="center"><img src="{{uneformation.photocategorie}}" alt="" srcset="" width="50%"
             class="ion-text-center"></div>
 
         <div class="modalProduits">
 
           <div class="sec1">
             <div class="titre">
-              <p>Durée:</p>
+              <p>Nombre de tuto:</p>
             </div>
             <div class="valeurs">
-              <p><span class="sp">{{uneformation.dureformation}}</span></p>
+              <p><span class="sp">{{uneformation.nbreTuto}}</span></p>
             </div>
           </div>
           

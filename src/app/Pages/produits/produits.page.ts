@@ -20,8 +20,8 @@ export class ProduitsPage implements OnInit {
   lesAliments: any;
 
   aliments = 1
-  outils = 2
-  poulet = 3
+  outils = 3
+  poulet = 2
 
   isModalOpen = false;
   user: any;
@@ -41,7 +41,7 @@ export class ProduitsPage implements OnInit {
   }
 
 
-  poulets: string = "poulet"; // default button
+  poulets: string = "Poulet"; // default button
   unProd: any;
   constructor(private alertController: AlertController,private serviceAccueil: AccueilServiceService,private tokenStorage: TokenStorageService,private loadingCtrl:LoadingController,private route:Router,private panierService:PanierServiceService,private bo:BottomBarPage,private serveGe:ServigeGeneralService) { }
 

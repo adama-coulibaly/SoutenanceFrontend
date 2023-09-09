@@ -32,11 +32,18 @@ export class FormationPage implements OnInit {
   ngOnInit() {
     // this.youtube.openVideo('https://www.youtube.com/watch?v=VJPNkhdhJzA');
 
-    this.serviceFormation.mesFormations().subscribe(data=>{
+    this.serviceFormation.mesCategoriesFormations().subscribe(data=>{
       this.lesFormation = data;
     })
   }
+//=============================================== ICI ON PREND UNE SEULE CATEGORIES
+uneCategorieFormation(id:any){
+  this.serviceFormation.lesCategoriesFormationsParId(id).subscribe(data=>{
+    this.uneformation = data
+  })
+}
 //=============================================== ICI ON PREND UNE SEULE FORMATION
+
 uneFormation(idformation:any){
   this.serviceFormation.lesFormationsParId(idformation).subscribe(data=>{
     this.uneformation = data

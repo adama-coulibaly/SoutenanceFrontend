@@ -9,17 +9,29 @@ export class FormationServiceService {
 
   constructor(private http:HttpClient) { }
 
+// =========================================== RECUPERATION DE TOUTE LES FORMATIONS ============================
+mesCategoriesFormations():Observable<any>{
+  return this.http.get("http://localhost:8080/categorieFormation/lister")
+}
+
 
   // =========================================== RECUPERATION DE TOUTE LES FORMATIONS ============================
   mesFormations():Observable<any>{
     return this.http.get("http://localhost:8080/formation/lister")
   }
 
+
   deuxFormation():Observable<any>{
     return this.http.get("http://localhost:8080/formation/deuxFormation")
   }
 
-  // =========================================== UNE SEULE PRODUCTIONS ===================
+   // =========================================== UNE SEULE CATEGORIES ===================
+
+   lesCategoriesFormationsParId(id:any):Observable<any>{
+    return this.http.get(`http://localhost:8080/categorieFormation/listerId/${id}`);
+  }
+
+  // =========================================== UNE SEULE FORMATION ===================
 
   lesFormationsParId(idformation:any):Observable<any>{
     return this.http.get(`http://localhost:8080/formation/listerId/${idformation}`);
