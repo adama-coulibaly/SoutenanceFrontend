@@ -2,16 +2,21 @@
   margin-top: 20%;
 }
 .first {
-  height: 170px;
+  height: 150px;
   width: 100%;
+}.titres{
+  padding: 2%;
+  position: fixed;
+  top: 100px;
+  color: green;
+  background-color: #F8F6FB;
 }
 
-.first img {
-  width: 100%;
-  object-fit: fill;
-  max-width: 100%;
-  max-height: 100%;
 
+.first img {
+  //width: 100%;
+  object-fit: contain;
+ 
 }
 .produits{
     display: grid;

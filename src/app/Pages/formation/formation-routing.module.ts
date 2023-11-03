@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: 'detail-formation/:id',
-    loadChildren: () => import('../detail-formation/detail-formation-routing.module').then(m => m.DetailFormationPageRoutingModule)
+    loadChildren: () => import('../../details-formation/details-formation.module').then(m => m.DetailsFormationPageModule)
   },
 ];
 

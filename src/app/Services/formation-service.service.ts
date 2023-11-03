@@ -22,7 +22,7 @@ mesCategoriesFormations():Observable<any>{
 
 
   deuxFormation():Observable<any>{
-    return this.http.get("http://localhost:8080/formation/deuxFormation")
+    return this.http.get("http://localhost:8080/categorieFormation/deuxFormation")
   }
 
    // =========================================== UNE SEULE CATEGORIES ===================

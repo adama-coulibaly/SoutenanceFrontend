@@ -15,15 +15,14 @@
   <!-- <div class=" ion-text-center" style="align-items: center;"> -->
     <!-- <ion-avatar> -->
     <img src="../../../assets/icon/favicon.png" alt="" srcset="" width="40%" height="40%" style="border-radius: 100%;"
-      *ngIf="!user.avatar">
+      *ngIf="user.avatar==''">
       
     <form>
       <div class="monAvatar" *ngIf="utilisateur.avatar"><img src="{{utilisateur.avatar}}" alt="" srcset="" width="40%"
           height="40%" style="border-radius: 100%;">
 
         <label for="file"> <span><ion-icon name="create-outline" style="cursor: pointer;"></ion-icon></span></label>
-        <input id="file" type="file" name="file" hidden (change)="fileChangm($event)">
-        
+        <input id="file" type="file" name="file" hidden (change)="fileChangm($event)">        
       </div>
     </form>
 

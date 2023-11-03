@@ -1,215 +1,228 @@
 <ion-content>
- <div class="principale" >
-  <ion-slides [options]="options">
-    <ion-slide class="first">
-      <ion-card>
-        <img src="../../../assets/img/poulailler-poulets-locaux.jpg" alt="" srcset="">
-
-      </ion-card>
-  </ion-slide>
-
-    <ion-slide class="first">
+  <div class="principale">
+    <ion-slides [options]="options">
+      <ion-slide class="first">
         <ion-card>
-          <img src="../../../assets/img/fermier.jpg" alt="" srcset="">
+          <img src="../../../assets/img/04.jpg" alt="" srcset="">
+        </ion-card>
+      </ion-slide>
+
+      <ion-slide class="first">
+        <ion-card>
+          <img src="../../../assets/img/poulailler-poulets-locaux.jpg" alt="" srcset="">
 
         </ion-card>
-    </ion-slide>
+      </ion-slide>
 
-    <ion-slide class="first">
-      <ion-card>
-        <img src="../../../assets/img/fermier (2).jpg" alt="" srcset="">
-      </ion-card>
-  </ion-slide>
+      <ion-slide class="first">
+        <ion-card>
+          <img src="../../../assets/img/poussins (2).jpg" alt="" srcset="">
 
-  <!-- <ion-slide >
+        </ion-card>
+      </ion-slide>
+
+      <ion-slide class="first">
+        <ion-card>
+          <img src="../../../assets/img/fermes.png" alt="" srcset="">
+        </ion-card>
+      </ion-slide>
+
+
+
+    </ion-slides>
+  </div>
+
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++ MES FERMES  -->
+
+  <div class="mesFermes">
     <ion-card>
-      <img src="../../../assets/img/tenier lespoules.jpg" alt="" srcset="">
-         </ion-card>
-</ion-slide> -->
+      <ion-img src="../../../assets/img/poulet-chair.jpg"></ion-img>
+      <ion-card-content>
+        <p>Le suivi de la production des poules pondeuses ainssi que des
+          poulets de chairs necessite un grand sacrifice de temps et veilles aux entretiens.
+        </p>
 
-  </ion-slides>
- </div>
-
- <!-- ++++++++++++++++++++++++++++++++++++++++++++++++ MES FERMES  -->
-
-<div class="mesFermes">
-    <ion-card>
-        <ion-img src="../../../assets/img/mesfermes.jpeg"></ion-img>
-        <ion-card-content>
-            <p>Le suivi de la production des poules pondeuses ainssi que des 
-              poulets de chairs necessite un grand sacrifice de temps et veilles aux entretiens.
-            </p>
-
-           <div style="display: flex; justify-content: space-around;">
-            <div class="buttonMesfermes" *ngIf="user.id != null && user.statusUser.idstatus == 1"> 
-              <ion-button routerLink="/bottom-bar/profil">Mes fermes</ion-button>
-              <!-- *ngIf="user.id != null && user.statusUser.idstatus == 1" -->
-            </div>
-            <div class="buttonMesfermes"> 
-              <ion-button  (click)=" openModal()">temperature</ion-button>
-            </div>
-           </div>
-        </ion-card-content>
+        <div style="display: flex; justify-content: space-around;">
+          <div class="buttonMesfermes" *ngIf="user.id != null && user.statusUser.idstatus == 1">
+            <ion-button routerLink="/bottom-bar/profil">Mes fermes</ion-button>
+            <!-- *ngIf="user.id != null && user.statusUser.idstatus == 1" -->
+          </div>
+          <div class="buttonMesfermes">
+            <ion-button (click)=" openModal()">temperature</ion-button>
+          </div>
+        </div>
+      </ion-card-content>
     </ion-card>
-</div>
+  </div>
 
-<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++ LES PRODUITS ACCUEILS -->
-<div class="lesTitres"><p>Les produits à vendre</p></div>
+  <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++ LES PRODUITS ACCUEILS -->
+  <div class="lesTitres">
+    <p>Les produits à vendre</p>
+  </div>
 
-<div class="containerFormation1">
+  <div class="containerFormation1">
     <ion-slides [options]="options2">
 
-        <ion-slide class="produits1" *ngFor="let prod  of lesproduits">
-               <ion-card>
-             <div style="height: 100px; cursor: pointer;"> <img src="{{prod.phtoproduit}}" (click)="unProduit(prod.idproduit)"  (click)="setOpen(true)"> </div>
-              <ion-card-title style="font-size: 12px;" (click)="unProduit(prod.idproduit)"  (click)="setOpen(true)">{{prod.nomproduit.slice(0,15)}}</ion-card-title>
-              <p><strong>{{prod.prix}} Fcfa</strong></p>
-              <div class="boutonpanier"> 
-                <button (click)="ajouterPaner(prod.idproduit)">Ajouter au panier <ion-icon name="cart"></ion-icon></button>
-              </div>
-          </ion-card>
-
-        </ion-slide>
-      </ion-slides>
-</div>
-
-
-<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++ LES FORMATIONS ACCUEILS -->
-<div class="lesTitres"><p>Suivre nos formations</p></div>
-
-
-<div class="produits">
-  <ion-card *ngFor="let formation of lesFormation" class="card">
-    <ion-avatar class="ion-text-center" style="cursor: pointer;" (click)="uneFormation(formation.idformation)" expand="block"
-    (click)="Ouvrer(true)">
-      <img src="{{formation.photoformation}}" alt="">
-    </ion-avatar>
-    <ion-card-title (click)="uneFormation(formation.idformation)" (click)="Ouvrer(true)">{{formation.titreformation.slice(0,25)}} ...</ion-card-title>
-    
-    <div class="boutonpaniers d-flex justify-content-center">
-       <ion-button (click)="visiter(formation.urlformation)">Commencer</ion-button>
-    </div>
-  </ion-card>
-</div>
-<div class="voirPlus ion-text-center"> <a routerLink="/bottom-bar/formation">Voir plus</a>   </div>
-
-<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++ LES PRODUITS ACCUEILS -->
-<div class="lesTitres"><p>Rétrouver des experts ici</p></div>
-<div class="containeurExperts">
-      <ion-card class="expert">
-          <div class="img-left"> <img src="../../../assets/img/expert.png" alt="" srcset=""> </div>
-          <div class="text-right">Dans cette section, vous trouverez des experts a qui parlé en toute securité. 
-            <ion-button routerLink="/bottom-bar/forum">Discuter</ion-button>
+      <ion-slide class="produits1" *ngFor="let prod  of lesproduits">
+        <ion-card>
+          <div style="height: 100px; cursor: pointer;"> <img src="{{prod.phtoproduit}}"
+              (click)="unProduit(prod.idproduit)" (click)="setOpen(true)"> </div>
+          <ion-card-title style="font-size: 12px;" (click)="unProduit(prod.idproduit)"
+            (click)="setOpen(true)">{{prod.nomproduit.slice(0,15)}}</ion-card-title>
+          <p><strong>{{prod.prix}} Fcfa</strong></p>
+          <div class="boutonpanier">
+            <button (click)="ajouterPaner(prod.idproduit)">Ajouter au panier <ion-icon name="cart"></ion-icon></button>
           </div>
-      </ion-card>
-</div>
+        </ion-card>
+
+      </ion-slide>
+    </ion-slides>
+  </div>
 
 
+  <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++ LES FORMATIONS ACCUEILS -->
+  <div class="lesTitres">
+    <p>Suivre nos formations</p>
+  </div>
 
 
- <!-- ====================================================MODAL FORMATIONS==================================== -->
+  <div class="produits">
+    <ion-card *ngFor="let formation of lesFormation" class="card">
+      <ion-avatar class="ion-text-center" style="cursor: pointer;" (click)="uneFormation(formation.idformation)"
+        expand="block" (click)="Ouvrer(true)">
+        <img src="{{formation.photocategorie}}" alt="">
+      </ion-avatar>
+      <ion-card-title (click)="uneFormation(formation.id)"
+        (click)="Ouvrer(true)">{{formation.titreCategorie.slice(0,25)}} ...</ion-card-title>
 
- <ion-modal [isOpen]="ouvrir" backdrop-dismiss="false">
-  <ng-template>
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Formation</ion-title>
-        <ion-buttons slot="end">
-          <ion-button (click)="Ouvrer(false)" style="color: white; background: red;">Fermer</ion-button>
-        </ion-buttons>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content class="cont">
-      <h5>{{uneformation.titreformation}}</h5>
-      <div align="center"><img src="{{uneformation.photoformation}}" alt="" srcset="" width="50%"
-          class="ion-text-center"></div>
-
-      <div class="modalProduits">
-
-        <div class="sec1">
-          <div class="titre">
-            <p>Durée:</p>
-          </div>
-          <div class="valeurs">
-            <p><span class="sp">{{uneformation.dureformation}}</span></p>
-          </div>
-        </div>
-        
-        <p>
-          {{uneformation.description}}
-        </p>
-
+      <div class="boutonpaniers d-flex justify-content-center">
+        <ion-button (click)="visiter(formation.urlformation)">Commencer</ion-button>
       </div>
-    </ion-content>
-  </ng-template>
-</ion-modal>
+    </ion-card>
+  </div>
+  <div class="voirPlus ion-text-center"> <a routerLink="/bottom-bar/formation">Voir plus</a> </div>
 
-<!-- ==================================================== MODAL PRODUITS ==================================== -->
-
-<ion-modal [isOpen]="isModalOpen" backdrop-dismiss="false">
-  <ng-template>
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Produits</ion-title>
-        <ion-buttons slot="end">
-          <ion-button (click)="setOpen(false)" style="color: white; background: red;">Fermer</ion-button>
-        </ion-buttons>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content class="cont">
-      <h5>{{unProd.nomproduit}}</h5>
-      <div align="center"><img src="{{unProd.phtoproduit}}" alt="" srcset="" width="50%"
-          class="ion-text-center"></div>
-
-      <div class="modalProduits">
-
-        <div class="sec1">
-          <div class="titre">
-            <p>Prix:</p>
-          </div>
-          <div class="valeurs">
-            <p><span class="sp">{{unProd.prix}} Fcfa</span></p>
-          </div>
+  <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++ LES PRODUITS ACCUEILS -->
+  <div class="lesTitres">
+    <p>Rétrouver des experts ici</p>
+  </div>
+  <div class="containeurExperts">
+    <ion-card class="expert">
+      <div class="img-left"> <img src="../../../assets/img/expert.png" alt="" srcset=""> </div>
+      <div class="text-right">
+        <p>Dans cette section, vous trouverez des experts a qui parlé en toute securité.</p>
+        <div style="text-align: end;"> 
+          <ion-button routerLink="/bottom-bar/forum">Discuter</ion-button>
         </div>
-        <div class="sec1">
-          <div class="titre">
-            <p>Quantité disponible:</p>
-          </div>
-          <div class="valeurs">
-            <p><span class="sp">{{unProd.quantiteVente}}</span></p>
-          </div>
-        </div>
-        
-        <p>
-          {{unProd.descriptionproduit}}
-        </p>
-
       </div>
-    </ion-content>
-  </ng-template>
-</ion-modal>
+    </ion-card>
+  </div>
 
 
 
 
-<ion-content class="ion-padding">
-  <ion-button id="open-modal" expand="block">Open Modal</ion-button>
-  <ion-modal [keepContentsMounted]="true" trigger="open-modal" #modal>
+  <!-- ====================================================MODAL FORMATIONS==================================== -->
+
+  <ion-modal [isOpen]="ouvrir" backdrop-dismiss="false">
     <ng-template>
       <ion-header>
         <ion-toolbar>
-          <ion-buttons slot="start">
-            <ion-button (click)="modal.dismiss()">Cancel</ion-button>
+          <ion-title>Formation</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="Ouvrer(false)" style="color: white; background: red;">Fermer</ion-button>
           </ion-buttons>
-          <ion-title>Modal</ion-title>
         </ion-toolbar>
       </ion-header>
-      <ion-content class="ion-padding">
-        This content was mounted as soon as the modal was created.
+      <ion-content class="cont">
+        <h5>{{uneformation.titreformation}}</h5>
+        <div align="center"><img src="{{uneformation.photoformation}}" alt="" srcset="" width="50%"
+            class="ion-text-center"></div>
+
+        <div class="modalProduits">
+
+          <div class="sec1">
+            <div class="titre">
+              <p>Durée:</p>
+            </div>
+            <div class="valeurs">
+              <p><span class="sp">{{uneformation.dureformation}}</span></p>
+            </div>
+          </div>
+
+          <p>
+            {{uneformation.description}}
+          </p>
+
+        </div>
       </ion-content>
     </ng-template>
   </ion-modal>
-</ion-content>
+
+  <!-- ==================================================== MODAL PRODUITS ==================================== -->
+
+  <ion-modal [isOpen]="isModalOpen" backdrop-dismiss="false">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Produits</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="setOpen(false)" style="color: white; background: red;">Fermer</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="cont">
+        <h5>{{unProd.nomproduit}}</h5>
+        <div align="center"><img src="{{unProd.phtoproduit}}" alt="" srcset="" width="50%" class="ion-text-center">
+        </div>
+
+        <div class="modalProduits">
+
+          <div class="sec1">
+            <div class="titre">
+              <p>Prix:</p>
+            </div>
+            <div class="valeurs">
+              <p><span class="sp">{{unProd.prix}} Fcfa</span></p>
+            </div>
+          </div>
+          <div class="sec1">
+            <div class="titre">
+              <p>Quantité disponible:</p>
+            </div>
+            <div class="valeurs">
+              <p><span class="sp">{{unProd.quantiteVente}}</span></p>
+            </div>
+          </div>
+
+          <p>
+            {{unProd.descriptionproduit}}
+          </p>
+
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+
+
+
+  <ion-content class="ion-padding">
+    <ion-button id="open-modal" expand="block">Open Modal</ion-button>
+    <ion-modal [keepContentsMounted]="true" trigger="open-modal" #modal>
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-buttons slot="start">
+              <ion-button (click)="modal.dismiss()">Cancel</ion-button>
+            </ion-buttons>
+            <ion-title>Modal</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+          This content was mounted as soon as the modal was created.
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+  </ion-content>
 
 </ion-content>
-

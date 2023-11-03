@@ -1,6 +1,6 @@
 export class Theme{
     idtheme!:any;
-    titretheme!:String;
+    titretheme!:any;
     dateposte!:any
     user_id!:any
 }

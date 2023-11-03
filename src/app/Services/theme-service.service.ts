@@ -20,6 +20,8 @@ export class ThemeServiceService {
   //  CETTE METHODE NOUS PERMET D'AJOUTER UN THEME
 
   posterTheme(theme:any,user_id:any):Observable<any>{
+    console.log("LE titretheme TTTTHEME "+theme.titretheme)
+
     return this.http.post(`http://localhost:8080/theme/ajouter/${user_id}`,theme);
   }
 

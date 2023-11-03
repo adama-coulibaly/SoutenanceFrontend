@@ -35,6 +35,10 @@ const routes: Routes = [
     path: 'valider-commende',
     loadChildren: () => import('./Pages/valider-commende/valider-commende.module').then( m => m.ValiderCommendePageModule)
   },
+  {
+    path: 'details-formation',
+    loadChildren: () => import('./details-formation/details-formation.module').then( m => m.DetailsFormationPageModule)
+  },
  
   // {
   //   path: 'detail-production',

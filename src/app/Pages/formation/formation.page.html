@@ -19,9 +19,9 @@
 
     <ion-slides [options]="options">
       <ion-slide class="first" *ngFor="let formation of lesFormation">
-        <ion-card >
+        <ion-card >          
+          <p class="titres"> <Strong>Formation: </Strong>{{formation.titreCategorie}}</p>
           <img src="{{formation.photocategorie}}" alt="" srcset="">
-  
         </ion-card>
     </ion-slide>
     </ion-slides>
@@ -36,7 +36,7 @@
       (click)="setOpen(true)">
         <img src="{{formation.photocategorie}}" alt="">
       </ion-avatar>
-      <ion-card-title (click)="uneCategorieFormation(formation.id)" (click)="setOpen(true)">{{formation.titreCategorie.slice(0,25)}} ...</ion-card-title>
+      <ion-card-title (click)="uneCategorieFormation(formation.id)" (click)="setOpen(true)">{{formation.titreCategorie}}</ion-card-title>
       
       <div class="boutonpanier d-flex justify-content-center">
          <ion-button [routerLink]="['/bottom-bar/formation/detail-formation',formation.id]">Commencer</ion-button>

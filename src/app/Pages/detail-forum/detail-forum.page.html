@@ -3,72 +3,80 @@
     <ion-back-button slot="start" defaultHref="" style="color: white;"  (click)="back()"></ion-back-button>
   <ion-title slot="end">Forum</ion-title>
   </ion-toolbar> -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" id="open-custom-dialog" title="Ajouter un commentaire"
+    expand="block">
+    <ion-fab-button (click)="setOpen(true)">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <div class="section1" style="margin-top: 15%;">
 
+    <ion-toolbar>
+      <ion-back-button slot="start" defaultHref="" style="color: #04CF72;" (click)="back()"></ion-back-button>
+      <div style="width: 100%;margin-left: 5px;">
+        <p> {{titre}} </p>
+      </div>
+    </ion-toolbar>
+  </div>
 
 
   <!-- / ================================== SECTION POUR QUESTION TITRE FIXE-->
-  <div class="section1">
-    <ion-back-button slot="start" defaultHref="" (click)="retour()"></ion-back-button>
-     <ion-fab vertical="top" horizontal="end" slot="fixed"  (click)="setOpen(true)">
-      <ion-fab-button>
-        <ion-icon name="add"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
- <div class="titreForum title-text">
-  <p *ngIf="lesCommentaires != '' " >{{titre}}</p>
-  <p *ngIf="lesCommentaires == '' " > Ce thème n'a pas de commentaires pour l'instant</p>
- </div> 
-</div>
+
 
   <!-- ================================================ SECTION FORUM QUESTIONS OR THEMES -->
   <div class="sectionTheme">
     <div class="contenu" *ngFor="let commentaire of lesCommentaires">
-        <div class="imgEtTheme">
-            <div class="images">
-            <ion-avatar>
-              <img src="{{commentaire.user.avatar}}" alt="" srcset="">
-            </ion-avatar>
-              <p>{{commentaire.user.nom}} {{commentaire.user.prenom}}</p>
-            </div>
-            <div class="titre">
-               <span>{{commentaire.datecom | date: 'dd/MM/yy, à HH:mm'}}</span>
-                <p>{{commentaire.descriptioncom}}</p>
-               
-            </div>
+      <div class="imgEtTheme">
+        <div class="images">
+          <ion-avatar>
+            <img src="{{commentaire.user.avatar}}" alt="" srcset="">
+          </ion-avatar>
+          <p>{{commentaire.user.nom}} {{commentaire.user.prenom}}</p>
         </div>
-  
-        <div class="commentaireEtVoirplus">
-          <div class="commentaires">
-            <ion-icon name="thumbs-up"></ion-icon>
-          </div>
-          <div class="voirplus">
-            <ion-icon name="create-outline"></ion-icon>
+        <div class="titre">
+          <span>{{commentaire.datecom | date: 'dd/MM/yy, à HH:mm'}}</span>
+          <p>{{commentaire.descriptioncom}}</p>
 
-          </div>
+        </div>
       </div>
-        
+
+      <div class="commentaireEtVoirplus">
+        <div class="commentaires">
+          <ion-icon name="thumbs-up"></ion-icon>
+        </div>
+        <div class="voirplus">
+          <ion-icon name="create-outline"></ion-icon>
+
+        </div>
+      </div>
+
     </div>
-    </div>
+  </div>
 
 
-    <!-- ======================================================== -->
+  <!-- ======================================================== backdrop-dismiss="false"-->
 
-<ion-modal id="example-modal" #modal  [isOpen]="isModalOpen" backdrop-dismiss="false">
-  <ng-template>
-    <div class="forms">
-      <h2>Ajouter votre commentaire <span style="color: red; cursor: pointer;margin-left: 10px;" (click)="setOpen(false)">X</span> </h2>
+  <ion-modal id="example-modal" #modal [isOpen]="isModalOpen" >
+    <ng-template>
+      <div class="forms">
+        <h2>Ajouter votre commentaire 
+         <!--  <span style="color: red; cursor: pointer;margin-left: 10px;"
+            (click)="setOpen(false)">X</span> -->
+        </h2>
 
-<span class="ion-text-center" *ngIf="erreurRetour" style="color: red; text-align: center;margin: 1%;">{{erreurRetour}}</span>
+        <span class="ion-text-center" *ngIf="erreurRetour"
+          style="color: red; text-align: center;margin: 1%;">{{erreurRetour}}</span>
 
-      <form name="contact-form" (ngSubmit)="commenter()" >
-        <ion-item counter="true">
-          <ion-label position="floating">Réponse</ion-label>
-          <ion-textarea maxlength="500" minlength="10" name="titretheme" [(ngModel)]="commentaire.descriptioncom"></ion-textarea>
-        </ion-item>
-        <div align="center"><button>Commenter</button></div>
-      </form>
-    </div>
-      
-  </ng-template>
-</ion-modal>
+        <form name="contact-form" (ngSubmit)="commenter()">
+          <ion-item counter="true" [lines]="10" >
+            <ion-label position="floating">Réponse</ion-label>
+            <ion-textarea maxlength="500" minlength="10" name="titretheme"
+              [(ngModel)]="commentaire.descriptioncom"></ion-textarea>
+          </ion-item>
+          <div align="center"><button>Commenter</button></div>
+        </form>
+      </div>
+
+    </ng-template>
+  </ion-modal>
 </ion-content>

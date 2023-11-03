@@ -11,7 +11,7 @@ export class DetailForumServicesService {
 
   // ICI ON RECUPERE LES COMMENTAIRES D'UN SEUL THEME
 
-  RegionsCommentaire(id_theme:number):Observable<any>{
-    return this.http.get(`http://localhost:8080/commentaire/listepatheme/${id_theme}`);
+  RegionsCommentaire(id_theme:any):Observable<any>{
+    return this.http.get(`http://localhost:8080/commentaire/listepartheme/${id_theme}`);
   }
 }

@@ -41,10 +41,10 @@ tailleMinimum:any
     lesThemes:any;
  
    theme:Theme = {
-    idtheme :'',
-    titretheme:'',
-    dateposte:'',
-    user_id:''
+    idtheme :undefined,
+    titretheme:undefined,
+    dateposte:undefined,
+    user_id:undefined
    }
  
 
@@ -59,13 +59,10 @@ tailleMinimum:any
   }
   // La methode pour pouvoir ajouter une Thème
   ajouter(){
-
-
     if(this.user.id == null){
       this.presentAlert()
     }
     else{
-
 
     this.theme.titretheme
     if(this.theme.titretheme.length < 25){
@@ -91,7 +88,7 @@ tailleMinimum:any
     const alert = await this.alertController.create({
       header: 'Connexion requise !',
       // subHeader: 'Veuillez vous connecté pour pouvoir ajouter un produit au panier',
-      message: 'Veuillez vous connecté pour pouvoir poster un thème !',
+      message: 'Veuillez vous loguez pour pouvoir poster un thème !',
       buttons: ['OK'],
     });
 

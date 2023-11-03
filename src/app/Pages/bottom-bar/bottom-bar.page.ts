@@ -48,7 +48,7 @@ export class BottomBarPage implements OnInit {
 
     this.user = this.tokenStorage.getUser();
    if(this.user.id != null ){
-    console.log(this.user.statusUser.idstatus)
+    console.log("USER : "+this.user.statusUser.idstatus)
     this.monStatus = this.user.statusUser.idstatus
     this.notificationUser()
    }
