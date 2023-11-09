@@ -15,25 +15,32 @@ export class DetailsFormationPage implements OnInit {
       "id": 1,
       "image": "https://cdn.pratico-pratiques.com/app/uploads/sites/2/2021/10/06114812/poulet-entier-barbecue-a-l-autocuiseur.jpg",
       "titre": "Poulets",
-      "url": "https://www.youtube.com/embed/61bPhdlqfPA"
+      "url": "https://www.youtube.com/embed/61bPhdlqfPA",
+      "description":"Les poulets passent la majeure partie de leur temps à gratter l'herbe, à ramasser les grains sur le sol et à prendre de grands bains de sable. "
+
     },
     {
       "id": 2,
       "image": "https://cdn.pratico-pratiques.com/app/uploads/sites/2/2021/10/06114812/poulet-entier-barbecue-a-l-autocuiseur.jpg",
       "titre": "Poulets",
-      "url": "https://www.youtube.com/embed/FtPjdlt8Zhs"
+      "url": "https://www.youtube.com/embed/FtPjdlt8Zhs",
+      "description":"Les poulets passent la majeure partie de leur temps à gratter l'herbe, à ramasser les grains sur le sol et à prendre de grands bains de sable. "
+
     },
     {
       "id": 3,
       "image": "https://cdn.pratico-pratiques.com/app/uploads/sites/2/2021/10/06114812/poulet-entier-barbecue-a-l-autocuiseur.jpg",
       "titre": "Orange",
-      "url": "https://www.youtube.com/embed/FtPjdlt8Zhs"
+      "url": "https://www.youtube.com/embed/FtPjdlt8Zhs",
+      "description":"Les poulets passent la majeure partie de leur temps à gratter l'herbe, à ramasser les grains sur le sol et à prendre de grands bains de sable. "
+
     },
     {
       "id": 4,
       "image": "https://cdn.pratico-pratiques.com/app/uploads/sites/2/2021/10/06114812/poulet-entier-barbecue-a-l-autocuiseur.jpg",
       "titre": "Fromage",
-      "url": "https://www.youtube.com/embed/FtPjdlt8Zhs"
+      "url": "https://www.youtube.com/embed/FtPjdlt8Zhs",
+      "description":"Les poulets passent la majeure partie de leur temps à gratter l'herbe, à ramasser les grains sur le sol et à prendre de grands bains de sable. "
     }
   ]
   ngOnInit() {
@@ -49,5 +56,12 @@ export class DetailsFormationPage implements OnInit {
     this.videoUrl = valueC
   }
 
+  truncateDescription(description: string, limit: number): string {
+    if (description.length <= limit) {
+      return description;
+    } else {
+      return description.substr(0, limit) + '...'; // Truncate to 200 characters and add an ellipsis
+    }
+  }
 
 }

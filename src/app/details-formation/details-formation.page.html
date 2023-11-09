@@ -10,14 +10,30 @@
 
   <iframe [src]="readVideo(videoUrl)" frameborder="0" width="100%" height="300px"></iframe>
 
-  <div class="list" style="background-color: red;margin-top: 30px;">
-    <div class="card" *ngFor="let items of mesVideos">
-        <div>
+  <div class="list" style="margin-top: 30px;">
+       <!-- <div class="col-md-4">
+          <h5>{{items.titre}}</h5>
           <img src="{{items.image}}" alt="{{items.titre}}" srcset="" (click)="changeV(items.url)">
         </div>
-        <div>
-          <h5>{{items.titre}}</h5>
+       
+        <div class="">
+          <p>{{items.description}}</p>
+        </div>-->
+        <div class="card mb-3" style="max-width: 540px;margin-left: 10px;margin-right: 10px;" *ngFor="let items of mesVideos">
+          <div class="row g-0">
+            <div class="col-4" (click)="changeV(items.url)">
+              <img src="{{items.image}}" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-8">
+              <div class="card-body">
+                <h5 class="card-title">{{items.titre}}</h5>
+                <p class="card-text">{{truncateDescription(items.description, 40)}}</p>
+              </div>
+            </div>
+          </div>
         </div>
     </div>
-  </div>
+
+
+
 </ion-content>
